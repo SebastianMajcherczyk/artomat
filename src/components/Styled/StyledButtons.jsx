@@ -12,11 +12,15 @@ export const StyledButton1 = styled(Link)(({ theme }) => ({
 	transition: 'all 0.5s ease-in-out',
 	textDecoration: 'none',
 	textAlign: 'center',
+	cursor: 'pointer',
 	'&:hover': {
 		// border: '1.5px solid #ff980a',
 		// backgroundColor: '#ff980a',
 		transform: 'scale(1.2)',
 		boxShadow: '5px 5px 10px #000',
+	},
+	'@media (min-width: 992px)': {
+		fontSize: '1.5rem',
 	},
 }));
 

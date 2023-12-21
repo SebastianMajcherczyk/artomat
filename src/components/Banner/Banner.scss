@@ -1,0 +1,21 @@
+
+
+.slider{
+    width: 90%;
+    height: calc( 100vh - 80px);
+    margin: 0 auto;
+    @media (min-width: 768px) {
+        width: 80%;
+    }
+    @media (min-width: 992px) {
+        width: 60%;
+    }
+
+ 
+}
+// .awssld__controls{
+//     display: none !important;
+// }
+// .awssld__timer{
+//     display: none !important;
+// }

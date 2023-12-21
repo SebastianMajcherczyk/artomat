@@ -9,6 +9,7 @@
 @media (min-width: 992px) {
   .header {
     justify-content: space-around;
+    height: 100px;
   }
 }
 

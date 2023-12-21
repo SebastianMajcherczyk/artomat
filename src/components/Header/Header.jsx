@@ -1,7 +1,6 @@
 import React from 'react';
 import { Navbar } from '../Navbar/Navbar';
 import './Header.css';
-import { StyledButton1 } from '../Styled/StyledButtons';
 import { HamburgerMenu } from '../Hamburger/Hamburger';
 
 export const Header = () => {

@@ -11,8 +11,9 @@
     "@testing-library/user-event": "^13.5.0",
     "hamburger-react": "^2.5.0",
     "react": "^18.2.0",
-    "react-burger-menu": "^3.0.9",
+    "react-awesome-slider": "^4.1.0",
     "react-dom": "^18.2.0",
+    "react-multi-carousel": "^2.8.4",
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.4"
   },
