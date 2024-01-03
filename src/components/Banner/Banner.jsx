@@ -4,8 +4,7 @@ import withAutoplay from 'react-awesome-slider/dist/autoplay';
 import 'react-awesome-slider/dist/styles.css';
 import 'react-awesome-slider/dist/custom-animations/cube-animation.css';
 
-import Carousel from 'react-multi-carousel';
-import 'react-multi-carousel/lib/styles.css';
+
 
 import './Banner.css';
 
@@ -36,7 +35,7 @@ export const Banner = () => {
 	}, []);
 
 	return (
-		<div>
+		<div className='slider-container'>
 			<AutoplaySlider
 				className='slider'
 				play={true}
@@ -45,16 +44,16 @@ export const Banner = () => {
 				onFirstMount={modifyVideoElements}
 				interval={6000}
 				animation='cubeAnimation'
-				bullets
+				bullets={false}
 				organicArrows={false}
-				infinite={true}>
+				infinite={true}
+				transitionDelay={0}>
 				<div data-src={Trim1} />
 				<div data-src={Trim2} />
 				<div data-src={Trim3} />
 				<div data-src={Trim4} />
 				<div data-src={Trim5} />
 			</AutoplaySlider>
-			; ;
 		</div>
 	);
 };

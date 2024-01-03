@@ -1,6 +1,5 @@
 .slider {
   width: 90%;
-  height: calc(100vh - 80px);
   margin: 0 auto;
 }
 @media (min-width: 768px) {

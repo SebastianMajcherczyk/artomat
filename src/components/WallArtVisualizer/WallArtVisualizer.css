@@ -1,0 +1,47 @@
+.visual-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+label.label input[type=file] {
+  position: absolute;
+  top: -1000px;
+}
+
+.label {
+  cursor: pointer;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  padding: 5px 15px;
+  margin: 5px;
+  background: #dddddd;
+  display: inline-block;
+  font-size: 16px;
+}
+
+.label:hover {
+  background: #5cbd95;
+}
+
+.label:active {
+  background: #9fa1a0;
+}
+
+.label:invalid + span {
+  color: #000000;
+}
+
+.label:valid + span {
+  color: #ffffff;
+}
+
+.disabled {
+  color: #9fa1a0;
+  cursor: not-allowed;
+}
+.disabled:hover {
+  background: #dddddd;
+}/*# sourceMappingURL=WallArtVisualizer.css.map */

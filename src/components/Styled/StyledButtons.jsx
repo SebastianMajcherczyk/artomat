@@ -31,6 +31,7 @@ export const StyledButton2 = styled(Link)(({ theme }) => ({
 
 	textDecoration: 'none',
 	textAlign: 'center',
+	cursor: 'pointer',
 	'&:hover': {
 		// border: '1.5px solid #ff980a',
 		// backgroundColor: '#ff980a',

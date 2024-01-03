@@ -1,8 +1,10 @@
-
+// .slider-container{
+//     filter: opacity(0.5);
+// }
 
 .slider{
     width: 90%;
-    height: calc( 100vh - 80px);
+    // height: calc( 100vh - 80px);
     margin: 0 auto;
     @media (min-width: 768px) {
         width: 80%;
