@@ -1,8 +1,12 @@
 import React, { useRef, useEffect, useState } from 'react';
 import { fabric } from 'fabric';
 import './WallArtVisualizer.css';
+import {
+	LeftSideMotionDiv,
+	RightSideMotionDiv,
+} from '../Styled/StyledMotionDiv';
 
-export const WallArtVisualizer = () => {
+const WallArtVisualizer = () => {
 	const canvasRef = useRef();
 	const wallImageRef = useRef(null);
 	const designImageRef = useRef(null);
@@ -11,6 +15,33 @@ export const WallArtVisualizer = () => {
 	const [wallImageURL, setWallImageURL] = useState('');
 	const [designImageURL, setDesignImageURL] = useState('');
 	const [fabricCanvas, setFabricCanvas] = useState(null);
+	const [isSectionVisible, setIsSectionVisible] = useState(false);
+	const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
+
+	const checkIfSectionIsVisible = () => {
+		const section = document.querySelector('.visual');
+		const bounds = section.getBoundingClientRect();
+
+		const isVisible =
+			bounds.top < window.innerHeight / 2 &&
+			bounds.bottom > window.innerHeight / 2;
+
+		return isVisible;
+	};
+
+	const handleScroll = () => {
+		if (checkIfSectionIsVisible() && !hasAnimationPlayed) {
+			setIsSectionVisible(true);
+			setHasAnimationPlayed(true);
+		}
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll);
+		return () => {
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, [hasAnimationPlayed]);
 
 	const getInitialCanvasSize = () => {
 		const viewportWidth = window.innerWidth;
@@ -21,29 +52,57 @@ export const WallArtVisualizer = () => {
 		const maxHeight = 80 * vh;
 		return { width: maxWidth, height: maxHeight };
 	};
+
+	const openFileInput = inputId => {
+		const input = document.getElementById(inputId);
+		if (input) {
+			input.click();
+		}
+	};
+
 	const handleImageChange = setter => event => {
 		const file = event.target.files[0];
+		// Resetuj input
 		if (file) {
 			const reader = new FileReader();
-			reader.onload = loadEvent => setter(loadEvent.target.result);
+			reader.onload = loadEvent => {
+				setter(loadEvent.target.result);
+				event.target.value = '';
+			};
+			reader.onerror = errorEvent => {
+				console.error('Błąd ładowania pliku: ', errorEvent);
+			};
 			reader.readAsDataURL(file);
 		}
+	};
+
+	const handleWallImageChange = event => {
+		handleImageChange(setWallImageURL)(event);
+	};
+
+	const handleDesignImageChange = event => {
+		handleImageChange(setDesignImageURL)(event);
 	};
 
 	const [canvasSize, setCanvasSize] = useState(getInitialCanvasSize());
 
 	const resetDesign = () => {
 		setDesignImageURL('');
-		fabricCanvas.remove(addedDesignImageRef.current);
-		fabricCanvas.renderAll();
+		if (fabricCanvas && addedDesignImageRef.current) {
+			fabricCanvas.remove(addedDesignImageRef.current);
+			fabricCanvas.renderAll();
+		}
 	};
+
 	const resetWall = () => {
 		setWallImageURL('');
-		fabricCanvas.setBackgroundImage(
-			null,
-			fabricCanvas.renderAll.bind(fabricCanvas)
-		);
-		fabricCanvas.renderAll();
+		if (fabricCanvas && fabricCanvas.backgroundImage) {
+			fabricCanvas.setBackgroundImage(
+				null,
+				fabricCanvas.renderAll.bind(fabricCanvas)
+			);
+			fabricCanvas.renderAll();
+		}
 	};
 
 	const handleResize = () => {
@@ -200,38 +259,69 @@ export const WallArtVisualizer = () => {
 
 	return (
 		<div className='visual-container'>
-			<canvas ref={canvasRef} style={{ border: '1px solid black'}} />
-			<div className='inputs'>
-				<label className='label'>
+			<h2 className='visual-title'>Wizualizacje</h2>
+			<h3>Stwórz własną symulację nadruku na ścianie</h3>
+			<LeftSideMotionDiv isSectionVisible={isSectionVisible} className='visual'>
+				<div className={`wall-mockup ${wallImageURL ? 'invisible' : ''}`}></div>
+
+				<div className={`${wallImageURL ? 'canvas' : 'invisible'}`}>
+					<canvas
+						ref={canvasRef}
+						style={{
+							border: '1px solid black',
+						}}
+					/>
+				</div>
+				<div className='inputs'>
 					<input
 						id='wall'
 						type='file'
-						onChange={handleImageChange(setWallImageURL)}
+						onChange={handleWallImageChange}
 						accept='image/*'
+						style={{ display: 'none' }}
 					/>
-					{!wallImageURL && <span>Wybierz zdjęcie ściany</span>}
-					{wallImageURL && <span onClick={resetWall}>Resetuj zdjęcie ściany</span> }
+					{!wallImageURL ? (
+						<button
+							onClick={() => openFileInput('wall')}
+							className='label enabled'>
+							Wybierz zdjęcie ściany
+						</button>
+					) : (
+						<button onClick={resetWall} className='label'>
+							Resetuj zdjęcie ściany
+						</button>
+					)}
 
-				</label>
-				<label className={` label ${!wallImageURL ? 'disabled' : ''}`}>
 					<input
 						id='design'
 						type='file'
-						onChange={handleImageChange(setDesignImageURL)}
+						onChange={handleDesignImageChange}
 						accept='image/*'
 						disabled={!wallImageURL}
+						style={{ display: 'none' }}
 					/>
-					{!designImageURL && <span>Wybierz zdjęcie projektu</span>}
-					{designImageURL && <span onClick={resetDesign}>Resetuj zdjęcie projektu</span> }
+					{!designImageURL ? (
+						<button
+							onClick={() => wallImageURL && openFileInput('design')}
+							className={`label ${!wallImageURL ? 'disabled' : 'enabled'}`}>
+							Wybierz zdjęcie projektu
+						</button>
+					) : (
+						<button onClick={resetDesign} className='label'>
+							Resetuj zdjęcie projektu
+						</button>
+					)}
 
-				</label>
-				<button
-					onClick={saveCanvasAsImage}
-					className={` label ${!designImageURL ? 'disabled' : ''}`}>
-					Zapisz wizualizację
-				</button>
-			</div>
+					<button
+						onClick={saveCanvasAsImage}
+						className={`label ${!designImageURL ? 'disabled' : 'enabled'}`}
+						disabled={!designImageURL}>
+						Zapisz wizualizację
+					</button>
+				</div>
+			</LeftSideMotionDiv>
 		</div>
 	);
 };
 
+export default WallArtVisualizer;

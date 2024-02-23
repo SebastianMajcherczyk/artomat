@@ -1,0 +1,134 @@
+.App {
+	min-height: 100vh;
+	/* padding: 10px; */
+	text-align: center;
+	/* background-color: rgba(0, 0, 0, 0.7); */
+	/* background-image: url('../public//image1.jpg') ; */
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	overflow: hidden;
+}
+
+.section-background {
+	/* background-image: url('../public//image1.jpg') ; */
+	padding: 40px;
+	min-height: 50vh;
+	width: 100vw;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+section {
+	/* background-image: url('../public//image1-white.jpg') ; */
+	padding-bottom: 70px;
+	height: auto;
+	min-height: 40vh;
+	@media (min-width: 768px) {
+		min-height: 80vh;
+	}
+	width: 100vw;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+h2 {
+	margin-bottom: 10px;
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: #8b003d;
+	
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	@media (min-width: 576px) {
+		font-size: 2rem;
+	}
+
+	@media (min-width: 768px) {
+		font-size: 4rem;
+	}
+}
+
+h3 {
+	font-family: 'Roboto', sans-serif;
+	font-size: 1.1rem;
+	color: #00375f;
+	margin-top: 10px;
+	@media (min-width: 768px) {
+		font-size: 1.5rem;
+	}
+}
+
+h4 {
+	font-family: 'Roboto', sans-serif;
+}
+
+
+.app-container {
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	@media (min-width: 768px) {
+		width: 80%;
+	}
+}
+
+.title {
+	margin-top: 40px;
+	width: 100%;
+	width: 90%;
+	color: #fff;
+	background: rgba(0, 0, 0, 0.5);
+	box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25),
+		35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24),
+		49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151),
+		100px 100px 147px -5px rgba(0, 0, 0, 0.05);
+
+	& h1 {
+		font-size: 1.5rem;
+	}
+	& p {
+		font-size: 14px;
+		padding: 5px;
+	}
+	@media (min-width: 768px) {
+		margin-top: 0;
+		// margin-left: 30px;
+		width: 80%;
+		// margin : 80px ;
+		& h1 {
+			font-size: 2rem;
+		}
+		& p {
+			font-size: 16px;
+			padding: 15px;
+		}
+	}
+}
+
+.title2 {
+	color: #111;
+	background: rgba(256, 256, 256, 0.6);
+	min-height: 500px;
+}
+a {
+	text-decoration: none;
+	color: #00375f;
+  }
+  
+

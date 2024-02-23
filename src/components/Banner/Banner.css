@@ -1,14 +1,70 @@
-.slider {
-  width: 90%;
-  margin: 0 auto;
+.div-for-slider {
+  max-width: 360px;
 }
-@media (min-width: 768px) {
-  .slider {
+@media (max-width: 768px) {
+  .div-for-slider {
+    max-width: 300px;
     width: 80%;
   }
 }
-@media (min-width: 992px) {
+
+.slider {
+  aspect-ratio: 9/16;
+  overflow: hidden;
+}
+.slider video {
+  -o-object-fit: contain;
+     object-fit: contain;
+}
+@media (min-width: 768px) {
   .slider {
-    width: 60%;
+    width: 300px;
+    background: #545454;
+    box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25), 35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24), 49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151), 100px 100px 147px -5px rgba(0, 0, 0, 0.05);
   }
+}
+
+.awssld__content > video {
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.banner-container {
+  margin-top: 60px;
+  width: 100%;
+  height: auto;
+  min-height: calc(100vh - 60px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .banner-container {
+    width: 80%;
+    margin-top: 80px;
+    min-height: calc(100vh - 80px);
+    flex-direction: row;
+    justify-content: space-around;
+  }
+}
+
+.title-parallax {
+  display: flex;
+  justify-content: center;
+}
+
+.banner-text {
+  width: 90%;
+  color: #001829;
+}
+@media (min-width: 768px) {
+  .banner-text {
+    width: 60%;
+    margin-left: 30px;
+  }
+}
+.banner-text p {
+  text-align: justify;
 }/*# sourceMappingURL=Banner.css.map */
