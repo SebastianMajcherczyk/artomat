@@ -1,0 +1,25 @@
+.price-section {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.price-container {
+  width: 100%;
+  height: 750px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ceny {
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.15);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  color: #001829;
+}/*# sourceMappingURL=Ceny.css.map */

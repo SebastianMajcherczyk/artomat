@@ -1,0 +1,74 @@
+form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 85%;
+	max-width: 500px;
+
+	padding: 25px;
+	border: 1px solid #000;
+	border-radius: 20px;
+	// background-color: rgba(0, 0, 0, 0.15);
+	// box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25),
+	// 	35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24),
+	// 	49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151),
+	// 	100px 100px 147px -5px rgba(0, 0, 0, 0.05);
+
+}
+.form-element{
+	width: 100%;
+	margin-bottom: 20px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	& label {
+		margin-left: 10px;
+	}
+& label>p{
+	margin: 0;
+	color: #999;
+	font-size: 14px;
+}
+}
+
+textarea {
+    height: 100px;
+    resize: none;
+}
+
+input, textarea {
+	color: #000;
+    width: 90%;
+    padding: 10px;
+    border: 0;
+    border-bottom: 1px solid #000;
+    margin-bottom: 10px;
+}
+
+input:focus, textarea:focus, input:active, textarea:active {
+    outline: none;
+	color: #000;
+}
+
+input[type='submit'] {
+	padding: 10px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+}
+
+.input-error{
+    border-bottom: 1px solid red;
+    color: red;
+    font-size: 12px;
+}
+
+.error-visible{
+	margin: 0 0 5px 10px;
+visibility: visible;
+	color: red
+}
+.error-invisible {
+	margin: 0 0 5px 10px;
+	visibility: hidden;
+}

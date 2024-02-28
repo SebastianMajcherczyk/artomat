@@ -1,0 +1,105 @@
+.gallery-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.gallery-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.MuiImageList-root {
+  box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25), 35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24), 49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151), 100px 100px 147px -5px rgba(0, 0, 0, 0.05);
+  width: 90%;
+  background: rgba(255, 255, 255, 0.7);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+          backdrop-filter: saturate(180%) blur(10px);
+}
+@media (min-width: 768px) {
+  .MuiImageList-root {
+    width: 500px;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+.slider2 {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6);
+  animation: scaleIn 0.5s forwards;
+  z-index: 100;
+}
+
+.gallery-slider-close {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  font-size: 30px;
+  color: white;
+  cursor: pointer;
+  z-index: 100;
+}
+@media (min-width: 576px) {
+  .gallery-slider-close {
+    top: 30px;
+    right: 40px;
+  }
+}
+
+.gallery-slider {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gallery-slider img {
+  height: 80vh;
+  max-height: 1000px;
+  min-width: auto;
+}
+
+.karuzela {
+  margin: 0 auto;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+@media screen and (min-width: 768px) {
+  .karuzela {
+    width: 80%;
+    height: 80%;
+  }
+}/*# sourceMappingURL=Gallery.css.map */

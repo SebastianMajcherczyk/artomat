@@ -1,0 +1,101 @@
+.footer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding-bottom: 30px;
+  padding-top: 10px;
+  gap: 10px;
+}
+@media screen and (min-width: 1200px) {
+  .footer {
+    flex-direction: row;
+    justify-content: center;
+  }
+}
+
+.contact-container {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+@media screen and (min-width: 1200px) {
+  .contact-container {
+    width: 50%;
+  }
+}
+
+.footer-2 {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 350px;
+}
+@media (min-width: 768px) {
+  .footer-2 {
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    height: 170px;
+  }
+}
+
+.contact {
+  display: flex;
+  padding-left: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+@media screen and (min-width: 768px) {
+  .contact {
+    width: auto;
+  }
+}
+.contact > p {
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #8B003d;
+  align-self: center;
+}
+.contact p {
+  white-space: nowrap;
+  line-height: 0.5;
+}
+
+.email,
+.phone,
+.address {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.email-link {
+  margin-left: 10px;
+}
+
+.social-media {
+  width: 20%;
+  min-width: 150px;
+  display: flex;
+  justify-content: space-around;
+}
+@media screen and (min-width: 768px) {
+  .social-media {
+    width: 10%;
+  }
+}
+
+.social-icon :hover {
+  cursor: pointer;
+}
+
+.react-tooltip {
+  background-color: #000;
+}/*# sourceMappingURL=Footer.css.map */

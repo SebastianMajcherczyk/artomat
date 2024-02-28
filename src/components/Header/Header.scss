@@ -1,17 +1,24 @@
 .header {
-	height: 80px;
-	position: relative;
+	height: 60px;
+	position: fixed;
+	top: 0;
 	width: 100%;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	z-index: 50;
+	background-color: rgba(256, 256, 256, 0.8);
 	@media (min-width: 992px) {
 		justify-content: space-around;
-		height: 100px;
+		height: 80px;
 	}
 }
 
 .logo {
-	margin-left: 15px;
+	margin-left: 7px;
 	cursor: pointer;
+	transition: all 0.5s ease-in-out;
+	// &:hover {
+	// 	transform: scale(1.1);
+	// }
 }

@@ -1,7 +1,7 @@
 .hamburger {
   display: block;
 }
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 992px) {
   .hamburger {
     display: none;
   }
@@ -9,7 +9,7 @@
 
 .hamburger-react {
   z-index: 20;
-  color: #ff980a;
+  color: #00375f;
   margin-right: 5px;
 }
 
@@ -20,7 +20,7 @@
   right: -200px;
   background-color: rgba(41, 68, 105, 0.4);
   width: 100px;
-  height: 230px;
+  height: 250px;
   display: flex;
   row-gap: 10px;
   flex-direction: column;
