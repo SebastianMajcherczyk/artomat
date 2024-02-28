@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from "react";
 import "./Technika.css";
 import { LeftSideMotionDiv } from "../Styled/StyledMotionDiv";
@@ -70,6 +71,7 @@ const Technika = () => {
       </LeftSideMotionDiv>
     </div>
   );
+
 };
 
-export default Technika;
+export default Technika

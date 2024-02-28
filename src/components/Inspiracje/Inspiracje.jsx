@@ -16,8 +16,8 @@ const Inspiracje = () => {
     const bounds = section.getBoundingClientRect();
 
     const isVisible =
-      bounds.top < window.innerHeight / 2 &&
-      bounds.bottom > window.innerHeight / 2;
+      bounds.top < window.innerHeight / 1.1 &&
+      bounds.bottom > window.innerHeight / 1.1;
 
     return isVisible;
   };
