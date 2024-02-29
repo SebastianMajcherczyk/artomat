@@ -31,6 +31,7 @@ export const Navbar = () => {
         duration={500}
         spy={true}
         activeClass="active-link"
+        offset={-90}
       >
         <StyledButton1>Realizacje</StyledButton1>
       </ScrollLink>
@@ -58,6 +59,7 @@ export const Navbar = () => {
         duration={500}
         spy={true}
         activeClass="active-link"
+        offset={-90}
       >
         <StyledButton1>Wizualizacje</StyledButton1>
       </ScrollLink>

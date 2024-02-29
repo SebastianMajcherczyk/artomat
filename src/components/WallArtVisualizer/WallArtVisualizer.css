@@ -33,7 +33,7 @@
 .wall-mockup {
   width: 90%;
   aspect-ratio: 9/6;
-  background-image: url("./layout2.jpg");
+  background-image: url("./layout3.webp");
   background-size: cover;
   margin: 0 auto;
   box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25), 35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24), 49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151), 100px 100px 147px -5px rgba(0, 0, 0, 0.05);
@@ -45,7 +45,7 @@
 }
 @media screen and (min-width: 768px) {
   .wall-mockup {
-    width: 60%;
+    width: 50%;
   }
 }
 

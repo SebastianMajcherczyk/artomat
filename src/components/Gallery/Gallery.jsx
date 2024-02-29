@@ -30,8 +30,8 @@ const Gallery = () => {
     const bounds = section.getBoundingClientRect();
 
     const isVisible =
-      bounds.top < window.innerHeight / 2 &&
-      bounds.bottom > window.innerHeight / 2;
+      bounds.top < window.innerHeight / 1.5 &&
+      bounds.bottom > window.innerHeight / 1.5;
 
     return isVisible;
   };
@@ -62,13 +62,11 @@ const Gallery = () => {
 
   const handleImageClick = (e) => {
     const data = e.target.src;
-    console.log("data:", data);
     const fileName = getFileName(data);
-    console.log("fileName:", fileName);
     const foundIndex = GalleryData.findIndex(
       (item) => item.thumbnail === "./Realizacje/Thumbnails/" + fileName
     );
-    console.log(fileName, foundIndex);
+
     setCurrentImage(foundIndex);
     setViewerIsOpen(true);
   };
@@ -117,18 +115,7 @@ const Gallery = () => {
             height: "800",
           }}
         >
-          <ImageListItem key="Subheader" cols={cols}>
-            {/* <ListSubheader
-							component='div'
-							className='gallery-subheader'
-							sx={{
-								backgroundColor: '#fafafa',
-								color: '#001129',
-								textTransform: 'uppercase',
-							}}>
-							Galeria realizacji
-						</ListSubheader> */}
-          </ImageListItem>
+          <ImageListItem key="Subheader" cols={cols}></ImageListItem>
           {GalleryData.map((item) => (
             <ImageListItem key={item.thumbnail}>
               <img
@@ -159,16 +146,16 @@ const Gallery = () => {
             </ImageListItem>
           ))}
         </ImageList>
-        {viewerIsOpen && (
-          <div className="slider2">
-            <MediaSlider
-              images={GalleryData}
-              selectedIndex={currentImage}
-              setViewerIsOpen={setViewerIsOpen}
-            />
-          </div>
-        )}
       </RightSideMotionDiv>
+      {viewerIsOpen && (
+        <div className="slider2">
+          <MediaSlider
+            images={GalleryData}
+            selectedIndex={currentImage}
+            setViewerIsOpen={setViewerIsOpen}
+          />
+        </div>
+      )}
     </div>
   );
 };
