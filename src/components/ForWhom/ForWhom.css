@@ -1,0 +1,50 @@
+.for-whom-container {
+  padding-bottom: 70px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  row-gap: 2rem;
+}
+
+.for-whom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  min-height: 40vh;
+  width: 80%;
+  padding: 30px 0;
+  border-radius: 20px;
+  background-color: rgba(0, 0, 0, 0.15);
+  box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25), 35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24), 49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151), 100px 100px 147px -5px rgba(0, 0, 0, 0.05);
+}
+.for-whom p {
+  text-align: justify;
+  width: 90%;
+  color: #001829;
+}
+@media (min-width: 768px) {
+  .for-whom p {
+    width: 80%;
+  }
+}
+
+.accordion-container {
+  width: 100%;
+  margin: 0 auto;
+}
+@media screen and (min-width: 768px) {
+  .accordion-container {
+    width: 90%;
+  }
+}
+
+.whom-image-box {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  justify-content: center;
+}/*# sourceMappingURL=ForWhom.css.map */

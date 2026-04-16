@@ -1,7 +1,19 @@
 import styled from "@emotion/styled";
 import { motion } from "framer-motion";
 
-// Definicje wariantów animacji dla h2 i h3
+// Definicje wariantów animacji dla h1, h2 i h3
+const h1AnimationVariants = {
+  hidden: { x: -300, opacity: 0 },
+  visible: {
+    x: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 70, // Możesz dostosować wartości animacji
+      duration: 0.8,
+    },
+  },
+};
 const h2AnimationVariants = {
   hidden: { x: -200, opacity: 0 },
   visible: {
@@ -27,6 +39,15 @@ const h3AnimationVariants = {
     },
   },
 };
+// Komponent dla h1 z animacją przesunięcia
+export const AnimatedH1 = styled(({ isSectionVisible, ...props }) => (
+  <motion.h1
+    initial="hidden"
+    animate={isSectionVisible ? "visible" : "hidden"}
+    variants={h1AnimationVariants}
+    {...props}
+  />
+))``;
 
 // Komponent dla h2 z animacją przesunięcia
 export const AnimatedH2 = styled(({ isSectionVisible, ...props }) => (

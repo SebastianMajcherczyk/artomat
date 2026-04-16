@@ -9,10 +9,4 @@
   .navbar {
     display: flex;
   }
-}
-
-.active-link > button {
-  color: #8B003d;
-  text-decoration: underline;
-  text-underline-offset: 5px;
 }/*# sourceMappingURL=Navbar.css.map */

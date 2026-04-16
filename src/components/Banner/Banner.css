@@ -1,9 +1,13 @@
+@charset "UTF-8";
 .div-for-slider {
-  max-width: 360px;
+  position: relative;
+  width: 60%;
+  max-width: 300px;
+  box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25), 35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24), 49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151), 100px 100px 147px -5px rgba(0, 0, 0, 0.05);
 }
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .div-for-slider {
-    max-width: 300px;
+    max-width: 360px;
     width: 80%;
   }
 }
@@ -13,15 +17,57 @@
   overflow: hidden;
 }
 .slider video {
-  -o-object-fit: contain;
-     object-fit: contain;
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
 }
 @media (min-width: 768px) {
   .slider {
     width: 300px;
     background: #545454;
-    box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25), 35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24), 49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151), 100px 100px 147px -5px rgba(0, 0, 0, 0.05);
   }
+}
+
+/* Overlay poster nad sliderem – znikanie po starcie wideo */
+.lcp-poster {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  transition: opacity 0.3s ease;
+  z-index: 2;
+}
+
+.lcp-poster.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.slider {
+  aspect-ratio: 9/16;
+  overflow: hidden;
+  box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25), 35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24), 49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151), 100px 100px 147px -5px rgba(0, 0, 0, 0.05);
+}
+.slider video {
+  -o-object-fit: cover;
+     object-fit: cover;
+  display: block;
+}
+@media (min-width: 768px) {
+  .slider {
+    width: 300px;
+    background: #545454;
+  }
+}
+
+.awssld {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .awssld__content > video {

@@ -1,4 +1,5 @@
 .inspirations-container {
+  padding-bottom: 70px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -8,9 +9,37 @@
 }
 
 .inspirations {
-  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
   width: 80%;
   border-radius: 20px;
   background-color: rgba(0, 0, 0, 0.15);
   box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25), 35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24), 49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151), 100px 100px 147px -5px rgba(0, 0, 0, 0.05);
+}
+.inspirations div {
+  width: 80%;
+}
+.inspirations p {
+  text-align: left;
+}
+
+.photo-bank-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  row-gap: 30px;
+}
+
+a > .photo-bank {
+  padding: 0px;
+  margin: 0px;
+  font-size: 16px;
+  text-align: center;
+}
+
+a svg {
+  margin: 0 15px;
 }/*# sourceMappingURL=Inspiracje.css.map */

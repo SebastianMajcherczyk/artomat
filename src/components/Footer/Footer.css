@@ -40,7 +40,7 @@
   .footer-2 {
     flex-direction: row-reverse;
     justify-content: space-around;
-    height: 170px;
+    height: 190px;
   }
 }
 
@@ -59,7 +59,7 @@
 .contact > p {
   font-weight: bold;
   text-transform: uppercase;
-  color: #8B003d;
+  color: #8b003d;
   align-self: center;
 }
 .contact p {
