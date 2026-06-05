@@ -5,28 +5,47 @@ import "./Navbar.css";
 export const Navbar = () => {
   return (
     <div className="navbar">
-      <StyledButton1 component={RouterLink} to="/home" href="/home">
-        Home
+      <StyledButton1 component={RouterLink} to="/">
+        Start
       </StyledButton1>
-      <StyledButton1 component={RouterLink} to="/dla-kogo" href="/dla-kogo">
+
+      <StyledButton1
+        component={RouterLink}
+        to={{ pathname: "/", hash: "#dla-kogo" }}
+      >
         Dla kogo
       </StyledButton1>
-      <StyledButton1 component={RouterLink} to="/technika" href="/technika">
+
+      <StyledButton1 component={RouterLink} to="/technika">
         Technika
       </StyledButton1>
-      <StyledButton1 component={RouterLink} to="/gallery" href="/gallery">
+
+      <StyledButton1 component={RouterLink} to="/gallery">
         Realizacje
       </StyledButton1>
-      <StyledButton1 component={RouterLink} to="/ceny" href="/ceny">
+
+      <StyledButton1 component={RouterLink} to="/ceny">
         Ceny
       </StyledButton1>
-      <StyledButton1 component={RouterLink} to="/inspiracje" href="/inspiracje">
+
+      <StyledButton1
+        component={RouterLink}
+        to={{ pathname: "/", hash: "#inspiracje" }}
+      >
         Inspiracje
       </StyledButton1>
-      <StyledButton1 component={RouterLink} to="/visualizer" href="/visualizer">
+
+      <StyledButton1
+        component={RouterLink}
+        to={{ pathname: "/", hash: "#visualizer" }}
+      >
         Wizualizacje
       </StyledButton1>
-      <StyledButton1 component={RouterLink} to="/kontakt" href="/kontakt">
+
+      <StyledButton1
+        component={RouterLink}
+        to={{ pathname: "/", hash: "#kontakt" }}
+      >
         Kontakt
       </StyledButton1>
     </div>

@@ -1,27 +1,30 @@
-import react, { useState } from "react";
-
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { RightSideMotionDiv } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 import MediaGallery from "./MediaGallery";
 import ProjectSlider from "./ProjectSlider/ProjectSlider";
 import "./Gallery.css";
 
-const Gallery = () => {
+const FEATURED_GALLERY_IDS = [35, 30, 28, 31, 22, 29, 39, 36, 26];
+
+const Gallery = ({ mode = "full" }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
+  const isFullMode = mode === "full";
+
+  const [isSectionVisible, setIsSectionVisible] = useState(isFullMode);
+  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(isFullMode);
 
   const checkIfSectionIsVisible = () => {
     const section = document.querySelector(".gallery");
+    if (!section) return false;
+
     const bounds = section.getBoundingClientRect();
 
-    const isVisible =
+    return (
       bounds.top < window.innerHeight / 1.5 &&
-      bounds.bottom > window.innerHeight / 1.5;
-
-    return isVisible;
+      bounds.bottom > window.innerHeight / 1.5
+    );
   };
 
   const handleScroll = () => {
@@ -32,12 +35,15 @@ const Gallery = () => {
   };
 
   useEffect(() => {
+    if (isFullMode) return;
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [hasAnimationPlayed]);
+  }, [hasAnimationPlayed, isFullMode]);
 
+  console.log("Gallery mode:", mode);
   return (
     <div className="gallery-container">
       {selectedProject && (
@@ -48,10 +54,13 @@ const Gallery = () => {
           />
         </div>
       )}
+
       <AnimatedH2 isSectionVisible={isSectionVisible}>Galeria</AnimatedH2>
+
       <AnimatedH3 isSectionVisible={isSectionVisible}>
         Zobacz nasze realizacje.
       </AnimatedH3>
+
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="gallery title"
@@ -63,8 +72,11 @@ const Gallery = () => {
         </p>
 
         <MediaGallery
-          selectedProject={selectedProject}
+          mode={mode}
+          previewProjectIds={FEATURED_GALLERY_IDS}
           setSelectedProject={setSelectedProject}
+          initialRows={3.5}
+          rowsStep={2}
         />
       </RightSideMotionDiv>
     </div>

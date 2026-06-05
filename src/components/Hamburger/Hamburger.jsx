@@ -14,51 +14,62 @@ export const HamburgerMenu = () => {
         className={menuOpen ? "nav-links open" : "nav-links"}
         onClick={() => setMenuOpen(false)}
       >
-        <li onClick={() => setMenuOpen(false)}>
-          <StyledButton2 component={RouterLink} to="/home" href="/home">
-            Home
+        <li>
+          <StyledButton2 component={RouterLink} to="/">
+            Start
           </StyledButton2>
         </li>
-        <li onClick={() => setMenuOpen(false)}>
-          <StyledButton2 component={RouterLink} to="/dla-kogo" href="/dla-kogo">
+
+        <li>
+          <StyledButton2
+            component={RouterLink}
+            to={{ pathname: "/", hash: "#dla-kogo" }}
+          >
             Dla kogo
           </StyledButton2>
         </li>
-        <li onClick={() => setMenuOpen(false)}>
-          <StyledButton2 component={RouterLink} to="/technika" href="/technika">
+
+        <li>
+          <StyledButton2 component={RouterLink} to="/technika">
             Technika
           </StyledButton2>
         </li>
-        <li onClick={() => setMenuOpen(false)}>
-          <StyledButton2 component={RouterLink} to="/gallery" href="/gallery">
+
+        <li>
+          <StyledButton2 component={RouterLink} to="/gallery">
             Realizacje
           </StyledButton2>
         </li>
-        <li onClick={() => setMenuOpen(false)}>
-          <StyledButton2 component={RouterLink} to="/ceny" href="/ceny">
+
+        <li>
+          <StyledButton2 component={RouterLink} to="/ceny">
             Ceny
           </StyledButton2>
         </li>
-        <li onClick={() => setMenuOpen(false)}>
+
+        <li>
           <StyledButton2
             component={RouterLink}
-            to="/inspiracje"
-            href="/inspiracje"
+            to={{ pathname: "/", hash: "#inspiracje" }}
           >
             Inspiracje
           </StyledButton2>
         </li>
-        <li onClick={() => setMenuOpen(false)}>
+
+        <li>
           <StyledButton2
             component={RouterLink}
-            to="/visualizer"
-            href="/visualizer"
+            to={{ pathname: "/", hash: "#visualizer" }}
           >
             Wizualizacje
           </StyledButton2>
         </li>
-        <li onClick={() => setMenuOpen(false)}>
-          <StyledButton2 component={RouterLink} to="/kontakt" href="/kontakt">
+
+        <li>
+          <StyledButton2
+            component={RouterLink}
+            to={{ pathname: "/", hash: "#kontakt" }}
+          >
             Kontakt
           </StyledButton2>
         </li>
