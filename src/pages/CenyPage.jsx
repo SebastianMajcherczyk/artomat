@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Header } from "../components/Header/Header";
 import { Footer } from "../components/Footer/Footer";
 import Ceny from "../components/Ceny/Ceny";
+import SubpageLinks from "../components/SubpageLinks/SubpageLinks";
 
 export default function CenyPage() {
   return (
@@ -28,8 +29,36 @@ export default function CenyPage() {
         </section>
 
         <section>
-          <Ceny />
+          <Ceny mode="full" showHeading={false} />
         </section>
+
+        <SubpageLinks
+          title="Co dalej?"
+          items={[
+            {
+              label: "Strona główna",
+              to: "/",
+              description:
+                "Wróć do strony głównej i zobacz najważniejsze sekcje.",
+            },
+            {
+              label: "Realizacje",
+              to: "/gallery",
+              description: "Zobacz przykłady wykonanych realizacji Loftprint.",
+            },
+            {
+              label: "Technika druku",
+              to: "/technika",
+              description: "Sprawdź, jak wygląda proces druku ściennego UV.",
+            },
+            {
+              label: "Kontakt",
+              to: { pathname: "/", hash: "#kontakt" },
+              description:
+                "Przejdź do sekcji kontaktowej i napisz lub zadzwoń.",
+            },
+          ]}
+        />
       </main>
       <Footer />
     </>

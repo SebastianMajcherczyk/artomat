@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { Header } from "../components/Header/Header";
 import { Footer } from "../components/Footer/Footer";
 import Technika from "../components/Technika/Technika";
+import SubpageLinks from "../components/SubpageLinks/SubpageLinks";
 
 export default function TechnikaPage() {
   return (
@@ -28,8 +29,37 @@ export default function TechnikaPage() {
         </section>
 
         <section>
-          <Technika />
+          <Technika mode="full" showHeading={false} />
         </section>
+
+        <SubpageLinks
+          title="Co dalej?"
+          items={[
+            {
+              label: "Strona główna",
+              to: "/",
+              description:
+                "Wróć do strony głównej i zobacz najważniejsze sekcje.",
+            },
+            {
+              label: "Realizacje",
+              to: "/gallery",
+              description:
+                "Zobacz przykłady nadruków ściennych w różnych wnętrzach.",
+            },
+            {
+              label: "Ceny",
+              to: "/ceny",
+              description: "Sprawdź, od czego zależy wycena realizacji.",
+            },
+            {
+              label: "Kontakt",
+              to: { pathname: "/", hash: "#kontakt" },
+              description:
+                "Przejdź do sekcji kontaktowej i napisz lub zadzwoń.",
+            },
+          ]}
+        />
       </main>
       <Footer />
     </>

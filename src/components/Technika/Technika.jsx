@@ -6,19 +6,22 @@ import {
 } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 
-const Technika = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
+const Technika = ({ mode = "home", showHeading = true }) => {
+  const isFullMode = mode === "full";
+
+  const [isSectionVisible, setIsSectionVisible] = useState(isFullMode);
+  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(isFullMode);
 
   const checkIfSectionIsVisible = () => {
     const section = document.querySelector(".technika");
+    if (!section) return false;
+
     const bounds = section.getBoundingClientRect();
 
-    const isVisible =
+    return (
       bounds.top < window.innerHeight / 1.5 &&
-      bounds.bottom > window.innerHeight / 1.5;
-
-    return isVisible;
+      bounds.bottom > window.innerHeight / 1.5
+    );
   };
 
   const handleScroll = () => {
@@ -29,24 +32,31 @@ const Technika = () => {
   };
 
   useEffect(() => {
+    if (isFullMode) return;
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [hasAnimationPlayed]);
+  }, [hasAnimationPlayed, isFullMode]);
 
   return (
     <div className="technika-container">
-      <AnimatedH2 isSectionVisible={isSectionVisible}>
-        Możliwości drukarki ściennej UV
-      </AnimatedH2>
-      <AnimatedH3 isSectionVisible={isSectionVisible}>
-        Szczegóły i dane techniczne
-      </AnimatedH3>
+      {showHeading && (
+        <AnimatedH2 isSectionVisible={isSectionVisible}>
+          Możliwości drukarki ściennej UV
+        </AnimatedH2>
+      )}
+
+      {showHeading && (
+        <AnimatedH3 isSectionVisible={isSectionVisible}>
+          Szczegóły i dane techniczne
+        </AnimatedH3>
+      )}
 
       <LeftSideMotionDiv
         isSectionVisible={isSectionVisible}
-        className="technika "
+        className="technika"
       >
         <p>
           Proces drukowania rozpoczyna się po odpowiednim ustawieniu urządzenia
@@ -107,7 +117,7 @@ const Technika = () => {
           />
         </div>
         <p>
-          <strong> Szybkość druku wynosi około 0,8 m²/h do 1,6 m²/h. </strong>{" "}
+          <strong>Szybkość druku wynosi około 0,8 m²/h do 1,6 m²/h.</strong>{" "}
           Głowica drukarki podczas nanoszenia projektu, równocześnie suszy i
           ostatecznie utwierdza atrament za pomocą zintegrowanej lampy UV. Tak
           zautomatyzowana i dokładnie zaprojektowana maszyna sprawia, że{" "}
@@ -121,13 +131,14 @@ const Technika = () => {
         <p>
           Gotowy, suchy i utrwalony <strong>obraz jest odporny na wodę</strong>,
           więc i zabrudzenia. Istnieje możliwość swobodnego mycia zadrukowanej
-          ściany. <strong>Trwałość projektu </strong> wykonanego wewnątrz
-          budynku na klasycznym podłożu pokrytym farbą emulsyjną wynosi{" "}
-          <strong> 10 lat.</strong>W przypadku nietypowych powierzchni lub druku
+          ściany. <strong>Trwałość projektu</strong> wykonanego wewnątrz budynku
+          na klasycznym podłożu pokrytym farbą emulsyjną wynosi{" "}
+          <strong>10 lat.</strong> W przypadku nietypowych powierzchni lub druku
           zewnętrznego, wystawionego na większą ekspozycję na warunki
           atmosferyczne i promieniowanie słoneczne, jest to 5 lat.
         </p>
       </LeftSideMotionDiv>
+
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="surfaces title"
@@ -179,12 +190,12 @@ const Technika = () => {
         </div>
         <p>
           Masz nietypową lub nierówną ścianę, którą chcesz ozdobić? Nie ma
-          sprawy — podłoże nas nie ogranicza!{" "}
+          sprawy - podłoże nas nie ogranicza!{" "}
           <strong>
             Pracujemy z technologią, która kompensuje do 5 cm nierówności
             powierzchni.
           </strong>{" "}
-          Łagodne fałdy, garby lub ewentualne nachylenia nie stanowią problemu.{" "}
+          Łagodne fałdy, garby lub ewentualne nachylenia nie stanowią problemu.
         </p>
       </RightSideMotionDiv>
     </div>

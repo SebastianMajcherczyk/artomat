@@ -1,25 +1,24 @@
 import React, { useEffect, useState } from "react";
-
-import {
-  BottomSideMotionDiv,
-  LeftSideMotionDiv,
-} from "../Styled/StyledMotionDiv";
+import { LeftSideMotionDiv } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 import "./Ceny.css";
 
-const Ceny = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
+const Ceny = ({ mode = "home", showHeading = true }) => {
+  const isFullMode = mode === "full";
+
+  const [isSectionVisible, setIsSectionVisible] = useState(isFullMode);
+  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(isFullMode);
 
   const checkIfSectionIsVisible = () => {
     const section = document.querySelector(".ceny");
+    if (!section) return false;
+
     const bounds = section.getBoundingClientRect();
 
-    const isVisible =
+    return (
       bounds.top < window.innerHeight / 1.1 &&
-      bounds.bottom > window.innerHeight / 1.1;
-
-    return isVisible;
+      bounds.bottom > window.innerHeight / 1.1
+    );
   };
 
   const handleScroll = () => {
@@ -30,18 +29,26 @@ const Ceny = () => {
   };
 
   useEffect(() => {
+    if (isFullMode) return;
+
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [hasAnimationPlayed]);
+  }, [hasAnimationPlayed, isFullMode]);
 
   return (
     <div className="price-container">
-      <AnimatedH2 isSectionVisible={isSectionVisible}>Ceny</AnimatedH2>
-      <AnimatedH3 isSectionVisible={isSectionVisible}>
-        Ile to kosztuje.
-      </AnimatedH3>
+      {showHeading && (
+        <AnimatedH2 isSectionVisible={isSectionVisible}>Ceny</AnimatedH2>
+      )}
+
+      {showHeading && (
+        <AnimatedH3 isSectionVisible={isSectionVisible}>
+          Ile to kosztuje.
+        </AnimatedH3>
+      )}
+
       <LeftSideMotionDiv
         className="ceny title"
         isSectionVisible={isSectionVisible}
@@ -51,7 +58,7 @@ const Ceny = () => {
             Każdy nadruk jest inny i wyjątkowy, z tego powodu{" "}
             <strong>
               finalną wycenę możemy przedstawić po indywidualnym omówieniu
-              potrzeb i szczegółów projektu.{" "}
+              potrzeb i szczegółów projektu.
             </strong>
           </p>
           <p>
@@ -104,7 +111,7 @@ const Ceny = () => {
           </strong>{" "}
           W przypadku innych lokalizacji brane są pod uwagę rzeczywiste koszty
           dotarcia na miejsce. Po wcześniejszych ustaleniach{" "}
-          <strong> opłata transportowa zawarta jest w wycenie.</strong>
+          <strong>opłata transportowa zawarta jest w wycenie.</strong>
         </div>
       </LeftSideMotionDiv>
     </div>
