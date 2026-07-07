@@ -7,7 +7,7 @@ import "./Gallery.css";
 
 const FEATURED_GALLERY_IDS = [35, 30, 28, 31, 22, 29, 39, 36, 26];
 
-const Gallery = ({ mode = "full" }) => {
+const Gallery = ({ mode = "full", showHeading = true, showLead = true }) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const isFullMode = mode === "full";
@@ -43,7 +43,6 @@ const Gallery = ({ mode = "full" }) => {
     };
   }, [hasAnimationPlayed, isFullMode]);
 
-  console.log("Gallery mode:", mode);
   return (
     <div className="gallery-container">
       {selectedProject && (
@@ -55,21 +54,27 @@ const Gallery = ({ mode = "full" }) => {
         </div>
       )}
 
-      <AnimatedH2 isSectionVisible={isSectionVisible}>Galeria</AnimatedH2>
+      {showHeading && (
+        <AnimatedH2 isSectionVisible={isSectionVisible}>Galeria</AnimatedH2>
+      )}
 
-      <AnimatedH3 isSectionVisible={isSectionVisible}>
-        Zobacz nasze realizacje.
-      </AnimatedH3>
+      {showHeading && (
+        <AnimatedH3 isSectionVisible={isSectionVisible}>
+          Zobacz nasze realizacje.
+        </AnimatedH3>
+      )}
 
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="gallery title"
       >
-        <p className="paragraph">
-          Nasze realizacje nie są po prostu zwykłymi nadrukami na ścianach.
-          Każdy wykonany projekt, to pasja, historia i pomysł, któremu nadaliśmy
-          kształtu i formy. Odkryj, co zmalowaliśmy:
-        </p>
+        {showLead && (
+          <p className="paragraph">
+            Nasze realizacje nie są po prostu zwykłymi nadrukami na ścianach.
+            Każdy wykonany projekt, to pasja, historia i pomysł, któremu
+            nadaliśmy kształtu i formy. Odkryj, co zmalowaliśmy:
+          </p>
+        )}
 
         <MediaGallery
           mode={mode}

@@ -83,13 +83,15 @@
 .social-media {
   width: 20%;
   min-width: 150px;
-  display: flex;
-  justify-content: space-around;
 }
 @media screen and (min-width: 768px) {
   .social-media {
     width: 10%;
   }
+}
+.social-media {
+  display: flex;
+  justify-content: space-around;
 }
 
 .social-icon :hover {

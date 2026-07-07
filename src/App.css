@@ -28,6 +28,13 @@ section {
   padding-top: 30px;
   height: auto;
   min-height: 40vh;
+}
+@media (min-width: 768px) {
+  section {
+    min-height: 80vh;
+  }
+}
+section {
   width: 100vw;
   background-repeat: no-repeat;
   background-position: center;
@@ -36,11 +43,6 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
-@media (min-width: 768px) {
-  section {
-    min-height: 80vh;
-  }
 }
 
 h2,

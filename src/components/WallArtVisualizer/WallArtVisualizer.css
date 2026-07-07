@@ -63,14 +63,16 @@
   background: rgba(0, 0, 0, 0);
   display: inline-block;
   font-size: 14px;
-  font-weight: 500;
-  color: #00375f;
-  transition: all 0.5s ease-in-out;
 }
 @media screen and (min-width: 576px) {
   .label {
     font-size: 18px;
   }
+}
+.label {
+  font-weight: 500;
+  color: #00375f;
+  transition: all 0.5s ease-in-out;
 }
 
 .label:not(.disabled):hover {

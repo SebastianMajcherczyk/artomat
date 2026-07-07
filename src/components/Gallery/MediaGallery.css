@@ -36,7 +36,6 @@
   gap: var(--gap-y) var(--gap-x);
   padding: 6px;
   /* breakpoint ~tablet */
-  /* telefony */
 }
 @media (max-width: 1199px) {
   .gallery-grid {
@@ -44,6 +43,9 @@
     --gap-x: 10px;
     --gap-y: 12px;
   }
+}
+.gallery-grid {
+  /* telefony */
 }
 @media (max-width: 767px) {
   .gallery-grid {

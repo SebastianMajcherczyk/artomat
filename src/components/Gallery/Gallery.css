@@ -27,8 +27,7 @@
 
 .MuiImageList-root {
   width: 95%;
-  -webkit-backdrop-filter: saturate(180%) blur(10px);
-          backdrop-filter: saturate(180%) blur(10px);
+  backdrop-filter: saturate(180%) blur(10px);
 }
 @media (min-width: 768px) {
   .MuiImageList-root {
