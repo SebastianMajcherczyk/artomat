@@ -52,12 +52,6 @@ export default function TechnikaPage() {
               to: "/ceny",
               description: "Sprawdź, od czego zależy wycena realizacji.",
             },
-            {
-              label: "Kontakt",
-              to: { pathname: "/", hash: "#kontakt" },
-              description:
-                "Przejdź do sekcji kontaktowej i napisz lub zadzwoń.",
-            },
           ]}
         />
       </main>

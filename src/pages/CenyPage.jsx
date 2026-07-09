@@ -51,12 +51,6 @@ export default function CenyPage() {
               to: "/technika",
               description: "Sprawdź, jak wygląda proces druku ściennego UV.",
             },
-            {
-              label: "Kontakt",
-              to: { pathname: "/", hash: "#kontakt" },
-              description:
-                "Przejdź do sekcji kontaktowej i napisz lub zadzwoń.",
-            },
           ]}
         />
       </main>

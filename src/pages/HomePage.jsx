@@ -10,8 +10,10 @@ import { Footer } from "../components/Footer/Footer";
 
 const ForWhom = React.lazy(() => import("../components/ForWhom/ForWhom"));
 const Gallery = React.lazy(() => import("../components/Gallery/Gallery"));
-const Technika = React.lazy(() => import("../components/Technika/Technika"));
-const Ceny = React.lazy(() => import("../components/Ceny/Ceny"));
+const TechnikaPreview = React.lazy(
+  () => import("../components/Technika/TechnikaPreview"),
+);
+const CenyPreview = React.lazy(() => import("../components/Ceny/CenyPreview"));
 const Inspiracje = React.lazy(
   () => import("../components/Inspiracje/Inspiracje"),
 );
@@ -88,7 +90,7 @@ export default function HomePage() {
             >
               <Element name="technika">
                 <section>
-                  <Technika />
+                  <TechnikaPreview />
                 </section>
               </Element>
             </Parallax>
@@ -112,7 +114,7 @@ export default function HomePage() {
             >
               <Element name="ceny">
                 <section className="price-section">
-                  <Ceny />
+                  <CenyPreview />
                 </section>
               </Element>
             </Parallax>
