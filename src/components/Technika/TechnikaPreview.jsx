@@ -57,7 +57,7 @@ const TechnikaPreview = () => {
             beton, cegłę, szkło, drewno i inne powierzchnie.
             <strong>
               {" "}
-              Maksymalna wysokość druku wynosi 3,50 m, a szerokość jest
+              Maksymalna wysokość druku wynosi 4 metry, a szerokość jest
               praktycznie nieograniczona.
             </strong>
           </p>
@@ -69,9 +69,9 @@ const TechnikaPreview = () => {
           </p>
 
           <p>
-            Technologia pozwala też kompensować do{" "}
-            <strong>5 cm nierówności</strong>, dlatego dobrze sprawdza się
-            również na bardziej wymagających powierzchniach.
+            Technologia pozwala też kompensować do pewnego stopnia nierówności
+            ściany, dlatego dobrze sprawdza się również na bardziej wymagających
+            powierzchniach.
           </p>
         </div>
       </LeftSideMotionDiv>

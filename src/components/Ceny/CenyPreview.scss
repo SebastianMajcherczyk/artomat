@@ -106,3 +106,28 @@ $radius-pill: 999px;
     border: 2px solid $color-primary;
   }
 }
+.ceny-preview-box {
+  .ceny-preview-card {
+    text-align: center;
+  }
+}
+
+.ceny-preview-tags {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ceny-preview-actions {
+  align-items: center;
+  justify-content: center;
+}
+
+.ceny-preview-link {
+  width: 100%;
+  max-width: 340px;
+
+  @media (min-width: 768px) {
+    width: auto;
+  }
+}

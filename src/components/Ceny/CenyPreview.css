@@ -82,4 +82,29 @@
   background: transparent;
   color: #8b003d;
   border: 2px solid #00375f;
+}
+
+.ceny-preview-box .ceny-preview-card {
+  text-align: center;
+}
+
+.ceny-preview-tags {
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ceny-preview-actions {
+  align-items: center;
+  justify-content: center;
+}
+
+.ceny-preview-link {
+  width: 100%;
+  max-width: 340px;
+}
+@media (min-width: 768px) {
+  .ceny-preview-link {
+    width: auto;
+  }
 }/*# sourceMappingURL=CenyPreview.css.map */

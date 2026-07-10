@@ -60,7 +60,7 @@ const TechnikaKrakow = () => {
           szkołach w Krakowie i okolicach.
           <strong>
             {" "}
-            Maksymalna wysokość druku wynosi 3,50 metra, a szerokość jest
+            Maksymalna wysokość druku wynosi 4 metry, a szerokość jest
             praktycznie nieograniczona.
           </strong>
         </p>

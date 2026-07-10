@@ -67,7 +67,7 @@ const Technika = ({ mode = "home", showHeading = true }) => {
           zadrukowanie nawet dużych powierzchni.
           <strong>
             {" "}
-            Maksymalna wysokość druku wynosi 3,50 metra, a szerokość jest
+            Maksymalna wysokość druku wynosi 4 metry, a szerokość jest
             nieograniczona.
           </strong>
         </p>
