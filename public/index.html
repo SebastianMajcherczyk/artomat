@@ -55,31 +55,40 @@
     </script>
     <!-- Meta Pixel Code -->
     <script>
-      !(function (f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function () {
-          n.callMethod
-            ? n.callMethod.apply(n, arguments)
-            : n.queue.push(arguments);
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = "2.0";
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s);
-      })(
-        window,
-        document,
-        "script",
-        "https://connect.facebook.net/en_US/fbevents.js",
-      );
-      fbq("init", "903704121216788");
-      fbq("track", "PageView");
+      (function () {
+        var allowedHosts = ["loftprint.pl", "www.loftprint.pl"];
+
+        if (!allowedHosts.includes(window.location.hostname)) {
+          return;
+        }
+
+        !(function (f, b, e, v, n, t, s) {
+          if (f.fbq) return;
+          n = f.fbq = function () {
+            n.callMethod
+              ? n.callMethod.apply(n, arguments)
+              : n.queue.push(arguments);
+          };
+          if (!f._fbq) f._fbq = n;
+          n.push = n;
+          n.loaded = true;
+          n.version = "2.0";
+          n.queue = [];
+          t = b.createElement(e);
+          t.async = true;
+          t.src = v;
+          s = b.getElementsByTagName(e)[0];
+          s.parentNode.insertBefore(t, s);
+        })(
+          window,
+          document,
+          "script",
+          "https://connect.facebook.net/en_US/fbevents.js",
+        );
+
+        fbq("init", "903704121216788");
+        fbq("track", "PageView");
+      })();
     </script>
     <noscript
       ><img
@@ -120,11 +129,21 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
       }
     </script>
     <!-- Start cookieyes banner -->
-    <script
-      id="cookieyes"
-      type="text/javascript"
-      src="https://cdn-cookieyes.com/client_data/a592f5fd7d573d809633cf05/script.js"
-    ></script>
+    <script>
+      (function () {
+        var allowedHosts = ["loftprint.pl", "www.loftprint.pl"];
+
+        if (allowedHosts.includes(window.location.hostname)) {
+          var script = document.createElement("script");
+          script.id = "cookieyes";
+          script.type = "text/javascript";
+          src =
+            "https://cdn-cookieyes.com/client_data/a592f5fd7d573d809633cf05/script.js";
+          script.async = true;
+          document.head.appendChild(script);
+        }
+      })();
+    </script>
     <!-- End cookieyes banner -->
     <script type="application/ld+json">
       {
@@ -289,7 +308,6 @@ In your html page, add the snippet and call gtag_report_conversion when someone 
     </script>
 
     <link
-      rel="preload"
       as="image"
       href="%PUBLIC_URL%/posters/Artformer.webp"
       fetchpriority="high"

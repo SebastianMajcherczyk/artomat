@@ -11,24 +11,19 @@ import InstagramIcon from "@mui/icons-material/Instagram";
 import WhatsAppIcon from "@mui/icons-material/WhatsApp";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
-import { Link as ScrollLink } from "react-scroll"; // Import React Scroll
-import { Link as RouterLink } from "react-router-dom"; // Import React Router
+import { Link as RouterLink } from "react-router-dom";
 
 export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer-2">
-        {/* Link do przewijania do góry strony */}
-        <ScrollLink to="home" smooth={true} duration={500} spy={true}>
-          <RouterLink to="/home" href="/home">
-            <img
-              src="/mascot.png"
-              alt="logo"
-              className="mascot"
-              height="170px"
-            />
-          </RouterLink>
-        </ScrollLink>
+        <RouterLink
+          to="/"
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          aria-label="Przejdź na stronę główną"
+        >
+          <img src="/mascot.png" alt="logo" className="mascot" height="170px" />
+        </RouterLink>
 
         {/* Social media section */}
         <div className="social-media">
