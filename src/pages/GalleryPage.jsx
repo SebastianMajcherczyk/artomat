@@ -1,6 +1,5 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { Header } from "../components/Header/Header";
 import { Footer } from "../components/Footer/Footer";
 import Gallery from "../components/Gallery/Gallery";
 import SubpageLinks from "../components/SubpageLinks/SubpageLinks";
@@ -17,7 +16,6 @@ export default function GalleryPage() {
         <link rel="canonical" href="https://loftprint.pl/gallery" />
       </Helmet>
 
-      <Header />
       <main>
         <section className="subpage-intro">
           <h1>Realizacje druku ściennego</h1>

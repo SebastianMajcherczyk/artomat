@@ -5,7 +5,6 @@ import { Parallax } from "react-parallax";
 import { Helmet } from "react-helmet-async";
 
 import { Banner } from "../components/Banner/Banner";
-import { Header } from "../components/Header/Header";
 import { Footer } from "../components/Footer/Footer";
 
 const ForWhom = React.lazy(() => import("../components/ForWhom/ForWhom"));
@@ -60,7 +59,6 @@ export default function HomePage() {
             bgImageAlt="tło"
             strength={strength}
           >
-            <Header />
             <Element name="home">
               <section className="first-section">
                 <Banner />

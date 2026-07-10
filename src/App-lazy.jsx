@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 
+import { Header } from "./components/Header/Header";
 import HomePage from "./pages/HomePage";
 import TechnikaPage from "./pages/TechnikaPage";
 import CenyPage from "./pages/CenyPage";
@@ -11,6 +12,7 @@ import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 const AppLazy = () => {
   return (
     <>
+      <Header />
       <ScrollToTop />
       <Routes>
         <Route path="/" element={<HomePage />} />

@@ -1,6 +1,6 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
-import { Header } from "../components/Header/Header";
+
 import { Footer } from "../components/Footer/Footer";
 import Ceny from "../components/Ceny/Ceny";
 import SubpageLinks from "../components/SubpageLinks/SubpageLinks";
@@ -17,7 +17,6 @@ export default function CenyPage() {
         <link rel="canonical" href="https://loftprint.pl/ceny" />
       </Helmet>
 
-      <Header />
       <main>
         <section className="subpage-intro">
           <h1>Ceny druku ściennego</h1>

@@ -175,7 +175,6 @@ const MediaGallery = ({
 
   const isFullyLoaded =
     isPreviewMode || (totalRows > 0 && visibleRows >= totalRows);
-  console.log("MediaGallery mode:", mode);
   return (
     <div className="gallery-wrap">
       <div
