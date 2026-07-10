@@ -43,12 +43,39 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Druk ścienny - Loftprint | Murale drukowane na ścianie</title>
+        <title>
+          Druk ścienny Kraków - Loftprint | Murale i nadruki na ścianach
+        </title>
+
         <meta
           name="description"
-          content="Loftprint - druk ścienny UV. Trwałe murale i nadruki bezpośrednio na ścianie do biur, mieszkań, szkół i obiektów sportowych."
+          content="Loftprint - druk ścienny UV w Krakowie. Trwałe murale i nadruki bezpośrednio na ścianach do biur, mieszkań, szkół, lokali usługowych i obiektów sportowych."
         />
+
         <link rel="canonical" href="https://loftprint.pl/" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Druk ścienny Kraków - Loftprint" />
+        <meta
+          property="og:description"
+          content="Trwałe murale i nadruki UV bezpośrednio na ścianach. Realizacje dla firm, szkół, lokali usługowych, obiektów sportowych i wnętrz prywatnych."
+        />
+        <meta property="og:url" content="https://loftprint.pl/" />
+        <meta
+          property="og:image"
+          content="https://loftprint.pl/social/loftprint-og.png"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Druk ścienny Kraków - Loftprint" />
+        <meta
+          name="twitter:description"
+          content="Murale i nadruki UV drukowane bezpośrednio na ścianach."
+        />
+        <meta
+          name="twitter:image"
+          content="https://loftprint.pl/social/loftprint-og .png"
+        />
       </Helmet>
 
       <div className="App">

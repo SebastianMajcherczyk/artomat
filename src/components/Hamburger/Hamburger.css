@@ -1,7 +1,12 @@
 .hamburger {
   display: block;
-  position: relative;
-  z-index: 60;
+  position: fixed;
+  top: 7px;
+  right: 6px;
+  left: auto;
+  z-index: 9999;
+  width: 46px;
+  height: 46px;
 }
 @media screen and (min-width: 992px) {
   .hamburger {
@@ -56,8 +61,8 @@
 .nav-links {
   margin: 0;
   list-style: none;
-  position: absolute;
-  top: calc(100% + 6px);
+  position: fixed;
+  top: 60px;
   right: 8px;
   width: 170px;
   min-height: 250px;
@@ -69,11 +74,11 @@
   background-color: rgba(41, 68, 105, 0.82);
   box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.5);
   border-radius: 14px;
+  z-index: 9998;
   opacity: 0;
+  visibility: hidden;
   pointer-events: none;
-  transform: translateX(18px);
-  transition: opacity 0.25s ease, transform 0.25s ease;
-  z-index: 55;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
 }
 .nav-links li {
   list-style: none;
@@ -85,6 +90,6 @@
 
 .nav-links.open {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
-  transform: translateX(0);
 }/*# sourceMappingURL=Hamburger.css.map */
