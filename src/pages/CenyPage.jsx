@@ -9,25 +9,58 @@ export default function CenyPage() {
   return (
     <>
       <Helmet>
-        <title>Ceny druku ściennego - Loftprint</title>
+        <title>Ceny druku ściennego UV - Loftprint</title>
+
         <meta
           name="description"
-          content="Zobacz, od czego zależy cena druku ściennego UV i jak wyceniane są realizacje dla mieszkań, biur, szkół i lokali usługowych."
+          content="Zobacz, od czego zależy cena druku ściennego UV. Sprawdź, jak wyceniane są nadruki na ścianach do mieszkań, biur, szkół, lokali usługowych i obiektów sportowych."
         />
+
         <link rel="canonical" href="https://loftprint.pl/ceny" />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Ceny druku ściennego UV - Loftprint"
+        />
+        <meta
+          property="og:description"
+          content="Sprawdź, od czego zależy koszt nadruku na ścianie: wielkość grafiki, rodzaj podłoża, biały podkład, lokalizacja i przygotowanie projektu."
+        />
+        <meta property="og:url" content="https://loftprint.pl/ceny" />
+        <meta
+          property="og:image"
+          content="https://loftprint.pl/social/loftprint-og.jpg"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Ceny druku ściennego UV - Loftprint"
+        />
+        <meta
+          name="twitter:description"
+          content="Jak wyceniany jest druk ścienny UV i od czego zależy koszt realizacji?"
+        />
+        <meta
+          name="twitter:image"
+          content="https://loftprint.pl/social/loftprint-og.jpg"
+        />
       </Helmet>
 
       <main>
         <section className="subpage-intro">
-          <h1>Ceny druku ściennego</h1>
+          <h1>Ceny druku ściennego UV</h1>
+
           <p>
             Koszt realizacji zależy między innymi od wielkości grafiki, rodzaju
-            podłoża, stopnia skomplikowania projektu oraz miejsca montażu. Tutaj
-            znajdziesz najważniejsze informacje o wycenie.
+            podłoża, stopnia skomplikowania projektu, ewentualnego białego
+            podkładu oraz miejsca wykonania nadruku. Tutaj znajdziesz
+            najważniejsze informacje o wycenie druku ściennego.
           </p>
         </section>
 
-        <section>
+        <section aria-label="Informacje o cenach druku ściennego UV">
           <Ceny mode="full" showHeading={false} />
         </section>
 
@@ -38,7 +71,7 @@ export default function CenyPage() {
               label: "Strona główna",
               to: "/",
               description:
-                "Wróć do strony głównej i zobacz najważniejsze sekcje.",
+                "Wróć do strony głównej i zobacz najważniejsze informacje.",
             },
             {
               label: "Realizacje",
@@ -53,6 +86,7 @@ export default function CenyPage() {
           ]}
         />
       </main>
+
       <Footer />
     </>
   );

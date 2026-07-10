@@ -8,17 +8,49 @@ export default function GalleryPage() {
   return (
     <>
       <Helmet>
-        <title>Realizacje druku ściennego - Loftprint</title>
+        <title>Realizacje druku ściennego UV - Loftprint</title>
+
         <meta
           name="description"
-          content="Zobacz realizacje Loftprint - nadruki ścienne w biurach, szkołach, lokalach usługowych, obiektach sportowych i wnętrzach prywatnych."
+          content="Zobacz realizacje Loftprint - druk ścienny UV, murale i nadruki bezpośrednio na ścianach w biurach, szkołach, lokalach usługowych, obiektach sportowych i wnętrzach prywatnych."
         />
+
         <link rel="canonical" href="https://loftprint.pl/gallery" />
+
+        <meta property="og:type" content="website" />
+        <meta
+          property="og:title"
+          content="Realizacje druku ściennego UV - Loftprint"
+        />
+        <meta
+          property="og:description"
+          content="Galeria realizacji Loftprint: murale i nadruki UV drukowane bezpośrednio na ścianach w firmach, szkołach, lokalach usługowych i wnętrzach prywatnych."
+        />
+        <meta property="og:url" content="https://loftprint.pl/gallery" />
+        <meta
+          property="og:image"
+          content="https://loftprint.pl/social/loftprint-og.jpg"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Realizacje druku ściennego UV - Loftprint"
+        />
+        <meta
+          name="twitter:description"
+          content="Zobacz przykłady murali i nadruków UV drukowanych bezpośrednio na ścianach."
+        />
+        <meta
+          name="twitter:image"
+          content="https://loftprint.pl/social/loftprint-og.jpg"
+        />
       </Helmet>
 
       <main>
         <section className="subpage-intro">
-          <h1>Realizacje druku ściennego</h1>
+          <h1>Realizacje druku ściennego UV</h1>
+
           <p>
             Zobacz realizacje wykonane przez Loftprint bezpośrednio na ścianach
             w biurach, szkołach, lokalach usługowych, obiektach sportowych i
@@ -27,7 +59,7 @@ export default function GalleryPage() {
           </p>
         </section>
 
-        <section>
+        <section aria-label="Galeria realizacji druku ściennego">
           <Gallery mode="full" showHeading={false} showLead={false} />
         </section>
 
@@ -38,7 +70,7 @@ export default function GalleryPage() {
               label: "Strona główna",
               to: "/",
               description:
-                "Wróć do strony głównej i zobacz najważniejsze sekcje.",
+                "Wróć do strony głównej i zobacz najważniejsze informacje.",
             },
             {
               label: "Technika druku",
@@ -53,6 +85,7 @@ export default function GalleryPage() {
           ]}
         />
       </main>
+
       <Footer />
     </>
   );

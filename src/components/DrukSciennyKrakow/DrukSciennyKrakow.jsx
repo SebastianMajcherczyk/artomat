@@ -2,13 +2,12 @@ import React, { Suspense } from "react";
 import { Element } from "react-scroll";
 import { Parallax } from "react-parallax";
 import { Helmet } from "react-helmet-async";
-import { Header } from "../Header/Header";
+
 import { Footer } from "../Footer/Footer";
 import BannerKrakow from "../Banner/BannerKrakow";
 
 const ForWhomKrakow = React.lazy(() => import("../ForWhom/ForWhomKrakow"));
 const Gallery = React.lazy(() => import("../Gallery/Gallery"));
-const Reviews = React.lazy(() => import("../Reviews/Reviews"));
 const TechnikaKrakow = React.lazy(() => import("../Technika/TechnikaKrakow"));
 const Ceny = React.lazy(() => import("../Ceny/Ceny"));
 const Inspiracje = React.lazy(() => import("../Inspiracje/Inspiracje"));
@@ -23,14 +22,43 @@ export const DrukSciennyKrakow = () => {
     <>
       <Helmet>
         <title>
-          Druk ścienny Kraków – Loftprint | Murale drukowane na ścianie
+          Druk ścienny Kraków - Loftprint | Murale drukowane na ścianie
         </title>
+
         <meta
           name="description"
-          content="Druk ścienny w Krakowie i Małopolsce. Trwałe nadruki UV bez remontu – biura, szkoły, siłownie, obiekty sportowe. Loftprint drukuje bezpośrednio na ścianie."
+          content="Druk ścienny UV w Krakowie i Małopolsce. Trwałe nadruki bezpośrednio na ścianach do biur, szkół, siłowni, lokali usługowych, mieszkań i obiektów sportowych."
         />
+
         <link rel="canonical" href="https://loftprint.pl/druk-scienny-krakow" />
+
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Druk ścienny Kraków - Loftprint" />
+        <meta
+          property="og:description"
+          content="Murale i nadruki UV drukowane bezpośrednio na ścianach w Krakowie i Małopolsce. Realizacje dla firm, szkół, lokali usługowych i wnętrz prywatnych."
+        />
+        <meta
+          property="og:url"
+          content="https://loftprint.pl/druk-scienny-krakow"
+        />
+        <meta
+          property="og:image"
+          content="https://loftprint.pl/social/loftprint-og.jpg"
+        />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Druk ścienny Kraków - Loftprint" />
+        <meta
+          name="twitter:description"
+          content="Druk ścienny UV w Krakowie i Małopolsce - murale i nadruki bezpośrednio na ścianach."
+        />
+        <meta
+          name="twitter:image"
+          content="https://loftprint.pl/social/loftprint-og.jpg"
+        />
       </Helmet>
+
       <div className="App">
         <div className="app-container">
           <Parallax
@@ -39,7 +67,6 @@ export const DrukSciennyKrakow = () => {
             bgImageAlt="tło"
             strength={strength}
           >
-            <Header />
             <Element name="home">
               <section className="first-section">
                 <BannerKrakow />
@@ -68,7 +95,7 @@ export const DrukSciennyKrakow = () => {
               strength={strength}
             >
               <Element name="technika">
-                <section>
+                <section aria-label="Technika druku ściennego UV w Krakowie">
                   <TechnikaKrakow />
                 </section>
               </Element>
@@ -81,22 +108,10 @@ export const DrukSciennyKrakow = () => {
               strength={strength}
             >
               <Element name="gallery">
-                <section>
-                  <Gallery />
+                <section aria-label="Realizacje druku ściennego">
+                  <Gallery mode="preview" />
                 </section>
               </Element>
-            </Parallax>
-
-            <Parallax
-              blur={0}
-              bgImage={require("../../image21.jpg")}
-              bgImageAlt="tło"
-              strength={strength}
-            >
-              {/* Opinie zostawiamy jak u Ciebie – na razie wyłączone */}
-              {/* <section>
-              <Reviews />
-            </section> */}
             </Parallax>
 
             <Parallax
