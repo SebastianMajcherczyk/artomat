@@ -36,20 +36,32 @@ const MediaGallery = ({
   const [maxHeight, setMaxHeight] = useState("none");
   const [totalRows, setTotalRows] = useState(0);
 
-  const projects = useMemo(() => {
+  // Kolejność wyjściowa jest deterministyczna (bez losowania), żeby zgadzała
+  // się z tym, co zapisze prerendering (react-snap) — losowanie dzieje się
+  // dopiero po zamontowaniu w przeglądarce (patrz efekt niżej), więc
+  // pierwszy render zawsze jest identyczny z zapisanym HTML-em.
+  const baseProjects = useMemo(() => {
     if (isPreviewMode) {
-      const featuredProjects =
-        previewProjectIds.length > 0
-          ? originalProjects.filter((project) =>
-              previewProjectIds.includes(project.id),
-            )
-          : originalProjects.slice(0, 9);
-
-      return shuffleArray(featuredProjects);
+      return previewProjectIds.length > 0
+        ? originalProjects.filter((project) =>
+            previewProjectIds.includes(project.id),
+          )
+        : originalProjects.slice(0, 9);
     }
 
     return originalProjects;
   }, [isPreviewMode, previewProjectIds]);
+
+  const [projects, setProjects] = useState(baseProjects);
+
+  useEffect(() => {
+    if (isPreviewMode) {
+      setProjects(shuffleArray(baseProjects));
+    } else {
+      setProjects(baseProjects);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [baseProjects]);
 
   const thumbs = useMemo(() => {
     const out = [];
@@ -175,8 +187,11 @@ const MediaGallery = ({
 
   const isFullyLoaded =
     isPreviewMode || (totalRows > 0 && visibleRows >= totalRows);
+
+  const showToggle = isPreviewMode || !isFullyLoaded;
+
   return (
-    <div className="gallery-wrap">
+    <div className={`gallery-wrap ${showToggle ? "" : "gallery-wrap--done"}`}>
       <div
         className={`gallery-collapsible ${
           !isPreviewMode && !isFullyLoaded ? "is-collapsed" : ""

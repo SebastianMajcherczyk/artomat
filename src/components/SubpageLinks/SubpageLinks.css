@@ -19,13 +19,14 @@
   }
 }
 .subpage-links-grid {
-  display: grid;
-  grid-template-columns: 1fr;
+  display: flex;
+  flex-direction: column;
   gap: 10px;
 }
 @media (min-width: 900px) {
   .subpage-links-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    flex-flow: row wrap;
+    justify-content: center;
     gap: 14px;
   }
 }
@@ -51,6 +52,8 @@
     min-height: 108px;
     padding: 14px 16px;
     gap: 6px;
+    flex: 1 1 340px;
+    max-width: 380px;
   }
 }
 .subpage-link-label {
@@ -67,4 +70,6 @@
   font-size: 0.95rem;
   line-height: 1.35;
   color: #444;
-}/*# sourceMappingURL=SubpageLinks.css.map */
+}
+
+/*# sourceMappingURL=SubpageLinks.css.map */

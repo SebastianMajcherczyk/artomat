@@ -98,13 +98,6 @@ const CenyPreview = () => {
             <RouterLink to="/ceny" className="ceny-preview-link primary">
               Zobacz pełną stronę o cenach
             </RouterLink>
-
-            <RouterLink
-              to={{ pathname: "/", hash: "#kontakt" }}
-              className="ceny-preview-link secondary"
-            >
-              Poproś o wycenę
-            </RouterLink>
           </div>
         </div>
       </RightSideMotionDiv>

@@ -1,6 +1,7 @@
 import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 
+import "./App.css";
 import { Header } from "./components/Header/Header";
 import HomePage from "./pages/HomePage";
 import TechnikaPage from "./pages/TechnikaPage";

@@ -128,6 +128,32 @@ h4 {
   }
 }
 
+// Podstrony (np. /gallery, /technika, /ceny) renderują sekcje wewnątrz <main>
+// i nie powinny dziedziczyć pełnoekranowej wysokości sekcji ze strony głównej
+// (tam min-height/justify-content:center służy efektowi przewijania).
+main section {
+  min-height: auto;
+  justify-content: flex-start;
+}
+
+// .header jest position: fixed (60px / 80px od 992px) - pierwsza sekcja
+// podstrony potrzebuje realnego odstępu, żeby tytuł się pod nim nie chował.
+main .subpage-intro {
+  padding-top: 84px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+  @media (min-width: 992px) {
+    padding-top: 112px;
+  }
+
+  p {
+    max-width: 760px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
 .title2 {
   color: #111;
   background: rgba(256, 256, 256, 0.6);

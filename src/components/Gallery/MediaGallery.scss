@@ -12,6 +12,10 @@ $easing: cubic-bezier(0.2, 0.8, 0.2, 1);
 /* ===================== wrapper + animowane zwijanie ===================== */
 .gallery-wrap {
   margin: 0 auto;
+
+  &--done {
+    padding-bottom: 20px;
+  }
 }
 
 .gallery-collapsible {
@@ -86,7 +90,10 @@ $easing: cubic-bezier(0.2, 0.8, 0.2, 1);
   background: #111;
   cursor: pointer;
   box-shadow: $thumb-shadow;
-  transition: transform $t $easing, box-shadow $t $easing, filter $t $easing;
+  transition:
+    transform $t $easing,
+    box-shadow $t $easing,
+    filter $t $easing;
 
   img {
     display: block;
@@ -94,7 +101,9 @@ $easing: cubic-bezier(0.2, 0.8, 0.2, 1);
     height: 100%;
     object-fit: cover; /* żadnych max-width – rozmiar trzyma .thumb */
     transform: translateZ(0);
-    transition: filter $t $easing, opacity $t $easing;
+    transition:
+      filter $t $easing,
+      opacity $t $easing;
     opacity: 0.98;
   }
 
@@ -159,7 +168,10 @@ $easing: cubic-bezier(0.2, 0.8, 0.2, 1);
   border: 2px solid #00375f;
   background: transparent;
   cursor: pointer;
-  transition: background $t $easing, box-shadow $t $easing, transform $t $easing;
+  transition:
+    background $t $easing,
+    box-shadow $t $easing,
+    transform $t $easing;
 
   &:hover {
     background: rgba(0, 0, 0, 0.08);

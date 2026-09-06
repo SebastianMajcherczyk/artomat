@@ -29,7 +29,7 @@ export default function TechnikaPage() {
         <meta property="og:url" content="https://loftprint.pl/technika" />
         <meta
           property="og:image"
-          content="https://loftprint.pl/social/loftprint-og.jpg"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@ export default function TechnikaPage() {
         />
         <meta
           name="twitter:image"
-          content="https://loftprint.pl/social/loftprint-og.jpg"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
       </Helmet>
 

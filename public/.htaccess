@@ -1,0 +1,53 @@
+<IfModule mod_rewrite.c>
+
+  RewriteEngine On
+  RewriteBase /
+
+  # Przekierowanie z wersji www do wersji bez www
+  RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  # Przekierowanie z HTTP do HTTPS
+  RewriteCond %{HTTPS} off
+  RewriteCond %{HTTP_HOST} ^loftprint\.pl$ [NC]
+  RewriteRule ^(.*)$ https://loftprint.pl/$1 [R=301,L]
+
+  # Istniejące reguły
+  RewriteRule ^index\.html$ - [L]
+
+  # Strona jest teraz prerenderowana (scripts/prerender.js) — każda realna
+  # trasa (/, /home, /technika, /ceny, /gallery, /druk-scienny-krakow) ma już
+  # własny plik na dysku, więc trafi tu tylko naprawdę nieistniejący adres.
+  # Serwujemy dla niego prawdziwe 404 zamiast dawnego cichego przepisania na
+  # /index.html (Google Search Console traktuje to jako błąd "miękkiego 404").
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !-l
+  ErrorDocument 404 /404.html
+  RewriteRule . - [R=404,L]
+
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive On
+
+  # HTML zawsze świeży — po każdym wdrożeniu wskazuje na nowe, zahashowane
+  # pliki JS/CSS; gdyby przeglądarka trzymała stary HTML z cache'a, mogłaby
+  # próbować wczytać pliki, których już nie ma.
+  ExpiresByType text/html "access plus 0 seconds"
+
+  # JS/CSS z build/static/ mają w nazwie hash treści (webpack) — ten sam
+  # adres zawsze ma tę samą zawartość, więc można cache'ować bezpiecznie na
+  # bardzo długo.
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+
+  # Obrazy i wideo: część ma hash w nazwie (webpack), część nie (zdjęcia z
+  # public/, które czasem podmieniasz pod tą samą nazwą) — krótszy, bezpieczny
+  # czas, żeby podmiana zdjęcia dotarła do użytkowników w rozsądnym terminie.
+  ExpiresByType image/webp "access plus 1 week"
+  ExpiresByType image/jpeg "access plus 1 week"
+  ExpiresByType image/png "access plus 1 week"
+  ExpiresByType image/x-icon "access plus 1 week"
+  ExpiresByType video/mp4 "access plus 1 week"
+</IfModule>

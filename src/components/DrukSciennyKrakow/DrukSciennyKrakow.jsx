@@ -4,10 +4,20 @@ import { Parallax } from "react-parallax";
 import { Helmet } from "react-helmet-async";
 
 import { Footer } from "../Footer/Footer";
-import BannerKrakow from "../Banner/BannerKrakow";
+import RegionalBanner from "../Banner/RegionalBanner";
+
+const krakowIntroParagraph = (
+  <strong>
+    Prowadzisz firmę, siłownię, szkołę lub obiekt sportowy w Krakowie lub
+    Małopolsce i masz w głowie wizję konkretnego obrazu, grafiki albo logo na
+    ścianie? Chcesz, żeby przestrzeń od progu robiła na gościach wrażenie?
+    Druk ścienny pozwala zrealizować takie pomysły bez generalnego remontu.
+  </strong>
+);
 
 const ForWhomKrakow = React.lazy(() => import("../ForWhom/ForWhomKrakow"));
 const Gallery = React.lazy(() => import("../Gallery/Gallery"));
+const Reviews = React.lazy(() => import("../Reviews/Reviews"));
 const TechnikaKrakow = React.lazy(() => import("../Technika/TechnikaKrakow"));
 const Ceny = React.lazy(() => import("../Ceny/Ceny"));
 const Inspiracje = React.lazy(() => import("../Inspiracje/Inspiracje"));
@@ -44,7 +54,7 @@ export const DrukSciennyKrakow = () => {
         />
         <meta
           property="og:image"
-          content="https://loftprint.pl/social/loftprint-og.jpg"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -55,7 +65,7 @@ export const DrukSciennyKrakow = () => {
         />
         <meta
           name="twitter:image"
-          content="https://loftprint.pl/social/loftprint-og.jpg"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
       </Helmet>
 
@@ -69,7 +79,10 @@ export const DrukSciennyKrakow = () => {
           >
             <Element name="home">
               <section className="first-section">
-                <BannerKrakow />
+                <RegionalBanner
+                  title="Druk ścienny UV w Krakowie"
+                  introParagraph={krakowIntroParagraph}
+                />
               </section>
             </Element>
           </Parallax>
@@ -120,6 +133,19 @@ export const DrukSciennyKrakow = () => {
               bgImageAlt="tło"
               strength={strength}
             >
+              <Element name="opinie">
+                <section aria-label="Opinie klientów Loftprint">
+                  <Reviews />
+                </section>
+              </Element>
+            </Parallax>
+
+            <Parallax
+              blur={0}
+              bgImage={require("../../image22.jpg")}
+              bgImageAlt="tło"
+              strength={strength}
+            >
               <Element name="ceny">
                 <section className="price-section">
                   <Ceny />
@@ -129,7 +155,7 @@ export const DrukSciennyKrakow = () => {
 
             <Parallax
               blur={0}
-              bgImage={require("../../image22.jpg")}
+              bgImage={require("../../image21.jpg")}
               bgImageAlt="tło"
               strength={strength}
             >
@@ -142,7 +168,7 @@ export const DrukSciennyKrakow = () => {
 
             <Parallax
               blur={0}
-              bgImage={require("../../image21.jpg")}
+              bgImage={require("../../image22.jpg")}
               bgImageAlt="tło"
               strength={strength}
             >

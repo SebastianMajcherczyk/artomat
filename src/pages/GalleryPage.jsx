@@ -29,7 +29,7 @@ export default function GalleryPage() {
         <meta property="og:url" content="https://loftprint.pl/gallery" />
         <meta
           property="og:image"
-          content="https://loftprint.pl/social/loftprint-og.jpg"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -43,7 +43,7 @@ export default function GalleryPage() {
         />
         <meta
           name="twitter:image"
-          content="https://loftprint.pl/social/loftprint-og.jpg"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
       </Helmet>
 
@@ -81,6 +81,11 @@ export default function GalleryPage() {
               label: "Ceny",
               to: "/ceny",
               description: "Zobacz, od czego zależy wycena realizacji.",
+            },
+            {
+              label: "Opinie klientów",
+              to: { pathname: "/", hash: "#opinie" },
+              description: "Zobacz, co mówią o nas klienci na Google.",
             },
           ]}
         />

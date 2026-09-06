@@ -1,20 +1,31 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
-import { useInView } from "react-intersection-observer";
 import "./Banner.css";
 
 import BannerVideo from "./banner-video.mp4";
-import BannerPoster from "./banner-poster.webp";
 
 import { AnimatedH1, AnimatedH3 } from "../Styled/StyledHeader";
+
+// Ścieżka statyczna (nie import webpack), żeby dokładnie zgadzała się z
+// <link rel="preload"> w public/index.html — inaczej przeglądarka pobiera
+// ten sam obraz dwa razy pod dwoma różnymi adresami.
+const BannerPoster = process.env.PUBLIC_URL + "/posters/banner-poster.webp";
 
 export const Banner = () => {
   const videoRef = useRef(null);
 
-  const { ref, inView } = useInView({
-    triggerOnce: true,
-    rootMargin: "-100px 0px",
-  });
+  // Banner jest zawsze widoczny od razu po wejściu na stronę (bez
+  // przewijania), więc nie potrzeba tu IntersectionObserver — a wartość z
+  // takiego obserwatora bywa asynchronicznie ustawiona na true jeszcze
+  // przed zrzutem prerenderingu, podczas gdy świeża hydracja zawsze zaczyna
+  // od false — to psuje hydrację. Prosta flaga "zamontowano" jest
+  // deterministyczna w obu przypadkach (efekty nigdy nie uruchamiają się
+  // podczas pierwszego renderu).
+  const [inView, setInView] = useState(false);
+
+  useEffect(() => {
+    setInView(true);
+  }, []);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -54,82 +65,74 @@ export const Banner = () => {
         </video>
       </div>
 
-      <div className="banner-text" ref={ref}>
-        <AnimatedH1 isSectionVisible={inView}>
-          Druk ścienny UV w Krakowie
-        </AnimatedH1>
+      <div className="banner-text">
+        <AnimatedH1 isSectionVisible={inView}>Druk ścienny UV</AnimatedH1>
 
         <AnimatedH3 isSectionVisible={inView}>
           Spraw, by Twoja ściana ożyła
         </AnimatedH3>
 
-        {inView && (
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: { opacity: 1, transition: { delay, duration } },
-              hidden: { opacity: 0 },
-            }}
-          >
-            <strong>
-              Masz w głowie wizję obrazu, grafiki, zdjęcia, logo firmy lub
-              organizacji na swojej ścianie? Marzy Ci się efektowna metamorfoza
-              wnętrza? Dla nas nie ma nic prostszego - wydrukujemy Twoje
-              marzenia.
-            </strong>
-          </motion.p>
-        )}
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: { opacity: 1, transition: { delay, duration } },
+            hidden: { opacity: 0 },
+          }}
+        >
+          <strong>
+            Masz w głowie wizję obrazu, grafiki, zdjęcia, logo firmy lub
+            organizacji na swojej ścianie? Marzy Ci się efektowna metamorfoza
+            wnętrza? Dla nas nie ma nic prostszego - wydrukujemy Twoje
+            marzenia.
+          </strong>
+        </motion.p>
 
-        {inView && (
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: {
-                opacity: 1,
-                transition: { delay: delay * 2, duration },
-              },
-              hidden: { opacity: 0 },
-            }}
-          >
-            Naszą specjalnością jest{" "}
-            <strong>
-              druk ścienny, czyli murale wykonywane przez precyzyjną maszynę.
-            </strong>{" "}
-            To czerpiący z najnowszej technologii proces przenoszenia obrazów
-            bezpośrednio na wybraną powierzchnię.{" "}
-            <strong>
-              Drukarka naścienna wykorzystuje dedykowane atramenty utwardzane za
-              pomocą promieni UV.
-            </strong>{" "}
-            Nadruk zachowuje każdy detal, z nasyconymi kolorami i wysoką
-            rozdzielczością.
-          </motion.p>
-        )}
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: { delay: delay * 2, duration },
+            },
+            hidden: { opacity: 0 },
+          }}
+        >
+          Naszą specjalnością jest{" "}
+          <strong>
+            druk ścienny, czyli murale wykonywane przez precyzyjną maszynę.
+          </strong>{" "}
+          To czerpiący z najnowszej technologii proces przenoszenia obrazów
+          bezpośrednio na wybraną powierzchnię.{" "}
+          <strong>
+            Drukarka naścienna wykorzystuje dedykowane atramenty utwardzane za
+            pomocą promieni UV.
+          </strong>{" "}
+          Nadruk zachowuje każdy detal, z nasyconymi kolorami i wysoką
+          rozdzielczością.
+        </motion.p>
 
-        {inView && (
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={{
-              visible: {
-                opacity: 1,
-                transition: { delay: delay * 3, duration },
-              },
-              hidden: { opacity: 0 },
-            }}
-          >
-            Naszą metodę można porównać do odbijania obrazu na papierze za
-            pomocą klasycznej drukarki atramentowej. Z tą różnicą, że tutaj{" "}
-            <strong>
-              główną rolę odgrywa maszyna pracująca pionowo na różnych podłożach
-              - betonie, metalu, szkle, plastiku, drewnie lub cegle.
-            </strong>{" "}
-            Rozmiar drukarki pozwala na pokrywanie zarówno dużych powierzchni,
-            jak i mniejszych pomieszczeń.
-          </motion.p>
-        )}
+        <motion.p
+          initial="hidden"
+          animate="visible"
+          variants={{
+            visible: {
+              opacity: 1,
+              transition: { delay: delay * 3, duration },
+            },
+            hidden: { opacity: 0 },
+          }}
+        >
+          Naszą metodę można porównać do odbijania obrazu na papierze za
+          pomocą klasycznej drukarki atramentowej. Z tą różnicą, że tutaj{" "}
+          <strong>
+            główną rolę odgrywa maszyna pracująca pionowo na różnych podłożach
+            - betonie, metalu, szkle, plastiku, drewnie lub cegle.
+          </strong>{" "}
+          Rozmiar drukarki pozwala na pokrywanie zarówno dużych powierzchni,
+          jak i mniejszych pomieszczeń.
+        </motion.p>
 
         <motion.p
           initial="hidden"

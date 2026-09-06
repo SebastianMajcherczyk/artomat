@@ -104,13 +104,6 @@ const TechnikaPreview = () => {
             >
               Zobacz pełną stronę o technice
             </RouterLink>
-
-            <RouterLink
-              to={{ pathname: "/", hash: "#kontakt" }}
-              className="technika-preview-link secondary"
-            >
-              Zapytaj o swoją ścianę
-            </RouterLink>
           </div>
         </div>
       </RightSideMotionDiv>

@@ -42,7 +42,7 @@ const h3AnimationVariants = {
 // Komponent dla h1 z animacją przesunięcia
 export const AnimatedH1 = styled(({ isSectionVisible, ...props }) => (
   <motion.h1
-    initial="hidden"
+    initial={isSectionVisible ? false : "hidden"}
     animate={isSectionVisible ? "visible" : "hidden"}
     variants={h1AnimationVariants}
     {...props}
@@ -52,7 +52,7 @@ export const AnimatedH1 = styled(({ isSectionVisible, ...props }) => (
 // Komponent dla h2 z animacją przesunięcia
 export const AnimatedH2 = styled(({ isSectionVisible, ...props }) => (
   <motion.h2
-    initial="hidden"
+    initial={isSectionVisible ? false : "hidden"}
     animate={isSectionVisible ? "visible" : "hidden"}
     variants={h2AnimationVariants}
     {...props}
@@ -62,7 +62,7 @@ export const AnimatedH2 = styled(({ isSectionVisible, ...props }) => (
 // Komponent dla h3 z analogiczną animacją przesunięcia
 export const AnimatedH3 = styled(({ isSectionVisible, ...props }) => (
   <motion.h3
-    initial="hidden"
+    initial={isSectionVisible ? false : "hidden"}
     animate={isSectionVisible ? "visible" : "hidden"}
     variants={h3AnimationVariants}
     {...props}

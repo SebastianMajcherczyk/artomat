@@ -9,6 +9,7 @@ import { Footer } from "../components/Footer/Footer";
 
 const ForWhom = React.lazy(() => import("../components/ForWhom/ForWhom"));
 const Gallery = React.lazy(() => import("../components/Gallery/Gallery"));
+const Reviews = React.lazy(() => import("../components/Reviews/Reviews"));
 const TechnikaPreview = React.lazy(
   () => import("../components/Technika/TechnikaPreview"),
 );
@@ -43,19 +44,17 @@ export default function HomePage() {
   return (
     <>
       <Helmet>
-        <title>
-          Druk ścienny Kraków - Loftprint | Murale i nadruki na ścianach
-        </title>
+        <title>Druk ścienny UV - Loftprint | Murale i nadruki na ścianach</title>
 
         <meta
           name="description"
-          content="Loftprint - druk ścienny UV w Krakowie. Trwałe murale i nadruki bezpośrednio na ścianach do biur, mieszkań, szkół, lokali usługowych i obiektów sportowych."
+          content="Loftprint - profesjonalny druk ścienny UV. Trwałe murale i nadruki bezpośrednio na ścianach do biur, mieszkań, szkół, lokali usługowych i obiektów sportowych."
         />
 
         <link rel="canonical" href="https://loftprint.pl/" />
 
         <meta property="og:type" content="website" />
-        <meta property="og:title" content="Druk ścienny Kraków - Loftprint" />
+        <meta property="og:title" content="Druk ścienny UV - Loftprint" />
         <meta
           property="og:description"
           content="Trwałe murale i nadruki UV bezpośrednio na ścianach. Realizacje dla firm, szkół, lokali usługowych, obiektów sportowych i wnętrz prywatnych."
@@ -63,18 +62,18 @@ export default function HomePage() {
         <meta property="og:url" content="https://loftprint.pl/" />
         <meta
           property="og:image"
-          content="https://loftprint.pl/social/loftprint-og.png"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Druk ścienny Kraków - Loftprint" />
+        <meta name="twitter:title" content="Druk ścienny UV - Loftprint" />
         <meta
           name="twitter:description"
           content="Murale i nadruki UV drukowane bezpośrednio na ścianach."
         />
         <meta
           name="twitter:image"
-          content="https://loftprint.pl/social/loftprint-og .png"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
       </Helmet>
 
@@ -137,6 +136,18 @@ export default function HomePage() {
               bgImageAlt="tło"
               strength={strength}
             >
+              <Element name="opinie">
+                <section aria-label="Opinie klientów Loftprint">
+                  <Reviews />
+                </section>
+              </Element>
+            </Parallax>
+
+            <Parallax
+              bgImage={require("../image22.jpg")}
+              bgImageAlt="tło"
+              strength={strength}
+            >
               <Element name="ceny">
                 <section className="price-section">
                   <CenyPreview />
@@ -146,7 +157,7 @@ export default function HomePage() {
 
             <Parallax
               blur={0}
-              bgImage={require("../image22.jpg")}
+              bgImage={require("../image21.jpg")}
               bgImageAlt="tło"
               strength={strength}
             >
@@ -159,7 +170,7 @@ export default function HomePage() {
 
             <Parallax
               blur={0}
-              bgImage={require("../image21.jpg")}
+              bgImage={require("../image22.jpg")}
               bgImageAlt="tło"
               strength={strength}
             >

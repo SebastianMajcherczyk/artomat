@@ -129,6 +129,28 @@ h4 {
   }
 }
 
+main section {
+  min-height: auto;
+  justify-content: flex-start;
+}
+
+main .subpage-intro {
+  padding-top: 84px;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-sizing: border-box;
+}
+@media (min-width: 992px) {
+  main .subpage-intro {
+    padding-top: 112px;
+  }
+}
+main .subpage-intro p {
+  max-width: 760px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .title2 {
   color: #111;
   background: rgba(255, 255, 255, 0.6);

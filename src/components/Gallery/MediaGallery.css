@@ -3,6 +3,9 @@
 .gallery-wrap {
   margin: 0 auto;
 }
+.gallery-wrap--done {
+  padding-bottom: 20px;
+}
 
 .gallery-collapsible {
   overflow: hidden;

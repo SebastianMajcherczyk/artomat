@@ -30,7 +30,7 @@ export default function CenyPage() {
         <meta property="og:url" content="https://loftprint.pl/ceny" />
         <meta
           property="og:image"
-          content="https://loftprint.pl/social/loftprint-og.jpg"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
 
         <meta name="twitter:card" content="summary_large_image" />
@@ -44,7 +44,7 @@ export default function CenyPage() {
         />
         <meta
           name="twitter:image"
-          content="https://loftprint.pl/social/loftprint-og.jpg"
+          content="https://loftprint.pl/social/loftprint-og.webp"
         />
       </Helmet>
 
