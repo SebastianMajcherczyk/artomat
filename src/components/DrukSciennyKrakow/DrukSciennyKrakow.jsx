@@ -5,6 +5,8 @@ import { Helmet } from "react-helmet-async";
 
 import { Footer } from "../Footer/Footer";
 import RegionalBanner from "../Banner/RegionalBanner";
+import FAQ from "../FAQ/FAQ";
+import { faqKrakowItems } from "../FAQ/faq-krakow-data";
 
 const krakowIntroParagraph = (
   <strong>
@@ -159,6 +161,23 @@ export const DrukSciennyKrakow = () => {
               bgImageAlt="tło"
               strength={strength}
             >
+              <Element name="faq">
+                <section aria-label="Najczęściej zadawane pytania">
+                  <FAQ
+                    heading="Najczęściej zadawane pytania"
+                    lead="Druk ścienny w Krakowie – najważniejsze informacje przed zamówieniem"
+                    items={faqKrakowItems}
+                  />
+                </section>
+              </Element>
+            </Parallax>
+
+            <Parallax
+              blur={0}
+              bgImage={require("../../image22.jpg")}
+              bgImageAlt="tło"
+              strength={strength}
+            >
               <Element name="inspiracje">
                 <section>
                   <Inspiracje />
@@ -168,7 +187,7 @@ export const DrukSciennyKrakow = () => {
 
             <Parallax
               blur={0}
-              bgImage={require("../../image22.jpg")}
+              bgImage={require("../../image21.jpg")}
               bgImageAlt="tło"
               strength={strength}
             >

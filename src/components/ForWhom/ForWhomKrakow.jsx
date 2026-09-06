@@ -58,11 +58,12 @@ const ForWhomKrakow = () => {
       >
         <p>
           Pracujemy z technologią, która pozwala w krótkim czasie całkowicie
-          odmienić wnętrza w Krakowie i okolicach. Druk ścienny umożliwia
-          przeniesienie projektu z ekranu komputera bezpośrednio na ścianę – w
-          biurze, klubie sportowym, szkole czy obiekcie usługowym. To
-          rozwiązanie idealne wszędzie tam, gdzie zależy Ci na mocnym efekcie
-          wizualnym bez generalnego remontu.
+          odmienić wnętrza w Krakowie i okolicach – realizacje wykonujemy m.in.
+          w Podgórzu, Krowodrzy, Nowej Hucie, na Starym Mieście i w Śródmieściu.
+          Druk ścienny umożliwia przeniesienie projektu z ekranu komputera
+          bezpośrednio na ścianę – w biurze, klubie sportowym, szkole czy
+          obiekcie usługowym. To rozwiązanie idealne wszędzie tam, gdzie zależy
+          Ci na mocnym efekcie wizualnym bez generalnego remontu.
         </p>
         <div className="accordion-container">
           <Accordion
