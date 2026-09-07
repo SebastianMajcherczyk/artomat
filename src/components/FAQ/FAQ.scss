@@ -29,5 +29,11 @@
     @media screen and (min-width: 768px) {
       width: 90%;
     }
+
+    // patrz komentarz w ForWhom.scss - te same globalne h3 { justify-content: center }
+    h3 {
+      justify-content: flex-start;
+      text-align: left;
+    }
   }
 }

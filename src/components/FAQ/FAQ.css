@@ -29,5 +29,9 @@
     width: 90%;
   }
 }
+.faq-box .accordion-container h3 {
+  justify-content: flex-start;
+  text-align: left;
+}
 
 /*# sourceMappingURL=FAQ.css.map */

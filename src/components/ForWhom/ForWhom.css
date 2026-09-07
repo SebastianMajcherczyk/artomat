@@ -41,10 +41,15 @@
     width: 90%;
   }
 }
+.accordion-container h3 {
+  justify-content: flex-start;
+  text-align: left;
+}
 
 .whom-image-box {
   display: flex;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
+  column-gap: 20px;
   justify-content: center;
-}/*# sourceMappingURL=ForWhom.css.map */
+}
+
+/*# sourceMappingURL=ForWhom.css.map */

@@ -39,6 +39,16 @@
   @media screen and (min-width: 768px) {
     width: 90%;
   }
+
+  // Nagłówki akordeonu dziedziczą globalne h3 { justify-content: center },
+  // niewidoczne dopóki tekst mieści się w jednej linii (box kurczy się do
+  // szerokości treści). Gdy dłuższy nagłówek zawija się na dwie linie, box
+  // robi się szerszy i wyśrodkowanie staje się widoczne - wymuszamy lewe
+  // wyrównanie, żeby zachowanie było spójne niezależnie od długości tekstu.
+  h3 {
+    justify-content: flex-start;
+    text-align: left;
+  }
 }
 
 .whom-image-box {
