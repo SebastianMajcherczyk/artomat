@@ -996,4 +996,31 @@ export const projects = [
       },
     ],
   },
+  {
+    id: 40,
+    title: "Projmes",
+    thumbnails: [path + "/Projmes/projmes_thumb.webp"],
+    media: [
+      {
+        id: 1,
+        type: "video",
+        src: path + "/Projmes/Projmes_1.mp4",
+      },
+      {
+        id: 2,
+        type: "video",
+        src: path + "/Projmes/Projmes_2.mp4",
+      },
+      {
+        id: 3,
+        type: "image",
+        src: path + "/Projmes/projmes1.webp",
+      },
+      {
+        id: 4,
+        type: "image",
+        src: path + "/Projmes/projmes2.webp",
+      },
+    ],
+  },
 ];
