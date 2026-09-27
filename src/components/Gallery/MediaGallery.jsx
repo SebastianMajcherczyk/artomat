@@ -54,12 +54,12 @@ const MediaGallery = ({
 
   const [projects, setProjects] = useState(baseProjects);
 
+  // Losujemy raz, przy montowaniu (baseProjects ma stabilną referencję, więc
+  // efekt nie odpala się ponownie przy "Pokaż kolejne realizacje" - kolejność
+  // zmienia się między wejściami/odświeżeniami strony, nie w trakcie
+  // doładowywania kolejnych wierszy).
   useEffect(() => {
-    if (isPreviewMode) {
-      setProjects(shuffleArray(baseProjects));
-    } else {
-      setProjects(baseProjects);
-    }
+    setProjects(shuffleArray(baseProjects));
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [baseProjects]);
 
