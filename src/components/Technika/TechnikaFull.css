@@ -1,0 +1,171 @@
+@charset "UTF-8";
+.tf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  row-gap: 2.5rem;
+  padding-bottom: 40px;
+}
+
+.tf-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(900px, 90%);
+  padding: 30px clamp(20px, 4vw, 50px);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.1), 35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.09), 49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.06);
+}
+.tf-block h2,
+.tf-block h3 {
+  width: 100%;
+}
+.tf-block p {
+  text-align: justify;
+  width: 100%;
+  color: #001829;
+  line-height: 1.6;
+}
+.tf-block--dark {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.tf-figure {
+  width: 100%;
+  margin: 10px 0;
+}
+.tf-figure img {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  display: block;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+}
+
+.tf-image-row {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 16px;
+  width: 100%;
+  margin: 10px 0;
+}
+.tf-image-row img {
+  flex: 1 1 260px;
+  max-width: 100%;
+  height: auto;
+  max-height: 420px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+}
+.tf-image-row__main {
+  flex-basis: 320px;
+}
+.tf-image-row__secondary {
+  flex-basis: 260px;
+}
+
+.tf-materials-grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.tf-material-card {
+  width: 220px;
+  background: #fafafa;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+}
+.tf-material-card h4 {
+  margin: 12px 14px 4px;
+  color: #8b003d;
+  text-transform: uppercase;
+  font-size: 0.95rem;
+}
+.tf-material-card p {
+  margin: 0 14px 16px;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  color: #444;
+  text-align: left;
+  width: auto;
+}
+
+.tf-checklist {
+  width: 100%;
+  max-width: 640px;
+  margin: 6px auto 16px;
+  padding-left: 0;
+  list-style: none;
+}
+.tf-checklist li {
+  position: relative;
+  padding: 6px 0 6px 28px;
+  color: #001829;
+  line-height: 1.45;
+  text-align: left;
+}
+.tf-checklist li::before {
+  content: "—";
+  position: absolute;
+  left: 0;
+  color: #8b003d;
+  font-weight: 700;
+}
+.tf-checklist--check li::before {
+  content: "✓";
+}
+
+.tf-cta {
+  width: min(800px, 90%);
+  text-align: center;
+  padding: 40px clamp(20px, 4vw, 50px);
+  border-radius: 20px;
+  background: linear-gradient(135deg, #00375f, #001829);
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+.tf-cta h3 {
+  color: #fff;
+  margin-bottom: 16px;
+  font-size: 1.4rem;
+}
+.tf-cta h3:not(:first-child) {
+  margin-top: 28px;
+}
+.tf-cta p {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.6;
+  text-align: center;
+}
+.tf-cta .tf-checklist {
+  text-align: left;
+}
+.tf-cta .tf-checklist li {
+  color: #fff;
+}
+.tf-cta .tf-checklist li::before {
+  color: #fff;
+}
+.tf-cta-strong {
+  margin-top: 16px;
+  font-weight: 700;
+  color: #fff !important;
+}
+
+/*# sourceMappingURL=TechnikaFull.css.map */

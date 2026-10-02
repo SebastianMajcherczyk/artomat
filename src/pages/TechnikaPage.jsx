@@ -1,7 +1,7 @@
 import React from "react";
 import { Helmet } from "react-helmet-async";
 import { Footer } from "../components/Footer/Footer";
-import Technika from "../components/Technika/Technika";
+import TechnikaFull from "../components/Technika/TechnikaFull";
 import SubpageLinks from "../components/SubpageLinks/SubpageLinks";
 
 export default function TechnikaPage() {
@@ -15,7 +15,7 @@ export default function TechnikaPage() {
           content="Sprawdź, jak działa druk ścienny UV, na jakich powierzchniach można drukować, jakie są ograniczenia techniczne i jak przebiega realizacja nadruku na ścianie."
         />
 
-        <link rel="canonical" href="https://loftprint.pl/technika" />
+        <link rel="canonical" href="https://loftprint.pl/technika/" />
 
         <meta property="og:type" content="website" />
         <meta
@@ -26,7 +26,7 @@ export default function TechnikaPage() {
           property="og:description"
           content="Zobacz, jak wygląda drukowanie grafiki bezpośrednio na ścianie, betonie, cegle, szkle, drewnie i innych powierzchniach."
         />
-        <meta property="og:url" content="https://loftprint.pl/technika" />
+        <meta property="og:url" content="https://loftprint.pl/technika/" />
         <meta
           property="og:image"
           content="https://loftprint.pl/social/loftprint-og.webp"
@@ -61,7 +61,7 @@ export default function TechnikaPage() {
         </section>
 
         <section aria-label="Informacje techniczne o druku ściennym UV">
-          <Technika mode="full" showHeading={false} />
+          <TechnikaFull />
         </section>
 
         <SubpageLinks
