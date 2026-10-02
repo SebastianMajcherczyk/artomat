@@ -613,10 +613,10 @@ const TechnikaFull = () => {
           orientacyjnie:
         </p>
         <ul className="tf-checklist">
-          <li>około 35 cm od podłogi</li>
-          <li>około 35 cm od sufitu</li>
-          <li>około 12 cm od lewej strony</li>
-          <li>około 12 cm od prawej strony</li>
+          <li>około 31 cm od podłogi</li>
+          <li>około 31 cm od sufitu</li>
+          <li>około 15 cm od lewej strony</li>
+          <li>około 15 cm od prawej strony</li>
         </ul>
         <p>
           Nie są to ograniczenia projektu jako takiego, tylko fizyczna

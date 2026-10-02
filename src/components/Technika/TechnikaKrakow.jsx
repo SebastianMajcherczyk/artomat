@@ -81,10 +81,10 @@ const TechnikaKrakow = () => {
           jedyną koniecznością jest uwzględnienie w planowanym projekcie
           następujących marginesów:
           <br />
-          Od góry: 35 cm <br />
-          Od dołu: 35 cm <br />
-          Od lewej strony: 12 cm <br />
-          Od prawej strony: 12 cm
+          Od góry: 31 cm <br />
+          Od dołu: 31 cm <br />
+          Od lewej strony: 15 cm <br />
+          Od prawej strony: 15 cm
         </p>
         <div className="icon-container">
           <img
