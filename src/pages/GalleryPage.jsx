@@ -15,7 +15,7 @@ export default function GalleryPage() {
           content="Zobacz realizacje Loftprint - druk ścienny UV, murale i nadruki bezpośrednio na ścianach w biurach, szkołach, lokalach usługowych, obiektach sportowych i wnętrzach prywatnych."
         />
 
-        <link rel="canonical" href="https://loftprint.pl/gallery" />
+        <link rel="canonical" href="https://loftprint.pl/gallery/" />
 
         <meta property="og:type" content="website" />
         <meta
@@ -26,7 +26,7 @@ export default function GalleryPage() {
           property="og:description"
           content="Galeria realizacji Loftprint: murale i nadruki UV drukowane bezpośrednio na ścianach w firmach, szkołach, lokalach usługowych i wnętrzach prywatnych."
         />
-        <meta property="og:url" content="https://loftprint.pl/gallery" />
+        <meta property="og:url" content="https://loftprint.pl/gallery/" />
         <meta
           property="og:image"
           content="https://loftprint.pl/social/loftprint-og.webp"

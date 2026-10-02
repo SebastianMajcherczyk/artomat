@@ -7,25 +7,25 @@
     <priority>1.00</priority>
   </url>
   <url>
-    <loc>https://loftprint.pl/gallery</loc>
+    <loc>https://loftprint.pl/gallery/</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
   </url>
   <url>
-    <loc>https://loftprint.pl/druk-scienny-krakow</loc>
+    <loc>https://loftprint.pl/druk-scienny-krakow/</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://loftprint.pl/ceny</loc>
+    <loc>https://loftprint.pl/ceny/</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://loftprint.pl/technika</loc>
+    <loc>https://loftprint.pl/technika/</loc>
     <lastmod>2026-09-06</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.60</priority>

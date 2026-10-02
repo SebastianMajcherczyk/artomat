@@ -16,7 +16,7 @@ export default function CenyPage() {
           content="Zobacz, od czego zależy cena druku ściennego UV. Sprawdź, jak wyceniane są nadruki na ścianach do mieszkań, biur, szkół, lokali usługowych i obiektów sportowych."
         />
 
-        <link rel="canonical" href="https://loftprint.pl/ceny" />
+        <link rel="canonical" href="https://loftprint.pl/ceny/" />
 
         <meta property="og:type" content="website" />
         <meta
@@ -27,7 +27,7 @@ export default function CenyPage() {
           property="og:description"
           content="Sprawdź, od czego zależy koszt nadruku na ścianie: wielkość grafiki, rodzaj podłoża, biały podkład, lokalizacja i przygotowanie projektu."
         />
-        <meta property="og:url" content="https://loftprint.pl/ceny" />
+        <meta property="og:url" content="https://loftprint.pl/ceny/" />
         <meta
           property="og:image"
           content="https://loftprint.pl/social/loftprint-og.webp"

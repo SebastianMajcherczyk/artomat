@@ -3,6 +3,21 @@
   RewriteEngine On
   RewriteBase /
 
+  # Apache samo przekierowuje /gallery -> /gallery/ (mod_dir), ale na tym
+  # hostingu SSL jest terminowany przed Apache, więc w tym momencie serwer
+  # "myśli", że żądanie jest po HTTP i buduje ten redirect jako
+  # http://loftprint.pl/gallery/ zamiast https://. Efekt: /gallery, /technika
+  # i /ceny (adresy dokładnie takie jak w sitemap.xml) przechodzą przez
+  # podwójny redirect (https -> http -> https zamiast prosto), co Google
+  # Search Console zgłasza jako błąd przekierowania.
+  #
+  # Próbowaliśmy to naprawić przez "DirectorySlash Off" (serwowanie katalogu
+  # bez przekierowania) — na TYM hostingu skutkowało to 403 Forbidden na
+  # każdej z tych stron zamiast poprawnego 200, więc cofnięte. Podwójny
+  # redirect jest brzydki, ale realnie działa; naprawa tego dokładniej
+  # wymagałaby innego mechanizmu (np. wykrycia oryginalnego HTTPS przez
+  # nagłówek X-Forwarded-Proto od proxy hostingu) i osobnej sesji.
+
   # Przekierowanie z wersji www do wersji bez www
   RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
   RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
@@ -14,6 +29,17 @@
 
   # Istniejące reguły
   RewriteRule ^index\.html$ - [L]
+
+  # Stare, realne adresy sprzed refaktoru na kotwice strony głównej
+  # (czerwiec 2026) — menu kiedyś linkowało bezpośrednio do /kontakt,
+  # /dla-kogo, /inspiracje, /visualizer, ale te sekcje nigdy nie miały
+  # własnej podstrony, więc te adresy teraz 404-ują (np. sitelinki
+  # Google Ads wciąż na nie wskazują). Przekierowujemy 301 na właściwą
+  # kotwicę strony głównej zamiast zwracać błąd.
+  RewriteRule ^kontakt/?$ /\#kontakt [R=301,NE,L]
+  RewriteRule ^dla-kogo/?$ /\#dla-kogo [R=301,NE,L]
+  RewriteRule ^inspiracje/?$ /\#inspiracje [R=301,NE,L]
+  RewriteRule ^visualizer/?$ /\#visualizer [R=301,NE,L]
 
   # Strona jest teraz prerenderowana (scripts/prerender.js) — każda realna
   # trasa (/, /home, /technika, /ceny, /gallery, /druk-scienny-krakow) ma już

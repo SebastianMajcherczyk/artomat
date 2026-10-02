@@ -48,8 +48,7 @@
 
 .whom-image-box {
   display: flex;
-  column-gap: 20px;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
   justify-content: center;
-}
-
-/*# sourceMappingURL=ForWhom.css.map */
+}/*# sourceMappingURL=ForWhom.css.map */

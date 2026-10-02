@@ -42,7 +42,7 @@ export const DrukSciennyKrakow = () => {
           content="Druk ścienny UV w Krakowie i Małopolsce. Trwałe nadruki bezpośrednio na ścianach do biur, szkół, siłowni, lokali usługowych, mieszkań i obiektów sportowych."
         />
 
-        <link rel="canonical" href="https://loftprint.pl/druk-scienny-krakow" />
+        <link rel="canonical" href="https://loftprint.pl/druk-scienny-krakow/" />
 
         <meta property="og:type" content="website" />
         <meta property="og:title" content="Druk ścienny Kraków - Loftprint" />
@@ -52,7 +52,7 @@ export const DrukSciennyKrakow = () => {
         />
         <meta
           property="og:url"
-          content="https://loftprint.pl/druk-scienny-krakow"
+          content="https://loftprint.pl/druk-scienny-krakow/"
         />
         <meta
           property="og:image"

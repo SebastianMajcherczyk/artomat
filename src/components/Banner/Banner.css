@@ -18,7 +18,8 @@
   display: block;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 
 .banner-container {
@@ -58,6 +59,4 @@
 }
 .banner-text p {
   text-align: justify;
-}
-
-/*# sourceMappingURL=Banner.css.map */
+}/*# sourceMappingURL=Banner.css.map */
