@@ -4,6 +4,7 @@ export const projects = [
   {
     id: 1,
     title: "Bulaj",
+    slug: "bulaj",
     thumbnails: [path + "/Bulaj/Druk-scienny-Bulaj-thumb2.webp"],
     media: [
       {
@@ -29,6 +30,7 @@ export const projects = [
   {
     id: 2,
     title: "Pirat",
+    slug: "pirat",
     thumbnails: [path + "/Pirat/Druk-scienny-Pirat-thumb.webp"],
     media: [
       {
@@ -65,6 +67,7 @@ export const projects = [
   {
     id: 3,
     title: "Księżyc",
+    slug: "ksiezyc",
     thumbnails: [path + "/Ksiezyc/Moon_thumb.webp"],
     media: [
       { id: 1, type: "image", src: path + "/Ksiezyc/Moon_pict1.jpg" },
@@ -75,6 +78,7 @@ export const projects = [
   {
     id: 4,
     title: "Madoka Kaname",
+    slug: "madoka-kaname-druk-scienny",
     thumbnails: [path + "/Madoka/Druk-scienny-Madoka-thumb.webp"],
     media: [
       {
@@ -104,6 +108,7 @@ export const projects = [
   {
     id: 5,
     title: "Symfonia",
+    slug: "symfonia",
     thumbnails: [path + "/Symfonia/Druk-scienny-Symfonia-thumb2.webp"],
     media: [
       {
@@ -127,6 +132,7 @@ export const projects = [
   {
     id: 6,
     title: "Wieloryb",
+    slug: "wieloryb",
     thumbnails: [path + "/Wieloryb/wieloryb-thumb.webp"],
     media: [
       {
@@ -146,6 +152,7 @@ export const projects = [
   {
     id: 7,
     title: "Frida&Kora",
+    slug: "frida-i-kora-druk-scienny",
     thumbnails: [path + "/Frida&Kora/Druk-scienny-Realizacje-Frida-thumb.webp"],
     media: [
       {
@@ -179,6 +186,7 @@ export const projects = [
   {
     id: 8,
     title: "Krakowska Szkoła Tańca",
+    slug: "krakowska-szkola-tanca",
     thumbnails: [path + "/KST/KST-thumb.webp"],
     media: [
       {
@@ -196,6 +204,7 @@ export const projects = [
   {
     id: 9,
     title: "Octagon",
+    slug: "octagon",
     thumbnails: [path + "/Octagon/octagon-thumb2.webp"],
     media: [
       {
@@ -218,6 +227,7 @@ export const projects = [
   {
     id: 10,
     title: "Las",
+    slug: "las",
     thumbnails: [path + "/Las/Druk-scienny-Las-thumb.webp"],
     media: [
       {
@@ -240,6 +250,7 @@ export const projects = [
   {
     id: 11,
     title: "KZ Studio Projekt ",
+    slug: "kz-studio-projekt",
     thumbnails: [path + "/KZ/Druk-scienny-KZ-thumb.webp"],
     media: [
       {
@@ -257,6 +268,7 @@ export const projects = [
   {
     id: 12,
     title: "Artformer ",
+    slug: "artformer",
     thumbnails: [path + "/Artformer/Druk-scienny-Artformer-thumb.webp"],
     media: [
       {
@@ -284,6 +296,7 @@ export const projects = [
   {
     id: 13,
     title: "Mountain",
+    slug: "mountain",
     thumbnails: [path + "/Mountain/Druk-scienny-Mountain-thumb.webp"],
     media: [
       {
@@ -311,6 +324,7 @@ export const projects = [
   {
     id: 14,
     title: "Empire of coctails",
+    slug: "empire-of-coctails",
     thumbnails: [path + "/Empire/Druk-scienny-empire-thumb.webp"],
     media: [
       {
@@ -353,6 +367,7 @@ export const projects = [
   {
     id: 15,
     title: "Torkel Korling",
+    slug: "torkel-korling",
     thumbnails: [path + "/Korling/Druk-scienny-Korling-thumb.webp"],
     media: [
       {
@@ -370,6 +385,7 @@ export const projects = [
   {
     id: 16,
     title: "Dzungla Gym",
+    slug: "dzungla-gym",
     thumbnails: [path + "/DzunglaGym/Druk-scienny-Dzungla-thumb.webp"],
     media: [
       {
@@ -407,6 +423,7 @@ export const projects = [
   {
     id: 17,
     title: "Ukryte drzwi",
+    slug: "ukryte-drzwi",
     thumbnails: [path + "/Hidden_doors/Druk-scienny-Hidden-doors-thumb.webp"],
     media: [
       {
@@ -429,6 +446,7 @@ export const projects = [
   {
     id: 18,
     title: "Morskie Oko",
+    slug: "morskie-oko",
     thumbnails: [path + "/Morskie_oko/Morskie-Oko-thumb.webp"],
     media: [
       {
@@ -446,6 +464,7 @@ export const projects = [
   {
     id: 19,
     title: "World Map",
+    slug: "world-map",
     thumbnails: [path + "/WorldMap/World-map-thumb.webp"],
     media: [
       {
@@ -468,6 +487,7 @@ export const projects = [
   {
     id: 20,
     title: "Highway Automotive",
+    slug: "highway-automotive",
     thumbnails: [path + "/Highway_Automotive/Thumb.webp"],
     media: [
       {
@@ -485,6 +505,7 @@ export const projects = [
   {
     id: 21,
     title: "sklepopon.com",
+    slug: "sklepopon-com",
     thumbnails: [path + "/Sklep_opon/sklepopon_thumb.webp"],
     media: [
       {
@@ -512,6 +533,7 @@ export const projects = [
   {
     id: 22,
     title: "Witnica",
+    slug: "witnica",
     thumbnails: [path + "/Witnica/Thumb.webp"],
     media: [
       {
@@ -544,6 +566,7 @@ export const projects = [
   {
     id: 23,
     title: "Monet",
+    slug: "monet",
     thumbnails: [path + "/Monet/Thumb.webp"],
     media: [
       {
@@ -576,6 +599,7 @@ export const projects = [
   {
     id: 24,
     title: "Ratatuj",
+    slug: "ratatuj",
     thumbnails: [path + "/Ratatuj/Thumb.webp"],
     media: [
       {
@@ -598,6 +622,7 @@ export const projects = [
   {
     id: 25,
     title: "Mapa Europy",
+    slug: "mapa-europy",
     thumbnails: [path + "/Gwizdek/Gwizdek_thumb.webp"],
     media: [
       {
@@ -615,6 +640,7 @@ export const projects = [
   {
     id: 26,
     title: "Restauracja Noah",
+    slug: "restauracja-noah",
     thumbnails: [path + "/Noah/Noah_thumb.webp"],
     media: [
       {
@@ -642,6 +668,7 @@ export const projects = [
   {
     id: 27,
     title: "Classic Rock Club",
+    slug: "classic-rock-club",
     thumbnails: [path + "/Classic_Rock_Club/Ozzy_thumb.webp"],
     media: [
       {
@@ -664,6 +691,7 @@ export const projects = [
   {
     id: 28,
     title: "Chochołowska Zohylina",
+    slug: "chocholowska-zohylina",
     thumbnails: [path + "/Zohylina/Zohylina_thumb.webp"],
     media: [
       {
@@ -696,6 +724,7 @@ export const projects = [
   {
     id: 29,
     title: "Toyota",
+    slug: "toyota",
     thumbnails: [path + "/Toyota/Toyota_thumb.webp"],
     media: [
       {
@@ -724,6 +753,7 @@ export const projects = [
   {
     id: 30,
     title: "Polonia Bytom",
+    slug: "polonia-bytom",
     thumbnails: [path + "/Polonia_Bytom/Polonia_thumb.webp"],
     media: [
       {
@@ -776,6 +806,7 @@ export const projects = [
   {
     id: 31,
     title: "Kontakt.io",
+    slug: "kontakt-io",
     thumbnails: [path + "/Kontakt_io/Kontakt_thumb.webp"],
     media: [
       {
@@ -798,6 +829,7 @@ export const projects = [
   {
     id: 32,
     title: "Restauracja Scavolina",
+    slug: "restauracja-scavolina",
     thumbnails: [path + "/Scavolina/Scavolina_thumb.webp"],
     media: [
       {
@@ -820,6 +852,7 @@ export const projects = [
   {
     id: 33,
     title: "SP nr 3 w Mikołowie",
+    slug: "sp-nr-3-w-mikolowie",
     thumbnails: [path + "/SP3_Mikolow/SP3_thumb.webp"],
     media: [
       {
@@ -837,6 +870,7 @@ export const projects = [
   {
     id: 34,
     title: "Frozen District",
+    slug: "frozen-district",
     thumbnails: [path + "/Frozen_District/Frozen_thumb.webp"],
     media: [
       {
@@ -859,6 +893,7 @@ export const projects = [
   {
     id: 35,
     title: "AbbVie",
+    slug: "abbvie",
     thumbnails: [path + "/AbbVie/AbbVie_thumb.webp"],
     media: [
       {
@@ -886,6 +921,7 @@ export const projects = [
   {
     id: 36,
     title: "Zespół Jednostek Edukacyjnych",
+    slug: "zespol-jednostek-edukacyjnych",
     thumbnails: [path + "/ZJEWM/ZJEWM_thumb.webp"],
     media: [
       {
@@ -928,6 +964,7 @@ export const projects = [
   {
     id: 37,
     title: "SP w Sance",
+    slug: "sp-w-sance",
     thumbnails: [path + "/SP_Sanka/Sanka_thumb.webp"],
     media: [
       {
@@ -955,6 +992,7 @@ export const projects = [
   {
     id: 38,
     title: "Amea",
+    slug: "amea",
     thumbnails: [path + "/Amea/Amea_thumb.webp"],
     media: [
       {
@@ -977,6 +1015,7 @@ export const projects = [
   {
     id: 39,
     title: "Familok",
+    slug: "familok",
     thumbnails: [path + "/Familok/Familok_thumb.webp"],
     media: [
       {
@@ -999,6 +1038,7 @@ export const projects = [
   {
     id: 40,
     title: "Projmes",
+    slug: "projmes",
     thumbnails: [path + "/Projmes/projmes_thumb.webp"],
     media: [
       {

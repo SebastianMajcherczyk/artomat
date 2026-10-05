@@ -24,7 +24,7 @@ const { chromium } = require("playwright");
 const BUILD_DIR = path.join(__dirname, "..", "build");
 const PORT = 45123;
 
-const ROUTES = [
+const STATIC_ROUTES = [
   "/",
   "/home", // przekierowuje po stronie klienta na "/" (React Router) — mimo
   // to dostaje własny prerenderowany plik, żeby bezpośrednie wejście na ten
@@ -34,6 +34,20 @@ const ROUTES = [
   "/gallery",
   "/druk-scienny-krakow",
 ];
+
+// Każda realizacja z Gallery-data.js dostaje własny prerenderowany plik
+// (/gallery/<slug>/), dzięki czemu link do konkretnej realizacji działa od
+// razu, a robot widzi jej tytuł i treść bez uruchamiania JavaScriptu.
+const GALLERY_DATA_PATH = path.join(
+  __dirname, "..", "src", "components", "Gallery", "Gallery-data.js",
+);
+const projectRoutes = [
+  ...fs
+    .readFileSync(GALLERY_DATA_PATH, "utf8")
+    .matchAll(/^\s*slug:\s*"([^"]+)"/gm),
+].map((m) => `/gallery/${m[1]}`);
+
+const ROUTES = [...STATIC_ROUTES, ...projectRoutes];
 
 const CHROME_CANDIDATES = [
   "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
@@ -145,6 +159,32 @@ async function prerender() {
     await browser.close();
     server.close();
   }
+
+  addProjectsToSitemap(projectRoutes);
+}
+
+// Sitemapa w build/ powstaje z public/sitemap.xml; dopisujemy tu adresy
+// realizacji (z ukośnikiem na końcu, tak jak kanoniczne adresy na stronie).
+function addProjectsToSitemap(routes) {
+  const sitemapPath = path.join(BUILD_DIR, "sitemap.xml");
+  if (!fs.existsSync(sitemapPath)) return;
+
+  const today = new Date().toISOString().slice(0, 10);
+  const entries = routes
+    .map(
+      (route) => `  <url>
+    <loc>https://loftprint.pl${route}/</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.50</priority>
+  </url>
+`,
+    )
+    .join("");
+
+  const xml = fs.readFileSync(sitemapPath, "utf8");
+  fs.writeFileSync(sitemapPath, xml.replace("</urlset>", entries + "</urlset>"));
+  console.log(`✓ sitemap.xml: dopisano ${routes.length} adresów realizacji`);
 }
 
 prerender().catch((error) => {

@@ -4,10 +4,18 @@ export const GOOGLE_REVIEWS_URL = "https://maps.app.goo.gl/ifVxdtw9h93komDG6";
 
 export const aggregateRating = {
   ratingValue: 5.0,
-  reviewCount: 20,
+  reviewCount: 22,
 };
 
 export const reviews = [
+  {
+    id: "krakow-airport-hotel",
+    author: "Krakow Airport Hotel",
+    rating: 5,
+    text: "Firma Loftprint to rzetelny i profesjonalny partner, którego z pełnym przekonaniem polecamy do ambitnych projektów. Dziękujemy za wsparcie i realizację przy powstaniu projektu Dragon Gate 0 oraz reklamy Restauracji L'atmosphere. Doceniamy terminowość, doradztwo techniczne oraz bezbłędną precyzję wykonania.",
+    photo: `${path}/krakow-airport.webp`,
+    avatar: `${path}/unnamed.png`,
+  },
   {
     id: "katarzyna-krcha",
     author: "Katarzyna Krcha",

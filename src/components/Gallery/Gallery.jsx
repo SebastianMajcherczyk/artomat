@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import { RightSideMotionDiv } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 import MediaGallery from "./MediaGallery";
-import ProjectSlider from "./ProjectSlider/ProjectSlider";
+import ProjectViewerV2 from "../GalleryV2/ProjectViewerV2";
 import "./Gallery.css";
 
-const FEATURED_GALLERY_IDS = [35, 30, 28, 31, 22, 29, 39, 36, 26];
+const FEATURED_GALLERY_IDS = [35, 30, 28, 14, 22, 29, 39, 38, 26];
 
 const Gallery = ({ mode = "full", showHeading = true, showLead = true }) => {
   const [selectedProject, setSelectedProject] = useState(null);
@@ -46,12 +46,10 @@ const Gallery = ({ mode = "full", showHeading = true, showLead = true }) => {
   return (
     <div className="gallery-container">
       {selectedProject && (
-        <div className="overlay" onClick={() => setSelectedProject(null)}>
-          <ProjectSlider
-            project={selectedProject}
-            onClose={() => setSelectedProject(null)}
-          />
-        </div>
+        <ProjectViewerV2
+          project={selectedProject}
+          onClose={() => setSelectedProject(null)}
+        />
       )}
 
       {showHeading && (

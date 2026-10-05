@@ -117,3 +117,16 @@ $color-text: #333;
   font-weight: 700;
   color: $color-accent;
 }
+
+@media (max-width: 767px) {
+  .reviews-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .reviews-carousel {
+    box-sizing: border-box;
+    padding: 0 16px;
+  }
+}

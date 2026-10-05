@@ -6,9 +6,9 @@ import { Header } from "./components/Header/Header";
 import HomePage from "./pages/HomePage";
 import TechnikaPage from "./pages/TechnikaPage";
 import CenyPage from "./pages/CenyPage";
-import GalleryPage from "./pages/GalleryPage";
 import { DrukSciennyKrakow } from "./components/DrukSciennyKrakow/DrukSciennyKrakow";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
+import GalleryV2Page from "./pages/GalleryV2Page";
 
 const AppLazy = () => {
   return (
@@ -20,8 +20,9 @@ const AppLazy = () => {
         <Route path="/home" element={<Navigate to="/" replace />} />
         <Route path="/technika" element={<TechnikaPage />} />
         <Route path="/ceny" element={<CenyPage />} />
-        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/gallery" element={<GalleryV2Page />} />
         <Route path="/druk-scienny-krakow" element={<DrukSciennyKrakow />} />
+        <Route path="/gallery/:slug" element={<GalleryV2Page />} />
       </Routes>
     </>
   );
