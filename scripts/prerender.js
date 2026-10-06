@@ -23,6 +23,7 @@ const { chromium } = require("playwright");
 
 const BUILD_DIR = path.join(__dirname, "..", "build");
 const PORT = 45123;
+const CONCURRENCY = 4;
 
 const STATIC_ROUTES = [
   "/",
@@ -111,6 +112,41 @@ function findChrome() {
   return CHROME_CANDIDATES.find((candidate) => fs.existsSync(candidate));
 }
 
+// Zdjęcia i filmy nie wpływają na zapisywany HTML (same znaczniki zostają),
+// więc robot dostaje ten sam dokument bez czekania na ich pobranie.
+const MEDIA_URL = /\.(mp4|webm|webp|jpe?g|png|gif|avif)(\?.*)?$/i;
+
+async function renderRoute(browser, route) {
+  const page = await browser.newPage();
+  const jsErrors = [];
+  page.on("pageerror", (error) => jsErrors.push(error.message));
+  await page.route(MEDIA_URL, (req) => req.abort());
+
+  await page.goto(`http://localhost:${PORT}${route}`, {
+    waitUntil: "networkidle",
+  });
+  // Animacje wejścia (framer-motion, banery kończą się po ~4 s) muszą się
+  // skończyć przed zapisem, inaczej HTML zapisze stan pośredni.
+  await page.waitForTimeout(5000);
+
+  if (jsErrors.length > 0) {
+    console.warn(`  [${route}] błędy JS podczas renderowania:`, jsErrors);
+  }
+
+  const html = await page.content();
+
+  const outDir =
+    route === "/" ? BUILD_DIR : path.join(BUILD_DIR, route.slice(1));
+  fs.mkdirSync(outDir, { recursive: true });
+  fs.writeFileSync(path.join(outDir, "index.html"), html);
+
+  console.log(
+    `✓ ${route} → build/${path.relative(BUILD_DIR, outDir) || "."}/index.html`,
+  );
+
+  await page.close();
+}
+
 async function prerender() {
   if (!fs.existsSync(BUILD_DIR)) {
     console.error("Brak build/ — uruchom najpierw `npm run build`.");
@@ -129,32 +165,13 @@ async function prerender() {
   );
 
   try {
-    for (const route of ROUTES) {
-      const page = await browser.newPage();
-      const jsErrors = [];
-      page.on("pageerror", (error) => jsErrors.push(error.message));
-
-      await page.goto(`http://localhost:${PORT}${route}`, {
-        waitUntil: "networkidle",
-      });
-
-      if (jsErrors.length > 0) {
-        console.warn(`  [${route}] błędy JS podczas renderowania:`, jsErrors);
+    const queue = [...ROUTES];
+    const workers = Array.from({ length: CONCURRENCY }, async () => {
+      while (queue.length > 0) {
+        await renderRoute(browser, queue.shift());
       }
-
-      const html = await page.content();
-
-      const outDir =
-        route === "/" ? BUILD_DIR : path.join(BUILD_DIR, route.slice(1));
-      fs.mkdirSync(outDir, { recursive: true });
-      fs.writeFileSync(path.join(outDir, "index.html"), html);
-
-      console.log(
-        `✓ ${route} → build/${path.relative(BUILD_DIR, outDir) || "."}/index.html`,
-      );
-
-      await page.close();
-    }
+    });
+    await Promise.all(workers);
   } finally {
     await browser.close();
     server.close();
