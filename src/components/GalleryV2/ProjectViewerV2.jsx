@@ -2,6 +2,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { Close, ChevronLeft, ChevronRight } from "@mui/icons-material";
 import "./ProjectViewerV2.css";
 
+const AUTOPLAY_MS = 11000;
+
 const ProjectViewerV2 = ({ project, onClose }) => {
   const media = project.media;
   const count = media.length;
@@ -117,6 +119,16 @@ const ProjectViewerV2 = ({ project, onClose }) => {
 
   const next = () => step(1);
   const prev = () => step(-1);
+
+  // Stałe tempo pokazu, niezależne od ręcznej nawigacji (tak jak dawniej
+  // cancelOnInteraction={false} w react-awesome-slider) — po 11 s zawsze
+  // przechodzi dalej, również dla filmów, które są odrobinę dłuższe.
+  useEffect(() => {
+    if (!loop) return undefined;
+    const timer = setInterval(() => step(1), AUTOPLAY_MS);
+    return () => clearInterval(timer);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [project]);
 
   useEffect(() => {
     const onKey = (e) => {

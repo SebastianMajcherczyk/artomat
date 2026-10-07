@@ -6,7 +6,26 @@ import "./GalleryV2.css";
 const INITIAL_ROWS = 3.5;
 const ROWS_STEP = 2;
 
+const shuffleArray = (array) => {
+  const copy = [...array];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy;
+};
+
 const GalleryV2 = ({ projects, activeProject, onClose }) => {
+  // Kolejność wyjściowa jest deterministyczna (ta sama co w danych), żeby
+  // zgadzała się z prerenderem — losowanie dopiero po zamontowaniu w
+  // przeglądarce, raz na wejście na stronę (nie przy "Pokaż kolejne").
+  const [displayProjects, setDisplayProjects] = useState(projects);
+
+  useEffect(() => {
+    setDisplayProjects(shuffleArray(projects));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [projects]);
+
   const [visibleRows, setVisibleRows] = useState(INITIAL_ROWS);
   const [totalRows, setTotalRows] = useState(0);
   const [maxHeight, setMaxHeight] = useState("none");
@@ -32,7 +51,7 @@ const GalleryV2 = ({ projects, activeProject, onClose }) => {
       1,
       Math.floor((contentWidth + gapX) / (tileRect.width + gapX)),
     );
-    const rows = Math.ceil(projects.length / columns);
+    const rows = Math.ceil(displayProjects.length / columns);
     setTotalRows(rows);
 
     if (visibleRows >= rows) {
@@ -48,7 +67,7 @@ const GalleryV2 = ({ projects, activeProject, onClose }) => {
     if (full > 0) height += full * tileRect.height + (full - 1) * gapY;
     if (frac > 0 && full < rows) height += gapY + frac * tileRect.height;
     setMaxHeight(`${Math.ceil(height) + 1}px`);
-  }, [projects.length, visibleRows]);
+  }, [displayProjects.length, visibleRows]);
 
   useEffect(() => {
     recompute();
@@ -75,7 +94,7 @@ const GalleryV2 = ({ projects, activeProject, onClose }) => {
           style={{ maxHeight: isFullyExpanded ? "none" : maxHeight }}
         >
           <ul className="gv2-grid" ref={gridRef}>
-            {projects.map((project, index) => (
+            {displayProjects.map((project, index) => (
               <li key={project.id}>
                 <Link
                   to={`/gallery/${project.slug}`}

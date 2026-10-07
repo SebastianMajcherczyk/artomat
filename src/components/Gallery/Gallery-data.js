@@ -78,7 +78,7 @@ export const projects = [
   {
     id: 4,
     title: "Madoka Kaname",
-    slug: "madoka-kaname-druk-scienny",
+    slug: "madoka-kaname",
     thumbnails: [path + "/Madoka/Druk-scienny-Madoka-thumb.webp"],
     media: [
       {
@@ -152,7 +152,7 @@ export const projects = [
   {
     id: 7,
     title: "Frida&Kora",
-    slug: "frida-i-kora-druk-scienny",
+    slug: "frida-i-kora",
     thumbnails: [path + "/Frida&Kora/Druk-scienny-Realizacje-Frida-thumb.webp"],
     media: [
       {
@@ -1060,6 +1060,44 @@ export const projects = [
         id: 4,
         type: "image",
         src: path + "/Projmes/projmes2.webp",
+      },
+    ],
+  },
+  {
+    id: 41,
+    title: "Krakow Airport Hotel",
+    slug: "krakow-airport-hotel",
+    thumbnails: [path + "/Krakow_Airport_Hotel/Krakow_Airport_thumb.webp"],
+    media: [
+      {
+        id: 1,
+        type: "video",
+        src: path + "/Krakow_Airport_Hotel/Dragon_1.mp4",
+      },
+      {
+        id: 2,
+        type: "video",
+        src: path + "/Krakow_Airport_Hotel/Dragon_2.mp4",
+      },
+      {
+        id: 3,
+        type: "video",
+        src: path + "/Krakow_Airport_Hotel/Latmosphere.mp4",
+      },
+      {
+        id: 4,
+        type: "image",
+        src: path + "/Krakow_Airport_Hotel/Krakow_Airport1.webp",
+      },
+      {
+        id: 5,
+        type: "image",
+        src: path + "/Krakow_Airport_Hotel/Krakow_Airport2.webp",
+      },
+      {
+        id: 6,
+        type: "image",
+        src: path + "/Krakow_Airport_Hotel/Krakow_Airport3.webp",
       },
     ],
   },
