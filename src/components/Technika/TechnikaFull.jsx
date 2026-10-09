@@ -15,7 +15,7 @@ import FAQ from "../FAQ/FAQ";
 // i /druk-scienny-krakow — ta treść jest z nim celowo niepowiązana).
 const isSectionVisible = true;
 
-const tech = process.env.PUBLIC_URL + "/Technika";
+const tech = process.env.PUBLIC_URL + "/TechnikaImg";
 
 const materials = [
   {

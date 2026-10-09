@@ -8,7 +8,7 @@ import {
 } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 
-const tech = process.env.PUBLIC_URL + "/Technika";
+const tech = process.env.PUBLIC_URL + "/TechnikaImg";
 
 const features = [
   {
