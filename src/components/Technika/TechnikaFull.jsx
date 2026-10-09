@@ -198,30 +198,42 @@ const TechnikaFull = () => {
         <AnimatedH2 isSectionVisible={isSectionVisible}>
           Dwie profesjonalne drukarki wallPen
         </AnimatedH2>
-        <p>
-          W Loftprint pracujemy na dwóch drukarkach wallPen, profesjonalnych
-          systemach druku pionowego projektowanych i produkowanych w Niemczech.
-        </p>
 
-        <AnimatedH3 isSectionVisible={isSectionVisible}>
-          Dlaczego ma to znaczenie?
-        </AnimatedH3>
-        <p>
-          Drukarka ścienna nie jest tylko urządzeniem, które „wypluwa atrament”.
-          O jakości gotowego nadruku decydują również precyzja mechaniki, sposób
-          prowadzenia głowic, pomiar odległości od powierzchni, stabilność
-          ruchu, głowice drukujące, atrament, oprogramowanie i możliwość
-          powtarzalnego ustawienia parametrów.
-        </p>
-        <p>
-          wallPen jest systemem skonstruowanym od początku właśnie do
-          profesjonalnego druku pionowego. Producent rozwija i wytwarza
-          urządzenia w Niemczech, a sama technologia jest objęta ponad 20
-          międzynarodowymi patentami. System wykorzystuje między innymi laserową
-          kontrolę odległości od ściany oraz przemysłowe głowice Ricoh GH2220.
-          Dla klienta ważniejsza od samej specyfikacji jest jednak
-          przewidywalność efektu na gotowej ścianie.
-        </p>
+        <div className="tf-wrap">
+          <figure className="tf-float-image">
+            <img
+              src={`${tech}/2_printers.webp`}
+              alt="Dwie drukarki ścienne wallPen gotowe do pracy w Loftprint"
+              loading="lazy"
+            />
+          </figure>
+
+          <p>
+            W Loftprint pracujemy na dwóch drukarkach wallPen, profesjonalnych
+            systemach druku pionowego projektowanych i produkowanych w
+            Niemczech.
+          </p>
+
+          <AnimatedH3 isSectionVisible={isSectionVisible}>
+            Dlaczego ma to znaczenie?
+          </AnimatedH3>
+          <p>
+            Drukarka ścienna nie jest tylko urządzeniem, które „wypluwa
+            atrament”. O jakości gotowego nadruku decydują również precyzja
+            mechaniki, sposób prowadzenia głowic, pomiar odległości od
+            powierzchni, stabilność ruchu, głowice drukujące, atrament,
+            oprogramowanie i możliwość powtarzalnego ustawienia parametrów.
+          </p>
+          <p>
+            wallPen jest systemem skonstruowanym od początku właśnie do
+            profesjonalnego druku pionowego. Producent rozwija i wytwarza
+            urządzenia w Niemczech, a sama technologia jest objęta ponad 20
+            międzynarodowymi patentami. System wykorzystuje między innymi
+            laserową kontrolę odległości od ściany oraz przemysłowe głowice
+            Ricoh GH2220. Dla klienta ważniejsza od samej specyfikacji jest
+            jednak przewidywalność efektu na gotowej ścianie.
+          </p>
+        </div>
 
         <AnimatedH3 isSectionVisible={isSectionVisible}>
           Co dają nam dwie drukarki?

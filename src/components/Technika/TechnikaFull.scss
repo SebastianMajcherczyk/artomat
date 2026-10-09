@@ -51,6 +51,54 @@
   }
 }
 
+// .tf-block to flex (column), a float nie działa na elementach flex — stąd
+// osobny, zwykły blokowy kontener na akapity, które mają opływać zdjęcie.
+.tf-wrap {
+  width: 100%;
+
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  p {
+    text-align: justify;
+    color: #001829;
+    line-height: 1.6;
+  }
+
+  // Globalny styl h3 (display:flex, width:100%) tworzy własny kontekst,
+  // który "ucieka" spod pływającego zdjęcia zamiast obok niego płynąć —
+  // tu wracamy do zwykłego bloku, żeby nagłówek też opływał obraz.
+  h3 {
+    display: block;
+    width: auto;
+    text-align: left;
+  }
+}
+
+.tf-float-image {
+  width: 100%;
+  margin: 0 0 16px;
+
+  img {
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+    display: block;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
+  }
+
+  // Poniżej tego progu kolumna tekstu obok zdjęcia byłaby za wąska (kilka
+  // znaków w linii), więc zdjęcie zostaje pełnej szerokości nad tekstem.
+  @media (min-width: 640px) {
+    float: right;
+    width: clamp(200px, 34%, 300px);
+    margin: 4px 0 16px 24px;
+  }
+}
+
 .tf-image-row {
   display: flex;
   flex-flow: row wrap;
@@ -90,7 +138,9 @@
 }
 
 .tf-material-card {
-  width: 220px;
+  flex: 1 1 240px;
+  max-width: 320px;
+  box-sizing: border-box;
   background: #fafafa;
   border-radius: 16px;
   overflow: hidden;
