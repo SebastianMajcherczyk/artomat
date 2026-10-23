@@ -72,16 +72,21 @@
 }
 
 .social-media {
-  width: 20%;
-  min-width: 150px;
-  @media screen and (min-width: 768px) {
-    width: 10%;
-  }
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 18px;
 }
 .social-icon {
-  & :hover {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+
+  &:hover {
     cursor: pointer;
   }
 }

@@ -8,7 +8,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import PlaceIcon from "@mui/icons-material/Place";
 import FacebookOutlinedIcon from "@mui/icons-material/FacebookOutlined";
 import InstagramIcon from "@mui/icons-material/Instagram";
-import WhatsAppIcon from "@mui/icons-material/WhatsApp";
+import TikTokIcon from "./TikTokIcon";
 import { Tooltip } from "react-tooltip";
 import "react-tooltip/dist/react-tooltip.css";
 import { Link as RouterLink } from "react-router-dom";
@@ -49,6 +49,17 @@ export const Footer = () => {
           >
             <InstagramIcon />
           </a>
+          <a
+            href="https://www.tiktok.com/@loftprint.pl"
+            target="_blank"
+            rel="noreferrer"
+            className="social-icon"
+            data-tooltip-id="tiktok-tooltip"
+            aria-label="TikTok link"
+            title="TikTok"
+          >
+            <TikTokIcon />
+          </a>
           <WhatsAppLink />
           <Tooltip
             id="fb-tooltip"
@@ -63,6 +74,14 @@ export const Footer = () => {
             place="top"
             variant="info"
             content="Instagram"
+            delayHide={100}
+            style={{ backgroundColor: "#8b003d" }}
+          />
+          <Tooltip
+            id="tiktok-tooltip"
+            place="top"
+            variant="info"
+            content="TikTok"
             delayHide={100}
             style={{ backgroundColor: "#8b003d" }}
           />
