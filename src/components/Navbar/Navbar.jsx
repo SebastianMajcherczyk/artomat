@@ -28,10 +28,7 @@ export const Navbar = () => {
         Ceny
       </StyledButton1>
 
-      <StyledButton1
-        component={RouterLink}
-        to={{ pathname: "/", hash: "#inspiracje" }}
-      >
+      <StyledButton1 component={RouterLink} to="/inspiracje">
         Inspiracje
       </StyledButton1>
 

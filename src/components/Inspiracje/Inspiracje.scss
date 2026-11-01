@@ -1,45 +1,130 @@
-.inspirations-container {
-  padding-bottom: 70px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+$color-primary: #00375f;
+$color-accent: #8b003d;
+$color-text: #333;
+
+$bg-card: rgba(255, 255, 255, 0.84);
+$bg-tag: rgba(255, 255, 255, 0.9);
+
+$shadow-card: 0 10px 28px rgba(0, 0, 0, 0.08);
+$shadow-hover: 0 8px 22px rgba(0, 0, 0, 0.1);
+
+$radius-card: 18px;
+$radius-pill: 999px;
+
+.inspiracje-preview-container {
   width: 100%;
-  row-gap: 2rem;
 }
 
-.inspirations {
+.inspiracje-preview-card {
+  box-sizing: border-box;
+  width: min(1100px, calc(100% - 24px));
+  margin: 0 auto 18px;
+  padding: 20px 18px;
+  border-radius: $radius-card;
+  background: $bg-card;
+  box-shadow: $shadow-card;
+  color: $color-text;
+
+  h3 {
+    margin: 0 0 14px;
+    color: $color-primary;
+  }
+
+  p {
+    margin: 0 0 14px;
+    line-height: 1.55;
+  }
+}
+
+.inspiracje-preview-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1200 / 675;
+  object-fit: cover;
+  border-radius: 12px;
+  margin: 0 0 16px;
+}
+
+.inspiracje-preview-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 0 16px;
+
+  span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: $radius-pill;
+    background: $bg-tag;
+    border: 1px solid rgba(0, 55, 95, 0.18);
+    color: $color-primary;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+}
+
+.inspiracje-preview-lead {
+  font-weight: 700;
+  color: $color-primary;
+}
+
+.inspiracje-preview-actions {
   display: flex;
   flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+  }
+}
+
+.inspiracje-preview-link {
+  width: 100%;
+  max-width: 340px;
+  display: inline-flex;
   align-items: center;
-  height: auto;
-  width: 80%;
-  border-radius: 20px;
-  background-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.25),
-    35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.24),
-    49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.151),
-    100px 100px 147px -5px rgba(0, 0, 0, 0.05);
-  & div {
-    width: 80%;
-  }
-  & p {
-    text-align: left;
-  }
-}
-.photo-bank-container {
-  display: flex;
   justify-content: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  row-gap: 30px;
+  min-height: 46px;
+  padding: 10px 16px;
+  border-radius: $radius-pill;
+  text-decoration: none;
+  font-weight: 700;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+
+  @media (min-width: 768px) {
+    width: auto;
+  }
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-hover;
+  }
+
+  &.primary {
+    background: $color-primary;
+    color: #fff;
+  }
 }
-a > .photo-bank {
-  padding: 0px;
-  margin: 0px;
-  font-size: 16px;
-  text-align: center;
-}
-a svg {
-  margin: 0 15px;
+
+.inspiracje-preview-box {
+  .inspiracje-preview-card {
+    text-align: center;
+  }
+
+  .inspiracje-preview-tags {
+    justify-content: center;
+  }
+
+  .inspiracje-preview-actions {
+    align-items: center;
+    justify-content: center;
+  }
 }

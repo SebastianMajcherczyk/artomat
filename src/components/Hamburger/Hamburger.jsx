@@ -79,7 +79,7 @@ export const HamburgerMenu = () => {
         <li>
           <StyledButton2
             component={RouterLink}
-            to={{ pathname: "/", hash: "#inspiracje" }}
+            to="/inspiracje"
             onClick={() => setMenuOpen(false)}
           >
             Inspiracje

@@ -34,6 +34,7 @@ const STATIC_ROUTES = [
   "/ceny",
   "/gallery",
   "/druk-scienny-krakow",
+  "/inspiracje",
 ];
 
 // Każda realizacja z Gallery-data.js dostaje własny prerenderowany plik

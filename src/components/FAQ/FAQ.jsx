@@ -8,9 +8,9 @@ import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 import { RightSideMotionDiv } from "../Styled/StyledMotionDiv";
 import "./FAQ.css";
 
-const FAQ = ({ heading, lead, items }) => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
+const FAQ = ({ heading, lead, items, animated = true }) => {
+  const [isSectionVisible, setIsSectionVisible] = useState(!animated);
+  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(!animated);
   const [expanded, setExpanded] = useState("panel0");
 
   const checkIfSectionIsVisible = () => {
@@ -32,12 +32,18 @@ const FAQ = ({ heading, lead, items }) => {
     }
   };
 
+  // Na statycznych podstronach (animated=false) sekcja ma być od razu w
+  // pełni widoczna, bez wjeżdżania z boku przy scrollu - patrz
+  // TechnikaFull.jsx/GrafikaNaSciane.jsx, gdzie reszta treści dzieli ten
+  // sam, stały stan "isSectionVisible". FAQ.jsx jest jedynym wyjątkiem
+  // w tych komponentach, bo ma wbudowaną własną detekcję scrolla.
   useEffect(() => {
+    if (!animated) return;
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
-  }, [hasAnimationPlayed]);
+  }, [hasAnimationPlayed, animated]);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -51,7 +57,10 @@ const FAQ = ({ heading, lead, items }) => {
       name: item.question,
       acceptedAnswer: {
         "@type": "Answer",
-        text: item.answer,
+        // item.answer bywa JSX-em (wyróżnienia <strong>, kilka akapitów) -
+        // w JSON-LD potrzebny jest czysty tekst, więc dla takich pozycji
+        // korzystamy z answerText zamiast serializować element React.
+        text: typeof item.answer === "string" ? item.answer : item.answerText,
       },
     })),
   };
@@ -86,7 +95,11 @@ const FAQ = ({ heading, lead, items }) => {
                 <h3>{item.question}</h3>
               </AccordionSummary>
               <AccordionDetails>
-                <p>{item.answer}</p>
+                {typeof item.answer === "string" ? (
+                  <p>{item.answer}</p>
+                ) : (
+                  item.answer
+                )}
               </AccordionDetails>
             </Accordion>
           ))}

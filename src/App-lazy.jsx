@@ -9,6 +9,7 @@ import CenyPage from "./pages/CenyPage";
 import { DrukSciennyKrakow } from "./components/DrukSciennyKrakow/DrukSciennyKrakow";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";
 import GalleryV2Page from "./pages/GalleryV2Page";
+import InspiracjePage from "./pages/InspiracjePage";
 
 const AppLazy = () => {
   return (
@@ -23,6 +24,7 @@ const AppLazy = () => {
         <Route path="/gallery" element={<GalleryV2Page />} />
         <Route path="/druk-scienny-krakow" element={<DrukSciennyKrakow />} />
         <Route path="/gallery/:slug" element={<GalleryV2Page />} />
+        <Route path="/inspiracje" element={<InspiracjePage />} />
       </Routes>
     </>
   );

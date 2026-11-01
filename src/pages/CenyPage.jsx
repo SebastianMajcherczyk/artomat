@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 
 import { Footer } from "../components/Footer/Footer";
-import Ceny from "../components/Ceny/Ceny";
+import CenyFull from "../components/Ceny/CenyFull";
 import SubpageLinks from "../components/SubpageLinks/SubpageLinks";
 
 export default function CenyPage() {
@@ -53,15 +53,15 @@ export default function CenyPage() {
           <h1>Ceny druku ściennego UV</h1>
 
           <p>
-            Koszt realizacji zależy między innymi od wielkości grafiki, rodzaju
-            podłoża, stopnia skomplikowania projektu, ewentualnego białego
-            podkładu oraz miejsca wykonania nadruku. Tutaj znajdziesz
-            najważniejsze informacje o wycenie druku ściennego.
+            Ile kosztuje druk na ścianie? W typowych warunkach cenę można
+            oszacować bardzo łatwo na podstawie powierzchni nadruku. Dlatego
+            zamiast ukrywać cennik za formularzem kontaktowym, podajemy
+            nasze podstawowe stawki.
           </p>
         </section>
 
         <section aria-label="Informacje o cenach druku ściennego UV">
-          <Ceny mode="full" showHeading={false} />
+          <CenyFull />
         </section>
 
         <SubpageLinks

@@ -1,0 +1,279 @@
+.cf-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  row-gap: 2.5rem;
+  padding-bottom: 40px;
+}
+
+.cf-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: min(900px, 90%);
+  padding: 30px clamp(20px, 4vw, 50px);
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.75);
+  box-shadow: 20.7px 20.7px 6.7px -5px rgba(0, 0, 0, 0.1),
+    35.4px 35.4px 18.4px -5px rgba(0, 0, 0, 0.09),
+    49.1px 49.1px 44.3px -5px rgba(0, 0, 0, 0.06);
+
+  h2,
+  h3 {
+    width: 100%;
+  }
+
+  p {
+    text-align: justify;
+    width: 100%;
+    color: #001829;
+    line-height: 1.6;
+  }
+
+  a {
+    color: #8b003d;
+    font-weight: 600;
+  }
+
+  &--dark {
+    background-color: rgba(0, 0, 0, 0.15);
+  }
+}
+
+.cf-callout {
+  background: rgba(139, 0, 61, 0.08);
+  border-left: 3px solid #8b003d;
+  border-radius: 8px;
+  padding: 12px 16px !important;
+  text-align: left !important;
+}
+
+.cf-checklist {
+  width: 100%;
+  max-width: 640px;
+  margin: 6px auto 16px;
+  padding-left: 0;
+  list-style: none;
+
+  li {
+    position: relative;
+    padding: 6px 0 6px 28px;
+    color: #001829;
+    line-height: 1.45;
+    text-align: left;
+
+    &::before {
+      content: "—";
+      position: absolute;
+      left: 0;
+      color: #00375f;
+      font-weight: 700;
+    }
+  }
+
+  &--check li::before {
+    content: "✓";
+  }
+}
+
+// Karty z cenami bazowymi (300 / 400 zł za m²)
+.cf-price-grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.cf-price-card {
+  flex: 1 1 260px;
+  max-width: 320px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background: #fff;
+  border-radius: 16px;
+  padding: 22px 20px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+
+  h4 {
+    margin: 0 0 10px;
+    color: #00375f;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+
+  .cf-price-value {
+    font-size: 2.3rem;
+    font-weight: 800;
+    color: #8b003d;
+    line-height: 1.1;
+  }
+
+  .cf-price-unit {
+    display: block;
+    font-size: 0.85rem;
+    color: #667;
+    margin-bottom: 10px;
+  }
+
+  .cf-price-note {
+    width: auto;
+    text-align: center;
+    font-size: 0.86rem;
+    color: #444;
+    margin: 6px 0 10px;
+  }
+
+  .cf-price-vat {
+    width: 100%;
+    margin: 8px 0 0;
+    padding: 10px 0 0;
+    border-top: 1px solid rgba(0, 55, 95, 0.12);
+    list-style: none;
+    font-size: 0.82rem;
+    color: #556;
+
+    li {
+      margin-bottom: 2px;
+    }
+  }
+}
+
+// Karty "co wpływa na cenę" (etykieta + opis)
+.cf-factors-grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.cf-factor-card {
+  flex: 1 1 240px;
+  max-width: 320px;
+  box-sizing: border-box;
+  background: #fafafa;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding-top: 4px;
+
+  h4 {
+    margin: 12px 14px 4px;
+    color: #00375f;
+    text-transform: uppercase;
+    font-size: 0.95rem;
+  }
+
+  p {
+    margin: 0 14px 16px;
+    font-size: 0.88rem;
+    line-height: 1.45;
+    color: #444;
+    text-align: left;
+    width: auto;
+  }
+}
+
+// Przykładowe ceny - dwie grupy wielkość/cena
+.cf-example-grid {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  gap: 20px;
+  width: 100%;
+  margin: 10px 0;
+}
+
+.cf-example-group {
+  flex: 1 1 280px;
+  max-width: 360px;
+  box-sizing: border-box;
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px 20px;
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.1);
+
+  h4 {
+    margin: 0 0 10px;
+    color: #00375f;
+    font-size: 1rem;
+    text-align: center;
+    text-transform: uppercase;
+  }
+}
+
+.cf-example-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.cf-example-size {
+  color: #333;
+  font-size: 0.9rem;
+}
+
+.cf-example-price {
+  color: #8b003d;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.cf-cta {
+  width: min(800px, 90%);
+  text-align: center;
+  padding: 40px clamp(20px, 4vw, 50px);
+  border-radius: 20px;
+  background: linear-gradient(135deg, #00375f, #001829);
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+
+  h2 {
+    color: #fff;
+    margin-bottom: 16px;
+    font-size: 1.5rem;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  &-button {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 14px 32px;
+    border-radius: 30px;
+    background: #8b003d;
+    color: #fff !important;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+
+    &:hover {
+      background: #a3004a;
+      transform: scale(1.05);
+    }
+  }
+}

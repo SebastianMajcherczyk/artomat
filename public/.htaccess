@@ -32,13 +32,17 @@
 
   # Stare, realne adresy sprzed refaktoru na kotwice strony głównej
   # (czerwiec 2026) — menu kiedyś linkowało bezpośrednio do /kontakt,
-  # /dla-kogo, /inspiracje, /visualizer, ale te sekcje nigdy nie miały
-  # własnej podstrony, więc te adresy teraz 404-ują (np. sitelinki
-  # Google Ads wciąż na nie wskazują). Przekierowujemy 301 na właściwą
-  # kotwicę strony głównej zamiast zwracać błąd.
+  # /dla-kogo, /visualizer, ale te sekcje nigdy nie miały własnej
+  # podstrony, więc te adresy teraz 404-ują (np. sitelinki Google Ads
+  # wciąż na nie wskazują). Przekierowujemy 301 na właściwą kotwicę
+  # strony głównej zamiast zwracać błąd.
+  #
+  # /inspiracje NIE jest tu już przekierowywane (październik 2026) — od tej
+  # wersji to realna podstrona (InspiracjePage.jsx / "Grafika na ścianę"),
+  # więc musi dojść do właściwego pliku zamiast być przechwycona przez tę
+  # regułę przed dotarciem do prerenderowanego HTML-a.
   RewriteRule ^kontakt/?$ /\#kontakt [R=301,NE,L]
   RewriteRule ^dla-kogo/?$ /\#dla-kogo [R=301,NE,L]
-  RewriteRule ^inspiracje/?$ /\#inspiracje [R=301,NE,L]
   RewriteRule ^visualizer/?$ /\#visualizer [R=301,NE,L]
 
   # Strona jest teraz prerenderowana (scripts/prerender.js) — każda realna
