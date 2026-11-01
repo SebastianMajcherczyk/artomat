@@ -77,7 +77,7 @@ const Inspiracje = () => {
         <div className="inspiracje-preview-card">
           <img
             className="inspiracje-preview-image"
-            src={`${process.env.PUBLIC_URL}/Inspiracje/grafika-na-sciane.webp`}
+            src={`${process.env.PUBLIC_URL}/InspiracjeImg/grafika-na-sciane.webp`}
             alt="Projekt graficzny przygotowywany w Photoshopie na podstawie zdjęcia turbin wiatrowych, docelowo do druku ściennego"
             loading="lazy"
             width="1200"
