@@ -1,5 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { Parallax } from "react-parallax";
 import "./GrafikaNaSciane.css";
 import {
   LeftSideMotionDiv,
@@ -10,6 +11,15 @@ import FAQ from "../FAQ/FAQ";
 import BeforeAfterSlider from "../BeforeAfterSlider/BeforeAfterSlider";
 
 const beforeAfter = process.env.PUBLIC_URL + "/BeforeAfter";
+
+// Te same tła co na pozostałych podstronach (src/image21.jpg,
+// src/image22.jpg). Większość bloków tutaj jest wysoka, więc dostaje
+// własne tło 1:1; tylko krótszy blok "Jak wygląda współpraca" jest
+// połączony z FAQ, żeby nie tworzyć osobnego, wąskiego paska.
+const bg1 = require("../../image21.jpg");
+const bg2 = require("../../image22.jpg");
+const parallaxStrength = 150;
+const parallaxStyle = { width: "100%" };
 
 // Pełna treść podstrony /inspiracje ("Grafika na ścianę"), dostarczona przez
 // użytkownika (październik 2026). Komponent eksperymentalny do testowania w
@@ -129,6 +139,8 @@ const GrafikaNaSciane = () => {
   return (
     <div className="gs-container">
       {/* 1. Intro + własne materiały klienta */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="gs-parallax-group">
       <LeftSideMotionDiv isSectionVisible={isSectionVisible} className="gs-block">
         <p>
           Masz własne zdjęcie, logo firmy, gotowy projekt, a może dopiero
@@ -293,8 +305,12 @@ const GrafikaNaSciane = () => {
           jego przygotowania.
         </p>
       </LeftSideMotionDiv>
+      </div>
+      </Parallax>
 
       {/* 2. Brak własnej grafiki - banki zdjęć i AI */}
+      <Parallax bgImage={bg2} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="gs-parallax-group">
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="gs-block gs-block--dark"
@@ -400,8 +416,12 @@ const GrafikaNaSciane = () => {
           charakterze edukacyjnym.
         </p>
       </RightSideMotionDiv>
+      </div>
+      </Parallax>
 
       {/* 3. Logo firmy i grafika firmowa */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="gs-parallax-group">
       <LeftSideMotionDiv isSectionVisible={isSectionVisible} className="gs-block">
         <AnimatedH2 isSectionVisible={isSectionVisible}>
           Logo firmy to dopiero początek – grafika, która opowiada o Twojej
@@ -474,8 +494,12 @@ const GrafikaNaSciane = () => {
           go codziennie oglądały.
         </p>
       </LeftSideMotionDiv>
+      </div>
+      </Parallax>
 
       {/* 4. Połączenie metod */}
+      <Parallax bgImage={bg2} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="gs-parallax-group">
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="gs-block gs-block--dark"
@@ -530,8 +554,12 @@ const GrafikaNaSciane = () => {
           jednego gotowego obrazu.
         </p>
       </RightSideMotionDiv>
+      </div>
+      </Parallax>
 
       {/* 5. Dopasowanie projektu do wnętrza */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="gs-parallax-group">
       <LeftSideMotionDiv isSectionVisible={isSectionVisible} className="gs-block">
         <AnimatedH2 isSectionVisible={isSectionVisible}>
           Projekt dopasowany do wnętrza, a nie odwrotnie
@@ -605,8 +633,12 @@ const GrafikaNaSciane = () => {
           jego dopasowanie do planowanego rozmiaru.
         </p>
       </LeftSideMotionDiv>
+      </div>
+      </Parallax>
 
-      {/* 6. Jak wygląda współpraca */}
+      {/* 6-7. Jak wygląda współpraca (krótki) + FAQ */}
+      <Parallax bgImage={bg2} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="gs-parallax-group">
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="gs-block gs-block--dark"
@@ -626,8 +658,6 @@ const GrafikaNaSciane = () => {
           indywidualnie, zależnie od stopnia skomplikowania projektu.
         </p>
       </RightSideMotionDiv>
-
-      {/* 7. FAQ */}
       <div className="gs-block">
         <FAQ
           heading="Najczęściej zadawane pytania"
@@ -636,6 +666,8 @@ const GrafikaNaSciane = () => {
           animated={false}
         />
       </div>
+      </div>
+      </Parallax>
 
       {/* 8. Zamknięcie + CTA */}
       <div className="gs-cta">

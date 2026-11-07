@@ -4,8 +4,22 @@
   align-items: center;
   justify-content: center;
   width: 100%;
-  row-gap: 2.5rem;
+  // Bez row-gap: sąsiednie tła paralaksy mają się stykać bez przerwy,
+  // tak jak na stronie głównej (.app-container też nie ma gap) - odstęp
+  // tutaj pokazywałby białą szczelinę tła strony między paskami tekstury.
   padding-bottom: 40px;
+}
+
+// Grupa 1-2 bloków dzielących jedno tło paralaksy (patrz CenyFull.jsx) -
+// zastępuje dawny row-gap kontenera odstępem i marginesem wewnątrz paska,
+// żeby krótkie bloki (np. "Ile kosztuje dojazd?") nie tworzyły osobnego,
+// wąskiego paska tła.
+.cf-parallax-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2.5rem;
+  padding: 2.5rem 0;
 }
 
 .cf-block {
@@ -14,6 +28,11 @@
   align-items: center;
   justify-content: center;
   width: min(900px, 90%);
+  // margin:auto zamiast polegania na align-items rodzica - od kiedy blok
+  // jest owinięty w <Parallax> (patrz CenyFull.jsx), nie jest już
+  // bezpośrednim dzieckiem flex .cf-container, więc centrowanie przez
+  // rodzica przestało działać.
+  margin: 0 auto;
   padding: 30px clamp(20px, 4vw, 50px);
   border-radius: 20px;
   background-color: rgba(255, 255, 255, 0.75);
@@ -239,6 +258,7 @@
 
 .cf-cta {
   width: min(800px, 90%);
+  margin-top: 2.5rem;
   text-align: center;
   padding: 40px clamp(20px, 4vw, 50px);
   border-radius: 20px;

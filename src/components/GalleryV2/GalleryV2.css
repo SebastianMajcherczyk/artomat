@@ -5,6 +5,10 @@
   padding-bottom: 40px;
 }
 
+.gv2-parallax-pad {
+  padding: 20px 0 48px;
+}
+
 .gv2-panel {
   width: 90%;
   margin: 0 auto;

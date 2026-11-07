@@ -14,6 +14,16 @@ $easing: cubic-bezier(0.2, 0.8, 0.2, 1);
   padding-bottom: 40px;
 }
 
+// Odstęp MIĘDZY krawędzią <Parallax> a samym ciemnym panelem - w
+// przeciwieństwie do paddingu wewnątrz .gv2-panel (który tylko powiększa
+// ciemny box, nie odsłaniając samej tekstury), to jest przestrzeń, w
+// której widać jaśniejszą teksturę tła BEZ ciemnej nakładki panelu, zanim
+// pasek paralaksy się skończy - ten sam efekt co .cf-parallax-group na
+// /ceny i .tf-parallax-group na /technika.
+.gv2-parallax-pad {
+  padding: 20px 0 48px;
+}
+
 .gv2-panel {
   width: 90%;
   margin: 0 auto;

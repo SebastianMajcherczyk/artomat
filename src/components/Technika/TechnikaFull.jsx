@@ -1,4 +1,5 @@
 import React from "react";
+import { Parallax } from "react-parallax";
 import "./TechnikaFull.css";
 import {
   LeftSideMotionDiv,
@@ -6,6 +7,16 @@ import {
 } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 import FAQ from "../FAQ/FAQ";
+
+// Te same tła co na stronie głównej i /ceny (src/image21.jpg,
+// src/image22.jpg). Większość bloków tutaj jest już sama w sobie wysoka,
+// więc dostaje własne tło (1:1, jak na homepage); tylko dwa krótkie bloki
+// ("Jak powstaje nadruk?" i "Jak trwały jest nadruk?") są połączone z
+// sąsiadem, żeby nie tworzyć osobnego, wąskiego paska.
+const bg1 = require("../../image21.jpg");
+const bg2 = require("../../image22.jpg");
+const parallaxStrength = 150;
+const parallaxStyle = { width: "100%" };
 
 // Pełna, rozbudowana treść podstrony /technika (tekst dostarczony przez
 // użytkownika, październik 2026). Renderowana zawsze w pełni widoczna
@@ -157,6 +168,8 @@ const TechnikaFull = () => {
   return (
     <div className="tf-container">
       {/* 1. Intro + hero */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="tf-parallax-group">
       <LeftSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="tf-block"
@@ -189,8 +202,12 @@ const TechnikaFull = () => {
           handlowych, przestrzeni publicznych i wnętrz prywatnych.
         </p>
       </LeftSideMotionDiv>
+      </div>
+      </Parallax>
 
       {/* 2. Dwie drukarki wallPen */}
+      <Parallax bgImage={bg2} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="tf-parallax-group">
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="tf-block tf-block--dark"
@@ -274,8 +291,12 @@ const TechnikaFull = () => {
           regularnej pracy komercyjnej.
         </p>
       </RightSideMotionDiv>
+      </div>
+      </Parallax>
 
       {/* 3. Dlaczego wallPen - deep dive techniczny */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="tf-parallax-group">
       <LeftSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="tf-block"
@@ -355,8 +376,12 @@ const TechnikaFull = () => {
           programem RIP.
         </p>
       </LeftSideMotionDiv>
+      </div>
+      </Parallax>
 
-      {/* 4. Jak powstaje nadruk */}
+      {/* 4-5. Jak powstaje nadruk (krótki) + Powierzchnie */}
+      <Parallax bgImage={bg2} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="tf-parallax-group">
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="tf-block tf-block--dark"
@@ -382,8 +407,6 @@ const TechnikaFull = () => {
           charakteru grafiki.
         </p>
       </RightSideMotionDiv>
-
-      {/* 5. Powierzchnie */}
       <div className="tf-block">
         <AnimatedH2 isSectionVisible={isSectionVisible}>
           Ściana nie musi być idealnie gładka
@@ -446,8 +469,12 @@ const TechnikaFull = () => {
           ściana klienta.
         </p>
       </div>
+      </div>
+      </Parallax>
 
       {/* 6. Biały atrament */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="tf-parallax-group">
       <LeftSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="tf-block tf-block--dark"
@@ -490,8 +517,12 @@ const TechnikaFull = () => {
           być prostokątnym obrazem umieszczonym na jego powierzchni.
         </p>
       </LeftSideMotionDiv>
+      </div>
+      </Parallax>
 
       {/* 7. Nieregularny kształt + architektura */}
+      <Parallax bgImage={bg2} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="tf-parallax-group">
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="tf-block"
@@ -542,8 +573,12 @@ const TechnikaFull = () => {
           grafikę do rzeczywistej ściany.
         </p>
       </RightSideMotionDiv>
+      </div>
+      </Parallax>
 
       {/* 8. Kolory + rozdzielczość */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="tf-parallax-group">
       <LeftSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="tf-block tf-block--dark"
@@ -591,8 +626,12 @@ const TechnikaFull = () => {
           częściowo przebudować.
         </p>
       </LeftSideMotionDiv>
+      </div>
+      </Parallax>
 
       {/* 9. Jak duzy + marginesy + listwy */}
+      <Parallax bgImage={bg2} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="tf-parallax-group">
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="tf-block"
@@ -656,8 +695,12 @@ const TechnikaFull = () => {
           jest równie ważne jak możliwości samej maszyny.
         </p>
       </RightSideMotionDiv>
+      </div>
+      </Parallax>
 
-      {/* 10. Trwałość nadruku - podstawy przed FAQ */}
+      {/* 10-11. Trwałość nadruku (krótki) + FAQ */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="tf-parallax-group">
       <div className="tf-block tf-block--dark">
         <AnimatedH2 isSectionVisible={isSectionVisible}>
           Jak trwały jest nadruk w praktyce?
@@ -674,15 +717,16 @@ const TechnikaFull = () => {
           restauracji czy przestrzeni publicznej.
         </p>
       </div>
-
-      {/* 11. FAQ */}
       <div className="tf-block">
         <FAQ
           heading="Pytania, które słyszymy najczęściej"
           lead="Krótkie odpowiedzi na temat przygotowania ściany, trwałości i pielęgnacji nadruku"
           items={faqItems}
+          animated={false}
         />
       </div>
+      </div>
+      </Parallax>
 
       {/* 12. Zamknięcie + CTA */}
       <div className="tf-cta">

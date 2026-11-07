@@ -1,5 +1,6 @@
 import React from "react";
 import { Link as RouterLink } from "react-router-dom";
+import { Parallax } from "react-parallax";
 import "./CenyFull.css";
 import {
   LeftSideMotionDiv,
@@ -7,6 +8,18 @@ import {
 } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 import FAQ from "../FAQ/FAQ";
+
+// Te same tła co na stronie głównej (src/image21.jpg, src/image22.jpg),
+// naprzemiennie po jednym na blok - eksperyment: na homepage te zdjęcia są
+// dobrane pod wysokość sekcji "jednej strony", tu bloki są krótsze i
+// różnej wysokości, więc efekt może wyglądać inaczej (mniej "kinowo",
+// bardziej jak pasek tekstury za kartą). Niższy strength niż na homepage
+// (150 zamiast 300), żeby przesunięcie tła nie było nieproporcjonalne do
+// wysokości krótszych bloków.
+const bg1 = require("../../image21.jpg");
+const bg2 = require("../../image22.jpg");
+const parallaxStrength = 150;
+const parallaxStyle = { width: "100%" };
 
 // Pełna treść podstrony /ceny, dostarczona przez użytkownika (listopad
 // 2026). Renderowana zawsze w pełni widoczna (isSectionVisible stałe true),
@@ -142,7 +155,9 @@ const faqItems = [
 const CenyFull = () => {
   return (
     <div className="cf-container">
-      {/* 1. Stawki podstawowe */}
+      {/* 1-2. Stawki podstawowe + Co obejmuje standardowa cena */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="cf-parallax-group">
       <LeftSideMotionDiv isSectionVisible={isSectionVisible} className="cf-block">
         <p>
           Na ostateczny koszt mogą jednak wpływać także rodzaj i stan
@@ -192,8 +207,6 @@ const CenyFull = () => {
           przypadkach stosowana jest stawka VAT 23%.
         </p>
       </LeftSideMotionDiv>
-
-      {/* 2. Co obejmuje standardowa cena */}
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="cf-block cf-block--dark"
@@ -218,8 +231,12 @@ const CenyFull = () => {
           podstawie powierzchni grafiki.
         </p>
       </RightSideMotionDiv>
+      </div>
+      </Parallax>
 
-      {/* 3. Kiedy cena może być wyższa */}
+      {/* 3-4. Kiedy cena może być wyższa + Co wpływa na cenę */}
+      <Parallax bgImage={bg2} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="cf-parallax-group">
       <LeftSideMotionDiv isSectionVisible={isSectionVisible} className="cf-block">
         <AnimatedH2 isSectionVisible={isSectionVisible}>
           Kiedy cena druku ściennego może być wyższa?
@@ -246,8 +263,6 @@ const CenyFull = () => {
           realizacji.
         </p>
       </LeftSideMotionDiv>
-
-      {/* 4. Co wpływa na cenę */}
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="cf-block cf-block--dark"
@@ -266,8 +281,12 @@ const CenyFull = () => {
           ))}
         </div>
       </RightSideMotionDiv>
+      </div>
+      </Parallax>
 
-      {/* 5. Przykładowe ceny */}
+      {/* 5-6. Przykładowe ceny + Ile kosztuje dojazd */}
+      <Parallax bgImage={bg1} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="cf-parallax-group">
       <LeftSideMotionDiv isSectionVisible={isSectionVisible} className="cf-block">
         <AnimatedH2 isSectionVisible={isSectionVisible}>
           Przykładowe ceny nadruków
@@ -301,8 +320,6 @@ const CenyFull = () => {
           Ostateczną cenę potwierdzamy przed realizacją.
         </p>
       </LeftSideMotionDiv>
-
-      {/* 6. Dojazd */}
       <RightSideMotionDiv
         isSectionVisible={isSectionVisible}
         className="cf-block cf-block--dark"
@@ -321,8 +338,12 @@ const CenyFull = () => {
           wycenie.
         </p>
       </RightSideMotionDiv>
+      </div>
+      </Parallax>
 
-      {/* 7. Jak otrzymać wycenę */}
+      {/* 7-8. Jak otrzymać wycenę + FAQ */}
+      <Parallax bgImage={bg2} bgImageAlt="tło" strength={parallaxStrength} style={parallaxStyle}>
+      <div className="cf-parallax-group">
       <div className="cf-block">
         <AnimatedH2 isSectionVisible={isSectionVisible}>
           Jak otrzymać dokładną wycenę?
@@ -339,8 +360,6 @@ const CenyFull = () => {
           ewentualne dodatkowe wymagania techniczne.
         </p>
       </div>
-
-      {/* 8. FAQ */}
       <div className="cf-block cf-block--dark">
         <FAQ
           heading="Najczęściej zadawane pytania"
@@ -349,6 +368,8 @@ const CenyFull = () => {
           animated={false}
         />
       </div>
+      </div>
+      </Parallax>
 
       {/* 9. CTA */}
       <div className="cf-cta">

@@ -1,10 +1,22 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
+import { Parallax } from "react-parallax";
 import ProjectViewerV2 from "./ProjectViewerV2";
 import "./GalleryV2.css";
 
 const INITIAL_ROWS = 3.5;
 const ROWS_STEP = 2;
+
+// Te same tła co na pozostałych podstronach i na homepage'owej sekcji
+// galerii (src/image22.jpg). Panel siatki rośnie dynamicznie po "Pokaż
+// kolejne realizacje" (zmiana max-height), a react-parallax mierzy
+// wysokość tła tylko przy montowaniu / scrollu / resize okna - bez
+// dodatkowego zabiegu tło mogłoby nie nadążyć za rozwinięciem. Dlatego
+// <Parallax key={visibleRows}> niżej: zmiana key wymusza przemontowanie
+// (i ponowny pomiar) przy każdym kroku rozwinięcia.
+const bg = require("../../image22.jpg");
+const parallaxStrength = 150;
+const parallaxStyle = { width: "100%" };
 
 const shuffleArray = (array) => {
   const copy = [...array];
@@ -31,6 +43,17 @@ const GalleryV2 = ({ projects, activeProject, onClose }) => {
   const [maxHeight, setMaxHeight] = useState("none");
   const gridRef = useRef(null);
   const firstTileRef = useRef(null);
+
+  // .gv2-collapsible animuje max-height przez 0.45s (patrz GalleryV2.scss) -
+  // przemontowanie <Parallax> (żeby na nowo zmierzyła wysokość tła) musi
+  // poczekać, aż ta animacja się skończy, inaczej złapie wysokość sprzed
+  // rozwinięcia. parallaxTick rośnie dopiero 500ms po każdej zmianie
+  // maxHeight (debounce przez czyszczenie poprzedniego timeoutu).
+  const [parallaxTick, setParallaxTick] = useState(0);
+  useEffect(() => {
+    const t = setTimeout(() => setParallaxTick((n) => n + 1), 500);
+    return () => clearTimeout(t);
+  }, [maxHeight]);
 
   const recompute = useCallback(() => {
     const grid = gridRef.current;
@@ -88,6 +111,14 @@ const GalleryV2 = ({ projects, activeProject, onClose }) => {
 
   return (
     <div className="gv2">
+      <Parallax
+        key={parallaxTick}
+        bgImage={bg}
+        bgImageAlt="tło"
+        strength={parallaxStrength}
+        style={parallaxStyle}
+      >
+      <div className="gv2-parallax-pad">
       <div className="gv2-panel">
         <div
           className={`gv2-collapsible${isFullyExpanded ? "" : " is-collapsed"}`}
@@ -125,6 +156,8 @@ const GalleryV2 = ({ projects, activeProject, onClose }) => {
           </button>
         )}
       </div>
+      </div>
+      </Parallax>
 
       {activeProject && (
         <ProjectViewerV2 project={activeProject} onClose={onClose} />
