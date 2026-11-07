@@ -1,7 +1,8 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import "./Reviews.css";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 import { GOOGLE_REVIEWS_URL, reviews } from "./reviews-data";
+import useSectionReveal from "../../hooks/useSectionReveal";
 
 const AUTOPLAY_MS = 5000;
 const CARD_GAP = 20;
@@ -13,8 +14,7 @@ const computeVisibleCount = (width) => {
 };
 
 const Reviews = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
+  const [sectionRef, isSectionVisible] = useSectionReveal();
   const [visibleCount, setVisibleCount] = useState(1);
   const [cardWidth, setCardWidth] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
@@ -44,30 +44,6 @@ const Reviews = () => {
     while (x < cloneCount) x += reviews.length;
     return x;
   };
-
-  const checkIfSectionIsVisible = () => {
-    const section = document.querySelector(".reviews-section");
-    if (!section) return false;
-
-    const bounds = section.getBoundingClientRect();
-
-    return (
-      bounds.top < window.innerHeight / 1.3 &&
-      bounds.bottom > window.innerHeight / 1.3
-    );
-  };
-
-  const handleScroll = () => {
-    if (checkIfSectionIsVisible() && !hasAnimationPlayed) {
-      setIsSectionVisible(true);
-      setHasAnimationPlayed(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [hasAnimationPlayed]);
 
   useEffect(() => {
     const measure = () => {
@@ -166,7 +142,7 @@ const Reviews = () => {
   }, []);
 
   return (
-    <div className="reviews-section">
+    <div className="reviews-section" ref={sectionRef}>
       <AnimatedH2 isSectionVisible={isSectionVisible}>
         Opinie klientów
       </AnimatedH2>

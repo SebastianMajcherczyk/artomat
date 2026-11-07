@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import "./TechnikaPreview.css";
 import {
@@ -7,6 +6,7 @@ import {
   BottomSideMotionDiv,
 } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
+import useSectionReveal from "../../hooks/useSectionReveal";
 
 const tech = process.env.PUBLIC_URL + "/TechnikaImg";
 
@@ -20,7 +20,7 @@ const features = [
     content: (
       <>
         <p>
-          Maksymalna wysokość nadruku wynosi do 4 metrów. Szerokość jest
+          Maksymalna wysokość nadruku to 4 metry. Szerokość jest
           natomiast teoretycznie nieograniczona, ponieważ drukarka
           przemieszcza się wzdłuż ściany po systemie szyn.
         </p>
@@ -117,37 +117,10 @@ const features = [
 ];
 
 const TechnikaPreview = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
-
-  const checkIfSectionIsVisible = () => {
-    const section = document.querySelector(".technika-preview");
-    if (!section) return false;
-
-    const bounds = section.getBoundingClientRect();
-
-    return (
-      bounds.top < window.innerHeight / 1.5 &&
-      bounds.bottom > window.innerHeight / 1.5
-    );
-  };
-
-  const handleScroll = () => {
-    if (checkIfSectionIsVisible() && !hasAnimationPlayed) {
-      setIsSectionVisible(true);
-      setHasAnimationPlayed(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [hasAnimationPlayed]);
+  const [sectionRef, isSectionVisible] = useSectionReveal();
 
   return (
-    <div className="technika-preview-container">
+    <div className="technika-preview-container" ref={sectionRef}>
       <AnimatedH2 isSectionVisible={isSectionVisible}>Technika</AnimatedH2>
 
       <AnimatedH3 isSectionVisible={isSectionVisible}>

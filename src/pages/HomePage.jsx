@@ -23,23 +23,36 @@ const WallArtVisualizer = React.lazy(
 
 const strength = 300;
 
+// Zastępuje domyślne "Loading...", które jest za krótkie - dopóki te
+// (dociągane asynchronicznie) sekcje się nie wczytają, dokument jest tak
+// niski, że przeglądarka nie ma fizycznie gdzie przywrócić zapamiętanej
+// pozycji scrolla po odświeżeniu strony (ląduje blisko góry, a dopiero po
+// doczytaniu sekcji "doskakuje" niżej - stąd widoczny błysk). Wysokość
+// przybliża typową długość tej części strony, żeby okno ładowania nie
+// skracało dokumentu aż tak drastycznie.
+const sectionsFallback = <div style={{ minHeight: "800vh" }} />;
+
 export default function HomePage() {
   const location = useLocation();
+  // Scroll-do-góry przy wejściu na "/" bez hasha obsługuje już globalnie
+  // ScrollToTop.jsx (zamontowany raz, obok <Routes>) - stamtąd dociera
+  // poprawnie i przy nawigacji wewnątrz aplikacji, i (z pominięciem
+  // pierwszego mountowania) przy twardym odświeżeniu strony. Tu zostaje
+  // tylko to, czego ScrollToTop nie robi: płynny scroll do konkretnej
+  // sekcji, gdy w adresie jest hash (np. wejście na "/#opinie").
   useEffect(() => {
-    if (location.hash) {
-      const section = location.hash.replace("#", "");
+    if (!location.hash) return;
 
-      setTimeout(() => {
-        scroller.scrollTo(section, {
-          duration: 800,
-          delay: 0,
-          smooth: "easeInOutQuart",
-          offset: -70,
-        });
-      }, 100);
-    } else {
-      window.scrollTo(0, 0);
-    }
+    const section = location.hash.replace("#", "");
+
+    setTimeout(() => {
+      scroller.scrollTo(section, {
+        duration: 800,
+        delay: 0,
+        smooth: "easeInOutQuart",
+        offset: -70,
+      });
+    }, 100);
   }, [location]);
   return (
     <>
@@ -92,98 +105,98 @@ export default function HomePage() {
             </Element>
           </Parallax>
 
-          <Suspense fallback={<div>Loading...</div>}>
-            <Parallax
-              blur={0}
-              bgImage={require("../image22.jpg")}
-              bgImageAlt="tło"
-              strength={strength}
-            >
-              <Element name="dla-kogo">
-                <section>
-                  <ForWhom />
-                </section>
-              </Element>
-            </Parallax>
-
-            <Parallax
-              blur={0}
-              bgImage={require("../image21.jpg")}
-              bgImageAlt="tło"
-              strength={strength}
-            >
-              <Element name="technika">
-                <section>
-                  <TechnikaPreview />
-                </section>
-              </Element>
-            </Parallax>
-
-            <Parallax
-              bgImage={require("../image22.jpg")}
-              bgImageAlt="tło"
-              strength={strength}
-            >
-              <Element name="gallery">
-                <section>
-                  <Gallery mode="preview" />
-                </section>
-              </Element>
-            </Parallax>
-
-            <Parallax
-              bgImage={require("../image21.jpg")}
-              bgImageAlt="tło"
-              strength={strength}
-            >
-              <Element name="opinie">
-                <section aria-label="Opinie klientów Loftprint">
-                  <Reviews />
-                </section>
-              </Element>
-            </Parallax>
-
-            <Parallax
-              bgImage={require("../image22.jpg")}
-              bgImageAlt="tło"
-              strength={strength}
-            >
-              <Element name="ceny">
-                <section className="price-section">
-                  <CenyPreview />
-                </section>
-              </Element>
-            </Parallax>
-
-            <Parallax
-              blur={0}
-              bgImage={require("../image21.jpg")}
-              bgImageAlt="tło"
-              strength={strength}
-            >
-              <Element name="inspiracje">
-                <section>
-                  <Inspiracje />
-                </section>
-              </Element>
-            </Parallax>
-
-            <Parallax
-              blur={0}
-              bgImage={require("../image22.jpg")}
-              bgImageAlt="tło"
-              strength={strength}
-            >
-              <Element name="visualizer">
-                <section>
-                  <WallArtVisualizer />
-                </section>
-              </Element>
-            </Parallax>
-
-            <Element name="kontakt" style={{ width: "100%" }}>
-              <Footer />
+          <Suspense fallback={sectionsFallback}>
+          <Parallax
+            blur={0}
+            bgImage={require("../image22.jpg")}
+            bgImageAlt="tło"
+            strength={strength}
+          >
+            <Element name="dla-kogo">
+              <section>
+                <ForWhom />
+              </section>
             </Element>
+          </Parallax>
+
+          <Parallax
+            blur={0}
+            bgImage={require("../image21.jpg")}
+            bgImageAlt="tło"
+            strength={strength}
+          >
+            <Element name="technika">
+              <section>
+                <TechnikaPreview />
+              </section>
+            </Element>
+          </Parallax>
+
+          <Parallax
+            bgImage={require("../image22.jpg")}
+            bgImageAlt="tło"
+            strength={strength}
+          >
+            <Element name="gallery">
+              <section>
+                <Gallery mode="preview" />
+              </section>
+            </Element>
+          </Parallax>
+
+          <Parallax
+            bgImage={require("../image21.jpg")}
+            bgImageAlt="tło"
+            strength={strength}
+          >
+            <Element name="opinie">
+              <section aria-label="Opinie klientów Loftprint">
+                <Reviews />
+              </section>
+            </Element>
+          </Parallax>
+
+          <Parallax
+            bgImage={require("../image22.jpg")}
+            bgImageAlt="tło"
+            strength={strength}
+          >
+            <Element name="ceny">
+              <section className="price-section">
+                <CenyPreview />
+              </section>
+            </Element>
+          </Parallax>
+
+          <Parallax
+            blur={0}
+            bgImage={require("../image21.jpg")}
+            bgImageAlt="tło"
+            strength={strength}
+          >
+            <Element name="inspiracje">
+              <section>
+                <Inspiracje />
+              </section>
+            </Element>
+          </Parallax>
+
+          <Parallax
+            blur={0}
+            bgImage={require("../image22.jpg")}
+            bgImageAlt="tło"
+            strength={strength}
+          >
+            <Element name="visualizer">
+              <section>
+                <WallArtVisualizer />
+              </section>
+            </Element>
+          </Parallax>
+
+          <Element name="kontakt" style={{ width: "100%" }}>
+            <Footer />
+          </Element>
           </Suspense>
         </div>
       </div>

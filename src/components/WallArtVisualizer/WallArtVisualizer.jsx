@@ -1,8 +1,9 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { fabric } from "fabric";
 import "./WallArtVisualizer.css";
 import { LeftSideMotionDiv } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
+import useSectionReveal from "../../hooks/useSectionReveal";
 
 const WallArtVisualizer = () => {
   const canvasRef = useRef();
@@ -13,33 +14,7 @@ const WallArtVisualizer = () => {
   const [wallImageURL, setWallImageURL] = useState("");
   const [designImageURL, setDesignImageURL] = useState("");
   const [fabricCanvas, setFabricCanvas] = useState(null);
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
-
-  const checkIfSectionIsVisible = () => {
-    const section = document.querySelector(".visual");
-    const bounds = section.getBoundingClientRect();
-
-    const isVisible =
-      bounds.top < window.innerHeight / 2 &&
-      bounds.bottom > window.innerHeight / 2;
-
-    return isVisible;
-  };
-
-  const handleScroll = () => {
-    if (checkIfSectionIsVisible() && !hasAnimationPlayed) {
-      setIsSectionVisible(true);
-      setHasAnimationPlayed(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [hasAnimationPlayed]);
+  const [sectionRef, isSectionVisible] = useSectionReveal();
 
   const getInitialCanvasSize = () => {
     const viewportWidth = window.innerWidth;
@@ -256,10 +231,10 @@ const WallArtVisualizer = () => {
   };
 
   return (
-    <div className="visual-container">
+    <div className="visual-container" ref={sectionRef}>
       <AnimatedH2 isSectionVisible={isSectionVisible}>Wizualizacje</AnimatedH2>
       <AnimatedH3 isSectionVisible={isSectionVisible}>
-        Stwórz własną symulację nadruku.
+        Stwórz własną symulację nadruku
       </AnimatedH3>
       <LeftSideMotionDiv isSectionVisible={isSectionVisible} className="visual">
         <div className={`wall-mockup ${wallImageURL ? "invisible" : ""}`}></div>

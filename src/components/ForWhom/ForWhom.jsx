@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Accordion from "@mui/material/Accordion";
 import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
@@ -6,35 +6,10 @@ import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 import "./ForWhom.css";
 import { RightSideMotionDiv } from "../Styled/StyledMotionDiv";
+import useSectionReveal from "../../hooks/useSectionReveal";
 
 const ForWhom = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
-
-  const checkIfSectionIsVisible = () => {
-    const section = document.querySelector(".for-whom");
-    const bounds = section.getBoundingClientRect();
-
-    const isVisible =
-      bounds.top < window.innerHeight / 1.5 &&
-      bounds.bottom > window.innerHeight / 1.5;
-
-    return isVisible;
-  };
-
-  const handleScroll = () => {
-    if (checkIfSectionIsVisible() && !hasAnimationPlayed) {
-      setIsSectionVisible(true);
-      setHasAnimationPlayed(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [hasAnimationPlayed]);
+  const [sectionRef, isSectionVisible] = useSectionReveal();
 
   const [expanded, setExpanded] = useState("panel1");
   const handleChange = (panel) => (event, newExpanded) => {
@@ -42,7 +17,7 @@ const ForWhom = () => {
   };
 
   return (
-    <div className="for-whom-container">
+    <div className="for-whom-container" ref={sectionRef}>
       <AnimatedH2 isSectionVisible={isSectionVisible}>
         Dla kogo jest druk ścienny?
       </AnimatedH2>

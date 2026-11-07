@@ -1,50 +1,40 @@
-import React, { useEffect, useState } from "react";
+import { useState } from "react";
 import { RightSideMotionDiv } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
 import MediaGallery from "./MediaGallery";
 import ProjectViewerV2 from "../GalleryV2/ProjectViewerV2";
+import useSectionReveal from "../../hooks/useSectionReveal";
 import "./Gallery.css";
 
 const FEATURED_GALLERY_IDS = [35, 30, 28, 14, 22, 29, 39, 38, 26];
 
-const Gallery = ({ mode = "full", showHeading = true, showLead = true }) => {
+const DEFAULT_LEAD = (
+  <p className="paragraph">
+    Nasze realizacje nie są po prostu zwykłymi nadrukami na ścianach. Każdy
+    wykonany projekt, to pasja, historia i pomysł, któremu nadaliśmy kształtu
+    i formy. Odkryj, co zmalowaliśmy:
+  </p>
+);
+
+const Gallery = ({
+  mode = "full",
+  showHeading = true,
+  showLead = true,
+  heading = "Galeria",
+  subheading = "Zobacz nasze realizacje.",
+  leadContent = DEFAULT_LEAD,
+  previewProjectIds = FEATURED_GALLERY_IDS,
+}) => {
   const [selectedProject, setSelectedProject] = useState(null);
 
   const isFullMode = mode === "full";
 
-  const [isSectionVisible, setIsSectionVisible] = useState(isFullMode);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(isFullMode);
-
-  const checkIfSectionIsVisible = () => {
-    const section = document.querySelector(".gallery");
-    if (!section) return false;
-
-    const bounds = section.getBoundingClientRect();
-
-    return (
-      bounds.top < window.innerHeight / 1.5 &&
-      bounds.bottom > window.innerHeight / 1.5
-    );
-  };
-
-  const handleScroll = () => {
-    if (checkIfSectionIsVisible() && !hasAnimationPlayed) {
-      setIsSectionVisible(true);
-      setHasAnimationPlayed(true);
-    }
-  };
-
-  useEffect(() => {
-    if (isFullMode) return;
-
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [hasAnimationPlayed, isFullMode]);
+  const [sectionRef, isSectionVisible] = useSectionReveal({
+    skip: isFullMode,
+  });
 
   return (
-    <div className="gallery-container">
+    <div className="gallery-container" ref={sectionRef}>
       {selectedProject && (
         <ProjectViewerV2
           project={selectedProject}
@@ -53,12 +43,12 @@ const Gallery = ({ mode = "full", showHeading = true, showLead = true }) => {
       )}
 
       {showHeading && (
-        <AnimatedH2 isSectionVisible={isSectionVisible}>Galeria</AnimatedH2>
+        <AnimatedH2 isSectionVisible={isSectionVisible}>{heading}</AnimatedH2>
       )}
 
       {showHeading && (
         <AnimatedH3 isSectionVisible={isSectionVisible}>
-          Zobacz nasze realizacje.
+          {subheading}
         </AnimatedH3>
       )}
 
@@ -66,17 +56,11 @@ const Gallery = ({ mode = "full", showHeading = true, showLead = true }) => {
         isSectionVisible={isSectionVisible}
         className="gallery title"
       >
-        {showLead && (
-          <p className="paragraph">
-            Nasze realizacje nie są po prostu zwykłymi nadrukami na ścianach.
-            Każdy wykonany projekt, to pasja, historia i pomysł, któremu
-            nadaliśmy kształtu i formy. Odkryj, co zmalowaliśmy:
-          </p>
-        )}
+        {showLead && leadContent}
 
         <MediaGallery
           mode={mode}
-          previewProjectIds={FEATURED_GALLERY_IDS}
+          previewProjectIds={previewProjectIds}
           setSelectedProject={setSelectedProject}
           initialRows={3.5}
           rowsStep={2}

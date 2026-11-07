@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import "./Inspiracje.css";
 import {
@@ -6,39 +5,13 @@ import {
   RightSideMotionDiv,
 } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
+import useSectionReveal from "../../hooks/useSectionReveal";
 
 const Inspiracje = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
-
-  const checkIfSectionIsVisible = () => {
-    const section = document.querySelector(".inspiracje-preview");
-    if (!section) return false;
-
-    const bounds = section.getBoundingClientRect();
-
-    return (
-      bounds.top < window.innerHeight / 1.3 &&
-      bounds.bottom > window.innerHeight / 1.3
-    );
-  };
-
-  const handleScroll = () => {
-    if (checkIfSectionIsVisible() && !hasAnimationPlayed) {
-      setIsSectionVisible(true);
-      setHasAnimationPlayed(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [hasAnimationPlayed]);
+  const [sectionRef, isSectionVisible] = useSectionReveal();
 
   return (
-    <div className="inspiracje-preview-container">
+    <div className="inspiracje-preview-container" ref={sectionRef}>
       <AnimatedH2 isSectionVisible={isSectionVisible}>
         Grafika na ścianę
       </AnimatedH2>

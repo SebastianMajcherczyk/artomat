@@ -7,7 +7,7 @@ export const faqKrakowItems = [
   {
     question: "Ile trwa realizacja druku ściennego?",
     answer:
-      "Sam druk na ścianie zajmuje zwykle od kilku godzin do jednego dnia, w zależności od wielkości powierzchni. Cały proces – od pierwszego kontaktu, przez przygotowanie projektu, po montaż – zamyka się najczęściej w 1-2 tygodnie.",
+      "Sam druk na ścianie zajmuje zwykle od kilku godzin do jednego dnia, w zależności od wielkości powierzchni. Cały proces – od pierwszego kontaktu, przez przygotowanie projektu, po wykonanie nadruku – zamyka się najczęściej w ciągu 1–2 tygodni.",
   },
   {
     question: "Czy druk ścienny jest trwały i można go myć?",

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import "./CenyPreview.scss";
 import {
@@ -6,39 +5,13 @@ import {
   RightSideMotionDiv,
 } from "../Styled/StyledMotionDiv";
 import { AnimatedH2, AnimatedH3 } from "../Styled/StyledHeader";
+import useSectionReveal from "../../hooks/useSectionReveal";
 
 const CenyPreview = () => {
-  const [isSectionVisible, setIsSectionVisible] = useState(false);
-  const [hasAnimationPlayed, setHasAnimationPlayed] = useState(false);
-
-  const checkIfSectionIsVisible = () => {
-    const section = document.querySelector(".ceny-preview");
-    if (!section) return false;
-
-    const bounds = section.getBoundingClientRect();
-
-    return (
-      bounds.top < window.innerHeight / 1.3 &&
-      bounds.bottom > window.innerHeight / 1.3
-    );
-  };
-
-  const handleScroll = () => {
-    if (checkIfSectionIsVisible() && !hasAnimationPlayed) {
-      setIsSectionVisible(true);
-      setHasAnimationPlayed(true);
-    }
-  };
-
-  useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [hasAnimationPlayed]);
+  const [sectionRef, isSectionVisible] = useSectionReveal();
 
   return (
-    <div className="ceny-preview-container">
+    <div className="ceny-preview-container" ref={sectionRef}>
       <AnimatedH2 isSectionVisible={isSectionVisible}>Ceny</AnimatedH2>
 
       <AnimatedH3 isSectionVisible={isSectionVisible}>
