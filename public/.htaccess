@@ -6,17 +6,23 @@
   # Apache samo przekierowuje /gallery -> /gallery/ (mod_dir), ale na tym
   # hostingu SSL jest terminowany przed Apache, więc w tym momencie serwer
   # "myśli", że żądanie jest po HTTP i buduje ten redirect jako
-  # http://loftprint.pl/gallery/ zamiast https://. Efekt: /gallery, /technika
-  # i /ceny (adresy dokładnie takie jak w sitemap.xml) przechodzą przez
-  # podwójny redirect (https -> http -> https zamiast prosto), co Google
-  # Search Console zgłasza jako błąd przekierowania.
+  # http://loftprint.pl/gallery/ zamiast https://. Efekt: /gallery, /technika,
+  # /ceny i /druk-scienny-krakow (adresy dokładnie takie jak w sitemap.xml,
+  # bez końcowego /) przechodziły przez podwójny redirect (https -> http ->
+  # https zamiast prosto), co Google Search Console zgłaszało jako błąd
+  # przekierowania.
   #
   # Próbowaliśmy to naprawić przez "DirectorySlash Off" (serwowanie katalogu
   # bez przekierowania) — na TYM hostingu skutkowało to 403 Forbidden na
-  # każdej z tych stron zamiast poprawnego 200, więc cofnięte. Podwójny
-  # redirect jest brzydki, ale realnie działa; naprawa tego dokładniej
-  # wymagałaby innego mechanizmu (np. wykrycia oryginalnego HTTPS przez
-  # nagłówek X-Forwarded-Proto od proxy hostingu) i osobnej sesji.
+  # każdej z tych stron zamiast poprawnego 200, więc cofnięte.
+  #
+  # Fix poniżej: własna reguła, która dokleja "/" do katalogu SAMA, zanim
+  # zdąży to zrobić wbudowany mod_dir. Odpala się już PO regule HTTP->HTTPS
+  # wyżej, więc jeśli do niej doszliśmy, %{HTTPS} w mod_rewrite już poprawnie
+  # uznał żądanie za https (ta reguła wyżej realnie działa, bez pętli) -
+  # można więc bezpiecznie zbudować cel jako https:// wprost, bez pytania
+  # mod_dir o zdanie. Jeden redirect zamiast dwóch, bez przechodzenia przez
+  # http po drodze.
 
   # Przekierowanie z wersji www do wersji bez www
   RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
@@ -26,6 +32,12 @@
   RewriteCond %{HTTPS} off
   RewriteCond %{HTTP_HOST} ^loftprint\.pl$ [NC]
   RewriteRule ^(.*)$ https://loftprint.pl/$1 [R=301,L]
+
+  # Własny redirect katalog -> katalog/ (patrz komentarz wyżej) - wyprzedza
+  # mod_dir, zanim ten zbuduje go błędnie jako http://
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteCond %{REQUEST_URI} !/$
+  RewriteRule ^(.*[^/])$ https://%{HTTP_HOST}/$1/ [R=301,L]
 
   # Istniejące reguły
   RewriteRule ^index\.html$ - [L]
