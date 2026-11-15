@@ -136,7 +136,7 @@ const GalleryV2 = ({ projects, activeProject, onClose }) => {
                 >
                   <img
                     src={project.thumbnails[0]}
-                    alt={project.title.trim()}
+                    alt={`Druk ścienny UV – realizacja: ${project.title.trim()}`}
                     loading="lazy"
                   />
                 </Link>

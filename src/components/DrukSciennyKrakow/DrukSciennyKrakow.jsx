@@ -7,10 +7,9 @@ import { Footer } from "../Footer/Footer";
 import RegionalBanner from "../Banner/RegionalBanner";
 import FAQ from "../FAQ/FAQ";
 import { faqKrakowItems } from "../FAQ/faq-krakow-data";
-import { krakowGalleryIds } from "../Gallery/Gallery-krakow-ids";
 
 const ForWhomKrakow = React.lazy(() => import("../ForWhom/ForWhomKrakow"));
-const Gallery = React.lazy(() => import("../Gallery/Gallery"));
+const KrakowRealizacje = React.lazy(() => import("./KrakowRealizacje"));
 const Reviews = React.lazy(() => import("../Reviews/Reviews"));
 const TechnikaPreviewKrakow = React.lazy(
   () => import("../Technika/TechnikaPreviewKrakow"),
@@ -35,28 +34,32 @@ const krakowIntroParagraph = (
   </strong>
 );
 
-const krakowGalleryLead = (
-  <>
-    <p className="paragraph">
-      Każda ściana to inna przestrzeń, inny pomysł i inne wyzwanie. W naszej
-      galerii prezentujemy realizacje druku ściennego wykonane dla firm,
-      hoteli, restauracji, szkół i klientów indywidualnych.
-    </p>
-    <p className="paragraph">
-      Jednym z naszych projektów w Krakowie jest panoramiczny mural o
-      szerokości ponad 8 metrów, przedstawiający Smoka Wawelskiego i
-      charakterystyczne symbole miasta. Wykonaliśmy go w łączniku
-      prowadzącym z parkingu Kraków Airport do hotelu Hilton Garden Inn,
-      tworząc efektowne tło do pamiątkowych zdjęć.
-    </p>
-    <p className="paragraph">
-      To tylko jeden z przykładów możliwości druku ściennego UV. Zobacz, jak
-      różnorodne pomysły przenosimy bezpośrednio na ściany.
-    </p>
-  </>
-);
-
 const strength = 300;
+
+// Powiązany przez "provider"."@id" z jedynym, wspólnym węzłem LocalBusiness
+// zdefiniowanym w public/index.html (ten sam "@id" na każdej podstronie) -
+// żeby nie duplikować tam adresu/geo/ocen, tylko dodać brakujący element:
+// konkretną ofertę cenową usługi, powiązaną z Krakowem.
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: "Druk ścienny UV",
+  provider: { "@id": "https://loftprint.pl/#business" },
+  areaServed: { "@type": "City", name: "Kraków" },
+  offers: {
+    "@type": "Offer",
+    priceCurrency: "PLN",
+    price: "300.00",
+    priceSpecification: {
+      "@type": "UnitPriceSpecification",
+      price: "300.00",
+      priceCurrency: "PLN",
+      unitText: "m2",
+    },
+    description:
+      "Druk ścienny UV bez białego podkładu, minimalna wartość zamówienia 800 zł netto. Dojazd na terenie Krakowa i najbliższej okolicy jest bezpłatny.",
+  },
+};
 
 export const DrukSciennyKrakow = () => {
   return (
@@ -98,6 +101,10 @@ export const DrukSciennyKrakow = () => {
           name="twitter:image"
           content="https://loftprint.pl/social/loftprint-og.webp"
         />
+
+        <script type="application/ld+json">
+          {JSON.stringify(serviceSchema)}
+        </script>
       </Helmet>
 
       <div className="App">
@@ -152,13 +159,8 @@ export const DrukSciennyKrakow = () => {
             strength={strength}
           >
             <Element name="gallery">
-              <section aria-label="Realizacje druku ściennego">
-                <Gallery
-                  mode="preview"
-                  subheading="Druk ścienny w praktyce. Zobacz nasze realizacje"
-                  leadContent={krakowGalleryLead}
-                  previewProjectIds={krakowGalleryIds}
-                />
+              <section aria-label="Realizacje druku ściennego w Krakowie">
+                <KrakowRealizacje />
               </section>
             </Element>
           </Parallax>

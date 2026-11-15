@@ -208,7 +208,11 @@ const MediaGallery = ({
                 onClick={() => handleThumbnailClick(item.project)}
                 ref={idx === 0 ? firstThumbRef : null}
               >
-                <img src={item.thumb} alt={item.project.title} loading="lazy" />
+                <img
+                  src={item.thumb}
+                  alt={`Druk ścienny UV – realizacja: ${item.project.title}`}
+                  loading="lazy"
+                />
               </button>
             </li>
           ))}

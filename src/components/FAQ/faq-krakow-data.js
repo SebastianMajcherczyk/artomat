@@ -2,7 +2,12 @@ export const faqKrakowItems = [
   {
     question: "Ile kosztuje druk ścienny w Krakowie?",
     answer:
-      "Cena zależy od metrażu ściany, jej podłoża oraz złożoności grafiki. Orientacyjny cennik znajdziesz w sekcji Ceny na tej stronie, a dokładną wycenę przygotowujemy indywidualnie na podstawie zdjęć lub oględzin ściany.",
+      "Standardowy druk ścienny UV kosztuje od 300 zł netto za m², a na ciemniejszych ścianach wymagających białego podkładu – od 400 zł netto za m². Minimalna wartość zamówienia to 800 zł netto, a dojazd na terenie Krakowa i najbliższej okolicy jest bezpłatny. Dokładną wycenę przygotowujemy indywidualnie na podstawie zdjęć lub oględzin ściany.",
+  },
+  {
+    question: "Na jakich powierzchniach wykonujecie druk ścienny w Krakowie?",
+    answer:
+      "Drukujemy bezpośrednio na tynku, betonie, cegle, drewnie oraz szkle. Maksymalna wysokość nadruku wynosi 4 metry, a szerokość jest praktycznie nieograniczona.",
   },
   {
     question: "Ile trwa realizacja druku ściennego?",

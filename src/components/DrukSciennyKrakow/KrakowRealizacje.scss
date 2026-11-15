@@ -1,0 +1,164 @@
+$color-primary: #00375f;
+$color-accent: #8b003d;
+$color-text: #001829;
+
+.kr-container {
+  width: min(1100px, 92%);
+  margin: 0 auto;
+}
+
+.kr-body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+
+.kr-intro {
+  width: min(820px, 100%);
+  margin: 0 auto 14px;
+  text-align: justify;
+  color: $color-text;
+  line-height: 1.6;
+}
+
+.kr-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+  width: 100%;
+  margin-top: 1.5rem;
+}
+
+// Zdjęcia mają bardzo różne proporcje (pionowe/poziome) i nie mają być
+// kadrowane - sztywne dwie kolumny (zdjęcie | tekst) wyrównane do góry
+// wyglądały źle w obu kierunkach: poziome zdjęcie jest dużo niższe niż
+// kolumna tekstu (pusta przestrzeń pod zdjęciem), pionowe jest wyższe niż
+// tekst (sterczy poza blok). Zamiast tego zdjęcie "wpływa" w tekst (CSS
+// float) - wysokość całego bloku wynika naturalnie z tego, co jest
+// dłuższe: obrazu czy tekstu, bez żadnego wymuszonego dopasowania.
+.kr-item {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 24px clamp(18px, 3vw, 32px);
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.82);
+  color: $color-text;
+
+  > h3 {
+    margin: 0 0 14px;
+    color: $color-primary;
+  }
+}
+
+.kr-item-body {
+  // Blokuje zapadanie się rodzica, gdy ostatni potomek (obraz) jest floated.
+  overflow: hidden;
+
+  p {
+    margin: 0 0 14px;
+    text-align: justify;
+    line-height: 1.6;
+  }
+}
+
+.kr-figure-img {
+  display: block;
+  width: min(320px, 42%);
+  height: auto;
+  margin-bottom: 14px;
+  border-radius: 14px;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.18);
+
+  &--left {
+    float: left;
+    margin-right: clamp(16px, 3vw, 28px);
+  }
+
+  &--right {
+    float: right;
+    margin-left: clamp(16px, 3vw, 28px);
+  }
+
+  @media (max-width: 767px) {
+    float: none !important;
+    width: min(300px, 80%);
+    margin: 0 auto 16px;
+  }
+}
+
+.kr-links {
+  clear: both;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+
+  a {
+    color: $color-accent;
+    font-weight: 600;
+    text-decoration: underline;
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}
+
+.kr-outro {
+  width: 100%;
+  margin-top: 3rem;
+  text-align: center;
+  color: $color-text;
+
+  h3 {
+    color: $color-primary;
+    margin: 0 0 12px;
+  }
+
+  p {
+    width: min(820px, 100%);
+    margin: 0 auto;
+    text-align: justify;
+    line-height: 1.6;
+  }
+}
+
+.kr-outro-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 20px;
+}
+
+.kr-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 46px;
+  padding: 10px 24px;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 700;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.12);
+  }
+
+  &.primary {
+    background: $color-primary;
+    color: #fff;
+  }
+
+  &.secondary {
+    background: transparent;
+    color: $color-accent;
+    border: 2px solid $color-primary;
+  }
+}
