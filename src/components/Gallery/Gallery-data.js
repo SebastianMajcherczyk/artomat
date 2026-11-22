@@ -1101,4 +1101,57 @@ export const projects = [
       },
     ],
   },
+  {
+    id: 42,
+    title: "ZPUE Włoszczowa",
+    slug: "zpue-wloszczowa",
+    thumbnails: [path + "/ZPUE_Wloszczowa/ZPUE_thumb.webp"],
+    media: [
+      {
+        id: 1,
+        type: "video",
+        src: path + "/ZPUE_Wloszczowa/ZPUE_Video_1.mp4",
+      },
+      {
+        id: 2,
+        type: "video",
+        src: path + "/ZPUE_Wloszczowa/ZPUE_video_2.mp4",
+      },
+      {
+        id: 3,
+        type: "video",
+        src: path + "/ZPUE_Wloszczowa/ZPUE_video_3.mp4",
+      },
+      {
+        id: 4,
+        type: "image",
+        src: path + "/ZPUE_Wloszczowa/ZPUE_1.webp",
+      },
+      {
+        id: 5,
+        type: "image",
+        src: path + "/ZPUE_Wloszczowa/ZPUE_2.webp",
+      },
+      {
+        id: 6,
+        type: "image",
+        src: path + "/ZPUE_Wloszczowa/ZPUE_3.webp",
+      },
+      {
+        id: 7,
+        type: "image",
+        src: path + "/ZPUE_Wloszczowa/ZPUE_4.webp",
+      },
+      {
+        id: 8,
+        type: "image",
+        src: path + "/ZPUE_Wloszczowa/ZPUE_5.webp",
+      },
+      {
+        id: 9,
+        type: "image",
+        src: path + "/ZPUE_Wloszczowa/ZPUE_6.webp",
+      },
+    ],
+  },
 ];
