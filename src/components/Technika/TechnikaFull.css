@@ -106,7 +106,8 @@
   max-width: 100%;
   height: auto;
   max-height: 420px;
-  object-fit: contain;
+  -o-object-fit: contain;
+     object-fit: contain;
   border-radius: 16px;
   background: #fff;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
@@ -215,6 +216,4 @@
   margin-top: 16px;
   font-weight: 700;
   color: #fff !important;
-}
-
-/*# sourceMappingURL=TechnikaFull.css.map */
+}/*# sourceMappingURL=TechnikaFull.css.map */

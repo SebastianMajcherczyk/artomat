@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import { Parallax } from "react-parallax";
-import ProjectViewerV2 from "./ProjectViewerV2";
+import ProjectViewerRich from "./ProjectViewerRich";
 import "./GalleryV2.css";
 
 const INITIAL_ROWS = 3.5;
@@ -160,7 +160,7 @@ const GalleryV2 = ({ projects, activeProject, onClose }) => {
       </Parallax>
 
       {activeProject && (
-        <ProjectViewerV2 project={activeProject} onClose={onClose} />
+        <ProjectViewerRich project={activeProject} onClose={onClose} />
       )}
     </div>
   );

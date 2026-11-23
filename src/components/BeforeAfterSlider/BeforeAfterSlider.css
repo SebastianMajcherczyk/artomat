@@ -7,7 +7,9 @@
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
   cursor: ew-resize;
   touch-action: none;
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
   background: #e9e9e9;
 }
 
@@ -17,7 +19,8 @@
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   display: block;
   pointer-events: none;
   -webkit-user-drag: none;
@@ -85,6 +88,4 @@
 
 .bas-handle-arrow {
   line-height: 1;
-}
-
-/*# sourceMappingURL=BeforeAfterSlider.css.map */
+}/*# sourceMappingURL=BeforeAfterSlider.css.map */

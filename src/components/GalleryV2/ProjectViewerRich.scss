@@ -1,0 +1,182 @@
+$color-primary: #00375f; // granatowy
+$color-accent: #8b003d; // bordo
+
+.pvr {
+  position: fixed;
+  // Margines od krawędzi ekranu, żeby modal był wyraźnie mniejszy od
+  // viewportu (pierwsza wartość góra/dół, druga lewo/prawo) - szerokość
+  // i wysokość liczą się same z tego marginesu, nie trzeba osobno
+  // ustawiać height. Mniejszy na mobile (mało miejsca do "marnowania"),
+  // większy od desktopu w media query niżej. Dobierz wartości
+  // eksperymentalnie.
+  inset: 3vh 3vw;
+  border-radius: 20px;
+  // Przycina zaokrąglone rogi - bez tego slajdy przy przewijaniu
+  // wystawałyby poza border-radius.
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  // Lekko przezroczyste, żeby było widać, że to modal nad stroną -
+  // dobierz docelową wartość alfa eksperymentalnie.
+  background: rgba(180, 180, 180, 0.85);
+  // Rozmywa to, co widać przez przezroczyste tło (treść strony pod
+  // modalem), żeby nie rozpraszało uwagi - wartość px też do
+  // eksperymentowania. -webkit- prefix wymagany dla Safari.
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(2px);
+
+  // Ten sam próg co .pvr-nav niżej (strzałki pokazują się od tej samej
+  // szerokości) - tam gdzie jest już miejsce na większy margines.
+  @media (min-width: 769px) {
+    inset: 4vh 5vw;
+  }
+}
+
+.pvr-scroller {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.pvr-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 56px 12px 0;
+}
+
+.pvr-media-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 12px;
+}
+
+.pvr-media {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  // Delikatny cień zamiast obramowania - bez tego jasne zdjęcie na
+  // białym tle modala zlewałoby się z nim bez wyraźnej granicy.
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+
+  // Mocniejszy cień tylko od desktopu (ten sam próg co .pvr/.pvr-nav) -
+  // tam jest miejsce, żeby efekt 3D było wyraźnie widać; na mobile zdjęcie
+  // zajmuje większość ekranu, więc zostaje subtelna wersja wyżej.
+  @media (min-width: 769px) {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  }
+}
+
+// Podpis - zawsze przynajmniej tytuł, opcjonalnie dłuższy opis. Stałe
+// miejsce pod media, własny scroll gdy opis jest długi, żeby nigdy nie
+// zepchnąć zdjęcia/wideo poza ekran.
+.pvr-caption {
+  flex: 0 0 auto;
+  max-height: 34vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 14px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+
+  h3 {
+    margin: 0 0 6px;
+    color: $color-accent;
+    font-size: 1.2rem;
+    font-weight: 700;
+  }
+
+  p {
+    margin: 0;
+    color: $color-primary;
+    line-height: 1.55;
+    font-size: 0.92rem;
+    text-align: left;
+  }
+}
+
+.pvr-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 55, 95, 0.08);
+  color: $color-primary;
+  cursor: pointer;
+}
+
+.pvr-counter {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  color: $color-primary;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+.pvr-nav {
+  position: absolute;
+  // Wyśrodkowane w obszarze media (pomijając pasek podpisu pod spodem),
+  // nie na całej wysokości modala.
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 55, 95, 0.08);
+  color: $color-primary;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  &--prev {
+    left: 16px;
+  }
+
+  &--next {
+    right: 16px;
+  }
+
+  @media (min-width: 769px) {
+    display: flex;
+  }
+}

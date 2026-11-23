@@ -1,0 +1,153 @@
+.pvr {
+  position: fixed;
+  inset: 3vh 3vw;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  z-index: 9999;
+  background: rgba(180, 180, 180, 0.85);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(2px);
+}
+@media (min-width: 769px) {
+  .pvr {
+    inset: 4vh 5vw;
+  }
+}
+
+.pvr-scroller {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+.pvr-scroller::-webkit-scrollbar {
+  display: none;
+}
+
+.pvr-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 56px 12px 0;
+}
+
+.pvr-media-wrap {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 12px;
+}
+
+.pvr-media {
+  display: block;
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.12);
+}
+@media (min-width: 769px) {
+  .pvr-media {
+    box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+  }
+}
+
+.pvr-caption {
+  flex: 0 0 auto;
+  max-height: 34vh;
+  overflow-y: auto;
+  box-sizing: border-box;
+  width: min(720px, 100%);
+  margin: 0 auto;
+  padding: 14px 16px calc(16px + env(safe-area-inset-bottom, 0px));
+  text-align: center;
+}
+.pvr-caption h3 {
+  margin: 0 0 6px;
+  color: #8b003d;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+.pvr-caption p {
+  margin: 0;
+  color: #00375f;
+  line-height: 1.55;
+  font-size: 0.92rem;
+  text-align: left;
+}
+
+.pvr-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 55, 95, 0.08);
+  color: #00375f;
+  cursor: pointer;
+}
+
+.pvr-counter {
+  position: absolute;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10000;
+  color: #00375f;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  pointer-events: none;
+}
+
+.pvr-nav {
+  position: absolute;
+  top: 42%;
+  transform: translateY(-50%);
+  z-index: 10000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 55, 95, 0.08);
+  color: #00375f;
+  cursor: pointer;
+}
+.pvr-nav:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+.pvr-nav--prev {
+  left: 16px;
+}
+.pvr-nav--next {
+  right: 16px;
+}
+@media (min-width: 769px) {
+  .pvr-nav {
+    display: flex;
+  }
+}
+
+/*# sourceMappingURL=ProjectViewerRich.css.map */

@@ -26,7 +26,8 @@
   width: 100%;
   height: auto;
   aspect-ratio: 1200/675;
-  object-fit: cover;
+  -o-object-fit: cover;
+     object-fit: cover;
   border-radius: 12px;
   margin: 0 0 16px;
 }
@@ -103,6 +104,4 @@
 .inspiracje-preview-box .inspiracje-preview-actions {
   align-items: center;
   justify-content: center;
-}
-
-/*# sourceMappingURL=Inspiracje.css.map */
+}/*# sourceMappingURL=Inspiracje.css.map */
